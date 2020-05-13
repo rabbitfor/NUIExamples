@@ -29,7 +29,8 @@ public class NUISampleApplication : NUIApplication
 
     void Initialize()
     {
-        Window.Instance.KeyEvent += OnKeyEvent;
+        var window = NUIApplication.GetDefaultWindow();
+        window.KeyEvent += OnKeyEvent;
 
         TextLabel text = new TextLabel("Hello World!");
         text.HorizontalAlignment = HorizontalAlignment.Center;
@@ -38,7 +39,7 @@ public class NUISampleApplication : NUIApplication
         text.PointSize = 12.0f;
         text.HeightResizePolicy = ResizePolicyType.FillToParent;
         text.WidthResizePolicy = ResizePolicyType.FillToParent;
-        Window.Instance.GetDefaultLayer().Add(text);
+        window.Add(text);
         
         Animation animation = new Animation(2000);
         animation.AnimateTo(text, "Orientation", new Rotation(new Radian(new Degree(180.0f)), PositionAxis.X), 0, 500);
