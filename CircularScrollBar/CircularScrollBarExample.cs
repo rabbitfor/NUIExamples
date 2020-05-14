@@ -16,16 +16,17 @@
  */
 using System;
 using Tizen.NUI;
+using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Wearable;
 
 public class NUISampleApplication : NUIApplication
 {
-    CircularScrollBar scrollbar;
+    CircularScrollbar scrollbar;
     float currentPosition = 0;
-    float contentLength = 2000;
+    float contentLength = 5760;
     float lastY = 0;
 
-    NUISampleApplication() : base()
+    NUISampleApplication() : base(new Size2D(360, 360), new Position2D(0, 0))
     {
     }
 
@@ -33,46 +34,25 @@ public class NUISampleApplication : NUIApplication
     {
         base.OnCreate();
 
-        Initialize();
-    }
-
-    void Initialize()
-    {
         var window = NUIApplication.GetDefaultWindow();
-        var windowSize = Math.Min(window.Size.Width, window.Size.Height);
+        var screenLength = Math.Min(window.Size.Width, window.Size.Height);
 
-        scrollbar = new CircularScrollBar(contentLength, windowSize, currentPosition);
-        scrollbar.Thickness = 60.0f;
-        scrollbar.TrackColor = Color.Blue;
+        scrollbar = new CircularScrollbar();
+        scrollbar.Initialize(contentLength, screenLength, currentPosition);
 
         window.Add(scrollbar);
-        window.TouchEvent += OnTouch;
-        window.KeyEvent += OnKeyEvent;
+        scrollbar.TouchEvent += OnTouch;
     }
 
-    void OnTouch(object target, Window.TouchEventArgs args)
+    bool OnTouch(object target, View.TouchEventArgs args)
     {
-        var currentY = args.Touch.GetScreenPosition(0).Y;
-
-        if (args.Touch.GetState(0) == PointStateType.Motion)
+        if (args.Touch.GetState(0) == PointStateType.Down)
         {
-            var nextPosition = currentPosition + currentY - lastY;
-
-            if (nextPosition < 0)
-            {
-                nextPosition = 0;
-            }
-            else if (nextPosition > contentLength)
-            {
-                nextPosition = contentLength;
-            }
-
-            scrollbar.GoTo(nextPosition);
-
-            currentPosition = nextPosition;
+            currentPosition = currentPosition == 0 ? contentLength : 0;
+            scrollbar.ScrollTo(currentPosition, 500);
         }
 
-        lastY = currentY;
+        return true;
     }
 
     void OnKeyEvent(object sender, Window.KeyEventArgs e)
