@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="NUIXamlTemplate1.XamlPage"
+  xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components" >
+
+    <ContentPage.XamlResources>
+      <TextLabelStyle x:Name="TextLabelStyle1" x:Key="TextLabelStyleKey">
+        <TextLabelStyle.TextColor>
+          <Selector x:TypeArguments="Color" All="Yellow"/>
+        </TextLabelStyle.TextColor>
+      </TextLabelStyle>
+    </ContentPage.XamlResources>
+
+    <TextLabel x:Name="text" PositionUsesPivotPoint="True" ParentOrigin="Center" PivotPoint="Center" Text="Hello World!" PointSize="17">
+      <x:Arguments>
+        {x:Reference TextLabelStyle1}
+      </x:Arguments>
+    </TextLabel>
+
+    <ContentPage.XamlResources>
+      <c:ButtonStyle x:Name="ButtonStyle1" x:Key="ButtonStyleKey1">
+        <c:ButtonStyle.Text>
+          <TextLabelStyle>
+            <TextLabelStyle.Text>
+              <Selector x:TypeArguments="x:String" Normal="button" Pressed="pressed!!"/>
+            </TextLabelStyle.Text>
+            <TextLabelStyle.PointSize>
+              <Selector x:TypeArguments="x:Single?" Normal="10.0" Pressed="20.0" />
+            </TextLabelStyle.PointSize>
+          </TextLabelStyle>
+        </c:ButtonStyle.Text>
+      </c:ButtonStyle>
+    </ContentPage.XamlResources>
+
+    <c:Button Size2D="300,100" Position2D="500,200" BackgroundColor="Yellow" ClickEvent="button1_Click">
+      <x:Arguments>
+        {x:Reference ButtonStyle1}
+      </x:Arguments>
+    </c:Button>
+
+    <!--ImageView Size="500,500">
+      <x:Arguments>
+        {x:Reference imageViewStyle1}
+      </x:Arguments>
+    </ImageView-->
+    
+
+</ContentPage>
