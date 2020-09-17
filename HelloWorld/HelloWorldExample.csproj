@@ -26,6 +26,7 @@
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Wearable/Tizen.NUI.Wearable.csproj" />
+    <!--ProjectReference Include="$(TizenFXDir)/../../fhub-nui/Tizen.FH.NUI/Tizen.FH.NUI.csproj" /-->
   </ItemGroup>
 
 </Project>

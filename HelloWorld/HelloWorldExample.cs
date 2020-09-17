@@ -16,89 +16,26 @@
  */
 using System;
 using Tizen.NUI;
+// using Tizen.FH.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
 using Tizen.NUI.Wearable;
+// using Tizen.FH.NUI.Components;
+
 
 public class NUISampleApplication : NUIApplication
 {
-    public class TextButtonStyle : StyleBase
+    private class Config
     {
-        public TextButtonStyle()
-        {
-        }
-
-        protected override ViewStyle GetViewStyle()
-        {
-            ButtonStyle style = new ButtonStyle
-            {
-                IsSelectable = true,
-                Overlay = new ImageViewStyle
-                {
-                    ResourceUrl = new Selector<string> { Pressed = "/home/jy/2019/dali/fhub-nui/Tizen.FH.NUI/res/images/FH3/3.Button/rectangle_btn_press_overlay.png", Other = "" },
-                    Border = new Selector<Rectangle> { All = new Rectangle(5, 5, 5, 5) }
-                },
-
-                Text = new TextLabelStyle
-                {
-                    PositionUsesPivotPoint = true,
-                    PointSize = new Selector<float?> { All = 20 },
-                    ParentOrigin = Tizen.NUI.ParentOrigin.Center,
-                    PivotPoint = Tizen.NUI.PivotPoint.Center,
-                    WidthResizePolicy = ResizePolicyType.FillToParent,
-                    HeightResizePolicy = ResizePolicyType.FillToParent,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    TextColor = new Selector<Color>
-                    {
-                        Normal = new Color(0, 0, 0, 1),
-                        Pressed = new Color(0, 0, 0, 0.7f),
-                        Selected = new Color("#24c447"),
-                        Disabled = new Color(0, 0, 0, 0.4f),
-                    },
-                    Text = "Hello",
-                }
-            };
-            return style;
-        }
+        public const int PAGINATION_POSITION_Y = 263 + 1266;
+        public const int PAGINATION_HEIGHT = 170;
+        public const int PAGINATION_INDICATOR_WIDTH = 14;
+        public const int PAGINATION_INDICATOR_HEIGHT = PAGINATION_INDICATOR_WIDTH;
+        public const int PAGINATION_PADDING = 10;
     }
 
-    public class UtilityBasicButtonStyle : TextButtonStyle
-    {
-        protected override ViewStyle GetViewStyle()
-        {
-            // if (Content != null)
-            // {
-            //     ViewStyle contentStyle = (ViewStyle)global::System.Activator.CreateInstance(Content.GetType());
-            //     contentStyle.CopyFrom(Content as ViewStyle);
-            //     return contentStyle;
-            // }
-            ButtonStyle style = base.GetViewStyle() as ButtonStyle;
-            style.ImageShadow = new ImageShadow
-            {
-                Url = "/home/jy/2019/dali/fhub-nui/Tizen.FH.NUI/res/images/FH3/3.Button/rectangle_btn_shadow.png",
-                Border = new Rectangle(5, 5, 5, 5)
-            };
-            style.BackgroundColor = Color.Transparent;
-            style.SolidNull = true;
-            return style;
-        }
-    }
-
-    public class FamilyBasicButtonStyle : TextButtonStyle
-    {
-        protected override ViewStyle GetViewStyle()
-        {
-            ButtonStyle style = base.GetViewStyle() as ButtonStyle;
-            style.ImageShadow = new ImageShadow
-            {
-                Url = "/home/jy/2019/dali/fhub-nui/Tizen.FH.NUI/res/images/FH3/3.Button/rectangle_btn_shadow.png",
-                Border = new Rectangle(5, 5, 5, 5)
-            };
-            style.Text.TextColor.Selected = new Color("#0ea1e6");
-            return style;
-        }
-    }
+    private Button button;
+    private Pagination pagination;
 
     protected override void OnCreate()
     {
@@ -110,55 +47,132 @@ public class NUISampleApplication : NUIApplication
     void Initialize()
     {
         var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
-        NUIApplication.GetDefaultWindow().BackgroundColor = Color.White;
-        var root = NUIApplication.GetDefaultWindow();
+        NUIApplication.GetDefaultWindow().BackgroundColor = new Color("#ebba34");
 
-        // var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
-        var theme = new Theme("/home/jy/2019/dali/NUIExamples/HelloWorld/res/TestTheme.xaml");
-        var buttonStyle = theme.GetStyle("Button") as ButtonStyle;
-        var checkBoxStyle = theme.GetStyle("CheckBox") as ButtonStyle;
-        var switchStyle = theme.GetStyle("Switch") as SwitchStyle;
+        SetupButtons();
 
-        root.Add(new TextLabel(){
-            Position = new Position(), 
-            Text = "Test1: " + (buttonStyle == null ? "FAIL" : "PASS"),
-        });
+        View rootSettingView = new View()
+        {
+            Layout = new AbsoluteLayout(),
 
-        root.Add(new TextLabel(){
-            Position = new Position(0, 30), 
-            Text = "Test2: " + ((checkBoxStyle == null ? false : (checkBoxStyle.Icon.Opacity == null ? false : (checkBoxStyle.Icon.Opacity.All == 0.8f))) ? "PASS" : "FAIL"),
-        });
-        root.Add(new TextLabel(){
-            Position = new Position(0, 60), 
-            Text = "Test3: " + ((checkBoxStyle == null ? false : (checkBoxStyle.Icon.ResourceUrl == null ? false : !string.IsNullOrEmpty(checkBoxStyle.Icon.ResourceUrl.Selected))) ? "PASS" : "FAIL"),
-        });
+            WidthSpecification = Window.Instance.Size.Width,
+            HeightSpecification = Window.Instance.Size.Height,
+        };
+        Window.Instance.Add(rootSettingView);
 
-        root.Add(new TextLabel(){
-            Position = new Position(0, 90), 
-            Text = "Test4: " + ((switchStyle == null ? false : (switchStyle.Track.Border == null ? false : (switchStyle.Track.Border.All == null))) ? "PASS" : "FAIL"),
-        });
+        View paginationLayout = new View()
+        {
+            Layout = new AbsoluteLayout(),
+            PositionY = Config.PAGINATION_POSITION_Y,
+            WidthSpecification = LayoutParamPolicies.WrapContent,
+            HeightSpecification = LayoutParamPolicies.WrapContent,
+        };
+        rootSettingView.Add(paginationLayout);
 
-        root.Add(new TextLabel(){
-            Position = new Position(0, 120), 
-            Text = "Test5: " + ((switchStyle == null ? false : (switchStyle.Track.Size == null ? false : switchStyle.Track.Size.Equals(new Size(96, 96)))) ? "PASS" : "FAIL"),
-        });
-        
+        pagination = new Pagination()
+        {
+            PositionUsesPivotPoint = true,
+            ParentOrigin = ParentOrigin.Center,
+            PivotPoint = PivotPoint.Center,
+            WidthSpecification = Window.Instance.Size.Width,
+            HeightSpecification = Config.PAGINATION_HEIGHT,
+            IndicatorSize = new Size(Config.PAGINATION_INDICATOR_WIDTH, Config.PAGINATION_INDICATOR_HEIGHT),
+            IndicatorImageUrl = new StringSelector
+            {
+                Normal = resourcePath + "edit_mode_indicator_dim.png",
+                Selected = resourcePath + "edit_mode_indicator_focus.png"
+            },
+            LastIndicatorImageUrl = new StringSelector
+            {
+                Normal = resourcePath + "edit_ic_plus_nor.png",
+                Selected = resourcePath + "edit_ic_plus_sel.png"
+            },
+            IndicatorSpacing = Config.PAGINATION_PADDING,
+            IndicatorCount = 3,
+            SelectedIndex = 0
+        };
+        paginationLayout.Add(pagination);
     }
 
-    bool clickCount = false;
-
-    public void OnClick(object target, ClickedEventArgs args)
+    private void SetupButtons()
     {
-        if (clickCount)
+        var prevButton = new Button()
         {
-            Tizen.NUI.Components.StyleManager.Instance.Theme = "Theme1";
-        }
-        else
-        {
-            Tizen.NUI.Components.StyleManager.Instance.Theme = "Theme2";
-        }
+            Text = "<",
+            PointSize = 18,
+            Size = new Size(200, 100),
+            Position = new Position(0, 0)
+        };
+        prevButton.Clicked += OnPrev;
+        Window.Instance.Add(prevButton);
 
-        clickCount = !clickCount;
+        var AddButton = new Button()
+        {
+            Text = "ADD",
+            PointSize = 18,
+            Size = new Size(200, 100),
+            Position = new Position(210, 0)
+        };
+        AddButton.Clicked += OnAdded;
+        Window.Instance.Add(AddButton);
+
+        var removeButton = new Button()
+        {
+            Text = "REMOVE",
+            PointSize = 18,
+            Size = new Size(200, 100),
+            Position = new Position(420, 0)
+        };
+        removeButton.Clicked += OnRemoved;
+        Window.Instance.Add(removeButton);
+
+        var nextButton = new Button()
+        {
+            Text = ">",
+            PointSize = 18,
+            Size = new Size(200, 100),
+            Position = new Position(630, 0)
+        };
+        nextButton.Clicked += OnNext;
+        Window.Instance.Add(nextButton);
+    }
+
+ 
+    // private void OnClicked(object target, ClickedEventArgs args)
+    // {
+    //     Tizen.NUI.StyleManager.Instance.ApplyTheme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "tempTheme.json");
+    //     Tizen.NUI.Components.StyleManager.Instance.Theme = "SomeTheme";
+    // }
+
+    private void OnAdded(object target, ClickedEventArgs args)
+    {
+        pagination.IndicatorCount += 1;
+    }
+
+    private void OnRemoved(object target, ClickedEventArgs args)
+    {
+        if (pagination.IndicatorCount <= 1) return;
+        if (pagination.SelectedIndex == pagination.IndicatorCount - 1)
+        {
+            pagination.SelectedIndex -= 1;
+        }
+        pagination.IndicatorCount -= 1;
+    }
+
+    private void OnPrev(object target, ClickedEventArgs args)
+    {
+        if (pagination.SelectedIndex > 0)
+        {
+            pagination.SelectedIndex -= 1;
+        }
+    }
+
+    private void OnNext(object target, ClickedEventArgs args)
+    {
+        if (pagination.SelectedIndex < pagination.IndicatorCount - 1)
+        {
+            pagination.SelectedIndex += 1;
+        }
     }
 
     public void OnKeyEvent(object sender, Window.KeyEventArgs e)
@@ -167,12 +181,7 @@ public class NUISampleApplication : NUIApplication
         {
             Exit();
         }
-        else if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Return")
-        {
-            // Tizen.Log.Info("JYJY", "view7.Track.Size(" + view7.Track.Size.Width + ", " + view7.Track.Size.Height + ")");
-        }
     }
-
 
     static void Main(string[] args)
     {
