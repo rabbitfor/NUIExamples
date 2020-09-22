@@ -33,13 +33,10 @@ public class NUISampleApplication : NUIApplication
 
     void Initialize()
     {
-        NUIApplication.GetDefaultWindow().BackgroundColor = Color.White;
         var root = NUIApplication.GetDefaultWindow();
-
         var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
         themeBlack = new Theme(resourcePath + "Theme/Black.xaml");
         themeGreen = new Theme(resourcePath + "Theme/Green.xaml");
-
         ThemeManager.ApplyTheme(themeBlack);
 
         var themeChangeButton = new Button() {
@@ -49,38 +46,38 @@ public class NUISampleApplication : NUIApplication
         };
         themeChangeButton.Clicked += OnClicked;
         root.Add(themeChangeButton);
+        root.BackgroundColor = Color.White;
+
 
         root.Add(new TextLabel() {
+            StyleName = "TextLabelTypeA",   // Set the StyleName you want to apply.
             Position = new Position(30, 100),
-            ThemeChangeSensitive = true,
             Text = "Hello World!",
         });
 
         root.Add(new Button() {
+            StyleName = "ButtonDefault",    // Set the StyleName you want to apply.
             Position = new Position(30, 160),
-            ThemeChangeSensitive = true,
         });
 
         root.Add(new CheckBox() {
+            StyleName = "CheckBoxBordered", // Set the StyleName you want to apply.
             Position = new Position(30, 240),
-            ThemeChangeSensitive = true,
-            IsSelected = true,
         });
 
-        root.Add(new CheckBox() {
-            Position = new Position(130, 240),
-            ThemeChangeSensitive = true,
+        root.Add(new CheckBox("CheckBoxBordered") { // You can also set StyleName through the constructor.
+                                                    // Note that, BaseComponents(TextLabel, ImageView..) does not provide this way.
+            Position = new Position(200, 240),
         });
 
-        root.Add(new CheckBox() {
-            Position = new Position(230, 240),
-            ThemeChangeSensitive = true,
-            IsEnabled = false,
-        });
-
-        root.Add(new Switch() {
+        root.Add(new Switch("SwitchFancy") { // Set the StyleName you want to apply.
             Position = new Position(30, 320),
-            ThemeChangeSensitive = true,
+        });
+
+        root.Add(new Switch("SwitchFancy") { // Set the StyleName you want to apply.
+            ThemeChangeSensitive = false,    // Set ThemeChangedSensitive to false if you don't want this view changes by theme changing.
+                                             // It is false by default, but turned to true when setting StyleName.
+            Position = new Position(200, 320),
         });
     }
 

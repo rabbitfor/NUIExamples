@@ -5,11 +5,11 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   Id="GreenTheme" BasedOn="Tizen.NUI.Theme.Common">
 
-  <!--TextLabel-->
-  <TextLabelStyle x:Key="TextLabel" TextColor="0.36, 0.45, 0.31, 0.8" />
+  <!--TextLabelTypeA-->
+  <TextLabelStyle x:Key="TextLabelTypeA" TextColor="0.36, 0.45, 0.31, 0.8" />
 
-  <!--Button-->
-  <c:ButtonStyle x:Key="Button" Size="100, 60" CornerRadius="10">
+  <!--ButtonDefault-->
+  <c:ButtonStyle x:Key="ButtonDefault" Size="100, 60" CornerRadius="10">
     <c:ButtonStyle.BackgroundColor>
       <Selector x:TypeArguments="Color" Other="#6B9900" Pressed="#476600" Disabled="#8C8C8C"/>
     </c:ButtonStyle.BackgroundColor>
@@ -22,8 +22,8 @@
     </c:ButtonStyle.Text>
   </c:ButtonStyle>
 
-  <!--CheckBox-->
-  <c:ButtonStyle x:Key="CheckBox" CornerRadius="8" Size="60, 60">
+  <!--CheckBoxBordered-->
+  <c:ButtonStyle x:Key="CheckBoxBordered" CornerRadius="8" Size="60, 60">
     <c:ButtonStyle.BackgroundColor>
       <Selector x:TypeArguments="Color" Other="#6B9900" Pressed="#8DB72A" Selected="#9FC93C" Disabled="#b8bdb7"/>
     </c:ButtonStyle.BackgroundColor>
@@ -39,8 +39,8 @@
     </c:ButtonStyle.Icon>
   </c:ButtonStyle>
 
-  <!--Switch-->
-  <c:SwitchStyle x:Key="Switch" Size="100, 60">
+  <!--SwitchFancy-->
+  <c:SwitchStyle x:Key="SwitchFancy" Size="100, 60">
     <c:Switch.Track> <!--Switch Track-->
       <ImageViewStyle Size="96, 58" CornerRadius="29">
         <ImageViewStyle.BackgroundColor>
