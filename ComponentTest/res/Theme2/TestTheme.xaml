@@ -7,14 +7,14 @@
   BasedOn="Tizen.NUI.Theme.Common">
 
   <!--CheckBox-->
-  <c:ButtonStyle x:Key="CheckBox" Size="30, 30">
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox" Size="30, 30">
     <c:ButtonStyle.Icon>
       <ImageViewStyle Opacity="0.8"/>
     </c:ButtonStyle.Icon>
   </c:ButtonStyle>
 
   <!--Switch-->
-  <c:SwitchStyle x:Key="Switch" Size="96, 60" SolidNull="true">
+  <c:SwitchStyle x:Key="Tizen.NUI.Components.Switch" Size="96, 60" SolidNull="true">
     <c:Switch.Track>
       <ImageViewStyle Size="96, 96"/>
     </c:Switch.Track>

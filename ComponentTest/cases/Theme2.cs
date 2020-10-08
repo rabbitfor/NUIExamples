@@ -9,9 +9,9 @@ public class Theme2 : TestUnit
     {       
         var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
         var theme = new Theme(resourcePath + "Theme2/TestTheme.xaml");
-        var buttonStyle = theme.GetStyle("Button") as ButtonStyle;
-        var checkBoxStyle = theme.GetStyle("CheckBox") as ButtonStyle;
-        var switchStyle = theme.GetStyle("Switch") as SwitchStyle;
+        var buttonStyle = theme.GetStyle(typeof(Button)) as ButtonStyle;
+        var checkBoxStyle = theme.GetStyle(typeof(CheckBox)) as ButtonStyle;
+        var switchStyle = theme.GetStyle(typeof(Switch)) as SwitchStyle;
 
         root.Add(new TextLabel(){
             Position = new Position(), 

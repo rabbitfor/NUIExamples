@@ -35,13 +35,16 @@ public class NUISampleApplication : NUIApplication
     {
         var root = NUIApplication.GetDefaultWindow();
         var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
+
+        // Load and apply theme from xaml file.
         themeBlack = new Theme(resourcePath + "Theme/Black.xaml");
         themeGreen = new Theme(resourcePath + "Theme/Green.xaml");
         ThemeManager.ApplyTheme(themeBlack);
 
+
         var themeChangeButton = new Button() {
-            Position = new Position(30, 30),
-            Size = new Size(400, 50),
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            SizeHeight = 70,
             Text = "Click to change theme",
         };
         themeChangeButton.Clicked += OnClicked;
@@ -49,35 +52,49 @@ public class NUISampleApplication : NUIApplication
         root.BackgroundColor = Color.White;
 
 
+        // [Sample 1]
+        // Set style name you want to apply.
         root.Add(new TextLabel() {
-            StyleName = "TextLabelTypeA",   // Set the StyleName you want to apply.
-            Position = new Position(30, 100),
+            StyleName = "TextLabelTypeA",
+            Position = new Position(30, 120),
             Text = "Hello World!",
         });
 
-        root.Add(new Button() {
-            StyleName = "ButtonDefault",    // Set the StyleName you want to apply.
-            Position = new Position(30, 160),
+        // [Sample 2]
+        // You can also set style name using constructor.
+        // Note that, BaseComponents(e.g. TextLabel) does not provide this way.
+        root.Add(new Button("ButtonDefault") {
+            Position = new Position(30, 180),
+            Text = "Button",
         });
 
+        // [Sample 3-1]
+        root.Add(new Switch("SwitchFancy") {
+            Position = new Position(30, 280),
+        });
+
+        // [Sample 3-2]
+        // Set ThemeChangedSensitive to false if you don't want this view to be affected by theme changes.
+        // Note that the ThemeChangedSensitive is "false" by default, but turned to true when setting StyleName explitcitly.
+        // (Either by setting StyleName property or by using constructor with style name)
+        root.Add(new Switch("SwitchFancy") {
+            Position = new Position(200, 280),
+            ThemeChangeSensitive = false,
+        });
+
+        // [Sample 4-1][Advanced]
+        // The view without style name uses a style named its type name. ("Tizen.NUI.Components.CheckBox" in this case)
+        // Note that, because the style name was not set explicitly, the ThemeChangedSensitive is false,
+        // which means it is not affected by theme changes.
         root.Add(new CheckBox() {
-            StyleName = "CheckBoxBordered", // Set the StyleName you want to apply.
-            Position = new Position(30, 240),
+            Position = new Position(30, 380),
         });
 
-        root.Add(new CheckBox("CheckBoxBordered") { // You can also set StyleName through the constructor.
-                                                    // Note that, BaseComponents(TextLabel, ImageView..) does not provide this way.
-            Position = new Position(200, 240),
-        });
-
-        root.Add(new Switch("SwitchFancy") { // Set the StyleName you want to apply.
-            Position = new Position(30, 320),
-        });
-
-        root.Add(new Switch("SwitchFancy") { // Set the StyleName you want to apply.
-            ThemeChangeSensitive = false,    // Set ThemeChangedSensitive to false if you don't want this view changes by theme changing.
-                                             // It is false by default, but turned to true when setting StyleName.
-            Position = new Position(200, 320),
+        // [Sample 4-2][Advanced]
+        // Set ThemeChangedSensitive to true if you want this view to be affected by theme changes.
+        root.Add(new CheckBox() {
+            Position = new Position(200, 380),
+            ThemeChangeSensitive = true,
         });
     }
 
