@@ -9,15 +9,14 @@ animation.Play();
 ```
 
 
-### BackgroundColor
-Note that to animate `BackgroundColor`, you should use `Vector3` type which excluding alpha value from the `Color` type.
-for example,
+### Background
+To animate BackgroundColor,
 ```C#
-animation.AnimateTo(view, "BackgoundColor", new Vector3(r, g, b));
+animation.AnimateTo(view, "BackgoundColor", new Color(r, g, b, a));
 animation.Play();
 ```
 
-To animate alpha value, please write `BackgroundOpacity` as a proeprty name and give float type value.
+If you want to animate alpha value only, please write `BackgroundOpacity` as a proeprty name and give float type value.
 ```C#
 animation.AnimateTo(view, "BackgoundOpacity", 0.5f);
 animation.Play();
@@ -32,20 +31,19 @@ animation.AnimateTo(view, "BoxShadow.BlurRadius", 10.0f);
 animation.Play();
 ```
 
-Note that, like `BackgroundColor`, use `Vector3` type instead of `Color` when animating `BoxShadow.Color`.
-For example,
 ```C#
-animation.AnimateTo(view, "BoxShadow.Color", new Vector3(r, g, b));
+animation.AnimateTo(view, "BoxShadow.Color", new Color(r, g, b, a));
 animation.Play();
 ```
 
-To animate alpha value, please use `BoxShadow.Opacity`.
+To animate alpha value only, please use `BoxShadow.Opacity`.
 ```C#
 animation.AnimateTo(view, "BoxShadow.Opacity", 0.5f);
 animation.Play();
 ```
 
 ### Sample Preview
+## (WIP)
 
 <table style="text-align:center;">
   <tr>
