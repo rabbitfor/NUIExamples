@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Samsung Electronics Co., Ltd.
+ * Copyright (c) 2019 Samsung Electronics Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,178 +14,91 @@
  * limitations under the License.
  *
  */
+
 using System;
 using Tizen.NUI;
-// using Tizen.FH.NUI;
-using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
-using Tizen.NUI.Wearable;
-// using Tizen.FH.NUI.Components;
+using Tizen.NUI.BaseComponents;
 
-
-public class NUISampleApplication : NUIApplication
+class HelloWorldExample : NUIApplication
 {
-    private class Config
-    {
-        public const int PAGINATION_POSITION_Y = 263 + 1266;
-        public const int PAGINATION_HEIGHT = 170;
-        public const int PAGINATION_INDICATOR_WIDTH = 14;
-        public const int PAGINATION_INDICATOR_HEIGHT = PAGINATION_INDICATOR_WIDTH;
-        public const int PAGINATION_PADDING = 10;
-    }
-
-    private Button button;
-    private Pagination pagination;
-
+    /// <summary>
+    /// Override to create the required scene
+    /// </summary>
     protected override void OnCreate()
     {
         base.OnCreate();
 
-        Initialize();
+        Window window = NUIApplication.GetDefaultWindow();
+        window.BackgroundColor = Color.Black;
+        string resource = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
+
+        var textField = new TextField()
+        {
+            BackgroundColor = Color.White,
+            Size = new Size (200, 30),
+            EnableClearButton = true,
+            Position = new Position(10, 10)
+        };
+        window.Add(textField);
+
+        var button = new Button()
+        {
+            Size = new Size(200, 30),
+            Position = new Position(10, 70),
+            Focusable = true,
+            Text = "Remove focus from TextField"
+        };
+        button.Clicked += OnButtonClicked;
+        window.Add(button);
+
+        
     }
 
-    void Initialize()
+    private void OnButtonClicked(object sender, EventArgs args)
     {
-        var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
-        NUIApplication.GetDefaultWindow().BackgroundColor = new Color("#ebba34");
+        FocusManager.Instance.SetCurrentFocusView((View)sender);
+        
+    }
 
-        SetupButtons();
 
-        View rootSettingView = new View()
+    private void FullGC()
+    {
+        global::System.GC.Collect();
+        global::System.GC.WaitForPendingFinalizers();
+        global::System.GC.Collect();
+    }
+
+    /// <summary>
+    /// Called when any key event is received.
+    /// Will use this to exit the application if the Back or Escape key is pressed
+    /// </summary>
+    private void OnKeyEvent( object sender, Window.KeyEventArgs eventArgs )
+    {
+        if( eventArgs.Key.State == Key.StateType.Down )
         {
-            Layout = new AbsoluteLayout(),
-
-            WidthSpecification = Window.Instance.Size.Width,
-            HeightSpecification = Window.Instance.Size.Height,
-        };
-        Window.Instance.Add(rootSettingView);
-
-        View paginationLayout = new View()
-        {
-            Layout = new AbsoluteLayout(),
-            PositionY = Config.PAGINATION_POSITION_Y,
-            WidthSpecification = LayoutParamPolicies.WrapContent,
-            HeightSpecification = LayoutParamPolicies.WrapContent,
-        };
-        rootSettingView.Add(paginationLayout);
-
-        pagination = new Pagination()
-        {
-            PositionUsesPivotPoint = true,
-            ParentOrigin = ParentOrigin.Center,
-            PivotPoint = PivotPoint.Center,
-            WidthSpecification = Window.Instance.Size.Width,
-            HeightSpecification = Config.PAGINATION_HEIGHT,
-            IndicatorSize = new Size(Config.PAGINATION_INDICATOR_WIDTH, Config.PAGINATION_INDICATOR_HEIGHT),
-            IndicatorImageUrl = new StringSelector
+            switch( eventArgs.Key.KeyPressedName )
             {
-                Normal = resourcePath + "edit_mode_indicator_dim.png",
-                Selected = resourcePath + "edit_mode_indicator_focus.png"
-            },
-            LastIndicatorImageUrl = new StringSelector
-            {
-                Normal = resourcePath + "edit_ic_plus_nor.png",
-                Selected = resourcePath + "edit_ic_plus_sel.png"
-            },
-            IndicatorSpacing = Config.PAGINATION_PADDING,
-            IndicatorCount = 3,
-            SelectedIndex = 0
-        };
-        paginationLayout.Add(pagination);
-    }
-
-    private void SetupButtons()
-    {
-        var prevButton = new Button()
-        {
-            Text = "<",
-            PointSize = 18,
-            Size = new Size(200, 100),
-            Position = new Position(0, 0)
-        };
-        prevButton.Clicked += OnPrev;
-        Window.Instance.Add(prevButton);
-
-        var AddButton = new Button()
-        {
-            Text = "ADD",
-            PointSize = 18,
-            Size = new Size(200, 100),
-            Position = new Position(210, 0)
-        };
-        AddButton.Clicked += OnAdded;
-        Window.Instance.Add(AddButton);
-
-        var removeButton = new Button()
-        {
-            Text = "REMOVE",
-            PointSize = 18,
-            Size = new Size(200, 100),
-            Position = new Position(420, 0)
-        };
-        removeButton.Clicked += OnRemoved;
-        Window.Instance.Add(removeButton);
-
-        var nextButton = new Button()
-        {
-            Text = ">",
-            PointSize = 18,
-            Size = new Size(200, 100),
-            Position = new Position(630, 0)
-        };
-        nextButton.Clicked += OnNext;
-        Window.Instance.Add(nextButton);
-    }
-
- 
-    // private void OnClicked(object target, ClickedEventArgs args)
-    // {
-    //     Tizen.NUI.StyleManager.Instance.ApplyTheme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "tempTheme.json");
-    //     Tizen.NUI.Components.StyleManager.Instance.Theme = "SomeTheme";
-    // }
-
-    private void OnAdded(object target, ClickedEventArgs args)
-    {
-        pagination.IndicatorCount += 1;
-    }
-
-    private void OnRemoved(object target, ClickedEventArgs args)
-    {
-        if (pagination.IndicatorCount <= 1) return;
-        if (pagination.SelectedIndex == pagination.IndicatorCount - 1)
-        {
-            pagination.SelectedIndex -= 1;
-        }
-        pagination.IndicatorCount -= 1;
-    }
-
-    private void OnPrev(object target, ClickedEventArgs args)
-    {
-        if (pagination.SelectedIndex > 0)
-        {
-            pagination.SelectedIndex -= 1;
+                case "Escape":
+                case "Back":
+                {
+                    Exit();
+                }
+                break;
+            }
         }
     }
 
-    private void OnNext(object target, ClickedEventArgs args)
-    {
-        if (pagination.SelectedIndex < pagination.IndicatorCount - 1)
-        {
-            pagination.SelectedIndex += 1;
-        }
-    }
-
-    public void OnKeyEvent(object sender, Window.KeyEventArgs e)
-    {
-        if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
-        {
-            Exit();
-        }
-    }
-
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread] // Forces app to use one thread to access NUI
     static void Main(string[] args)
     {
-        NUISampleApplication example = new NUISampleApplication();
+        Tizen.NUI.EnvironmentVariable.SetEnvironmentVariable("DALI_DPI_HORIZONTAL", "75");
+        Tizen.NUI.EnvironmentVariable.SetEnvironmentVariable("DALI_DPI_VERTICAL", "75");
+
+        HelloWorldExample example = new HelloWorldExample();
         example.Run(args);
     }
 }
