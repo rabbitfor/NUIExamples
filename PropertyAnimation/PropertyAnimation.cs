@@ -48,8 +48,8 @@ public class NUISampleApplication : NUIApplication
         });
 
         CreateItem("BackgroundColor [sky ⟷ yellow]", (View view)=>{
-            animation.AnimateTo(view, "BackgroundColor", new Vector3(1.0f, 1.0f, 0), 0, 1000);
-            animation.AnimateTo(view, "BackgroundColor", new Vector3(0.537f, 0.725f, 0.78f), 1000, 2000);
+            animation.AnimateTo(view, "BackgroundColor", new Vector4(1.0f, 1.0f, 0, 0.5f), 0, 1000);
+            animation.AnimateTo(view, "BackgroundColor", new Vector4(0.537f, 0.725f, 0.78f, 1.0f), 1000, 2000);
         });
 
         CreateItem("BoxShadow.BlurRadius [0 ⟷ 10]", (View view)=>{

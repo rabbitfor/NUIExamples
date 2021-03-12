@@ -9,9 +9,11 @@ public class Switch0 : TestUnit
     {
         root.BackgroundColor = Color.Black;
         
+        // Switch1
         var view0 = new Switch();
         root.Add(view0);
 
+        // Switch2
         var view1 = new Switch
         {
             Position = new Position(0, 100),
@@ -19,6 +21,7 @@ public class Switch0 : TestUnit
         };
         root.Add(view1);
 
+        // Switch3
         var view2 = new Switch
         {
             Position = new Position(0, 200),
@@ -26,6 +29,7 @@ public class Switch0 : TestUnit
         };
         root.Add(view2);
 
+        // Switch4
         var view3 = new Switch
         {
             Position = new Position(0, 300),
@@ -34,29 +38,31 @@ public class Switch0 : TestUnit
         };
         root.Add(view3);
 
-        var view4 = new Switch(new SwitchStyle(view0.Style)
-        {
-            PositionX = 400,
-        });
-        root.Add(view4);
+        //================================================================
+        var style = ThemeManager.GetStyle(typeof(Switch)) as SwitchStyle;
+        style.PositionX = 400;
 
-        var view5 = new Switch(new SwitchStyle(view1.Style)
-        {
-            PositionX = 400,
-        });
-        root.Add(view5);
+        // Switch5
+        root.Add(new Switch(style));
 
-        var view6 = new Switch(new SwitchStyle(view2.Style)
-        {
-            PositionX = 400,
-        });
-        root.Add(view6);
+        // Switch6
+        root.Add(new Switch(new SwitchStyle() {
+            Position = new Position(0, 100),
+            IsSelected = true,
+        }.Merge(style)));
 
-        var view7 = new Switch(new SwitchStyle(view3.Style)
-        {
-            PositionX = 400,
-        });
-        root.Add(view7);
+        // Switch7
+        root.Add(new Switch(new SwitchStyle() {
+            Position = new Position(0, 200),
+            IsEnabled = false,
+        }.Merge(style)));
+
+        // Switch8
+        root.Add(new Switch(new SwitchStyle() {
+            Position = new Position(0, 300),
+            IsEnabled = false,
+            IsSelected = true,
+        }.Merge(style)));
     }
 
     public override string RunningDescription => "* Numbering from the top-left corner, counter clockwise:\n"

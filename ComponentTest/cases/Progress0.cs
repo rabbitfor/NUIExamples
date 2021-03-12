@@ -45,11 +45,24 @@ public class Progress0 : TestUnit
             BufferValue = 80,
         };
         root.Add(progress2);
+
+        var progress3 = new Progress()
+        {
+            Size = new Size(300, 30),
+            Position = new Position(0, 150),
+            CurrentValue = 30,
+            BufferValue = 80,
+            TrackColor = Color.Red,
+            ProgressColor = Color.Blue,
+            BufferColor = Color.Yellow
+        };
+        root.Add(progress3);
     }
 
-    public override string RunningDescription => "There are 3 bars.";
+    public override string RunningDescription => "There are 4 bars.";
 
     public override string PassCondition => "* 1) Thin bar colored  blue> light-blue> grey.\n"
                                           + "* 2) Thick bar colored blue> yellow> red.\n"
-                                          + "* 3) Same look as 2).\n";
+                                          + "* 3) Same look as 2).\n"
+                                          + "* 4) Same look as 2).";
 }

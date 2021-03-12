@@ -47,6 +47,13 @@ public class NUISampleApplication : NUIApplication
         scrollableBase = new ScrollableBase()
         {
             Size = new Size(360, 360),
+            HideScrollbar = false,
+            Scrollbar = new Scrollbar()
+            {
+                TrackColor = Color.Blue,
+                ThumbColor = new Color(1.0f, 0.0f, 0.0f, 0.5f),
+                TrackPadding = new Extents(24, 24, 40, 40)
+            }
         };
         scrollableBase.Add(view);
 

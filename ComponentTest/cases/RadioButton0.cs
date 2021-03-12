@@ -7,9 +7,11 @@ public class RadioButton0: TestUnit
 {
     public override void OnCreate(View root)
     {
+        // RadioButton1
         var view0 = new RadioButton();
         root.Add(view0);
 
+        // RadioButton2
         var view1 = new RadioButton
         {
             Position = new Position(0, 100),
@@ -17,6 +19,7 @@ public class RadioButton0: TestUnit
         };
         root.Add(view1);
 
+        // RadioButton3
         var view2 = new RadioButton
         {
             Position = new Position(0, 200),
@@ -24,6 +27,7 @@ public class RadioButton0: TestUnit
         };
         root.Add(view2);
 
+        // RadioButton4
         var view3 = new RadioButton
         {
             Position = new Position(0, 300),
@@ -38,28 +42,34 @@ public class RadioButton0: TestUnit
         group0.Add(view2);
         group0.Add(view3);
 
-        var view4 = new RadioButton(new ButtonStyle(view0.Style)
-        {
-            PositionX = 400,
-        });
+        //================================================================
+        var style = ThemeManager.GetStyle(typeof(RadioButton)) as ButtonStyle;
+        style.PositionX = 400;
+
+        // RadioButton5
+        var view4 = new RadioButton(style);
         root.Add(view4);
 
-        var view5 = new RadioButton(new ButtonStyle(view1.Style)
-        {
-            PositionX = 400,
-        });
+        // RadioButton6
+        var view5 = new RadioButton(new ButtonStyle() {
+            Position = new Position(0, 100),
+            IsSelected = true,
+        }.Merge(style));
         root.Add(view5);
 
-        var view6 = new RadioButton(new ButtonStyle(view2.Style)
-        {
-            PositionX = 400,
-        });
+        // RadioButton7
+        var view6 = new RadioButton(new ButtonStyle() {
+            Position = new Position(0, 200),
+            IsEnabled = false,
+        }.Merge(style));
         root.Add(view6);
 
-        var view7 = new RadioButton(new ButtonStyle(view3.Style)
-        {
-            PositionX = 400,
-        });
+        // RadioButton8
+        var view7 = new RadioButton(new ButtonStyle() {
+            Position = new Position(0, 300),
+            IsEnabled = false,
+            IsSelected = true,
+        }.Merge(style));
         root.Add(view7);
 
         var group1 = new RadioButtonGroup();

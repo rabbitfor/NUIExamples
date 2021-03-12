@@ -9,9 +9,11 @@ public class CheckBox0: TestUnit
     {
         root.BackgroundColor = Color.White;
         
+        // CheckBox1
         var view0 = new CheckBox();
         root.Add(view0);
 
+        // CheckBox2
         var view1 = new CheckBox
         {
             Position = new Position(0, 100),
@@ -19,6 +21,7 @@ public class CheckBox0: TestUnit
         };
         root.Add(view1);
 
+        // CheckBox3
         var view2 = new CheckBox
         {
             Position = new Position(0, 200),
@@ -26,6 +29,7 @@ public class CheckBox0: TestUnit
         };
         root.Add(view2);
 
+        // CheckBox4
         var view3 = new CheckBox
         {
             Position = new Position(0, 300),
@@ -34,29 +38,36 @@ public class CheckBox0: TestUnit
         };
         root.Add(view3);
 
-        var view4 = new CheckBox(new ButtonStyle(view0.Style)
-        {
-            PositionX = 400,
-        });
-        root.Add(view4);
+        
+        //================================================================
+        var style = ThemeManager.GetStyle(typeof(CheckBox)) as ButtonStyle;
+        style.PositionX = 400;
 
-        var view5 = new CheckBox(new ButtonStyle(view1.Style)
-        {
-            PositionX = 400,
-        });
-        root.Add(view5);
+        // CheckBox5
+        root.Add(new CheckBox(style));
 
-        var view6 = new CheckBox(new ButtonStyle(view2.Style)
+        // CheckBox6
+        root.Add(new CheckBox(new ButtonStyle()
         {
-            PositionX = 400,
-        });
-        root.Add(view6);
+            Position = new Position(0, 100),
+            IsSelected = true,
+        }.Merge<ButtonStyle>(style)));
 
-        var view7 = new CheckBox(new ButtonStyle(view3.Style)
+        // CheckBox7
+        root.Add(new CheckBox(new ButtonStyle()
         {
-            PositionX = 400,
-        });
-        root.Add(view7);
+            Position = new Position(0, 200),
+            IsEnabled = false,
+        }.Merge(style)));
+
+
+        // CheckBox8
+        root.Add(new CheckBox(new ButtonStyle()
+        {
+            Position = new Position(0, 300),
+            IsEnabled = false,
+            IsSelected = true,
+        }.Merge(style)));
     }
 
     public override string RunningDescription => "Numbering from the top-left corner, counter clockwise:\n"

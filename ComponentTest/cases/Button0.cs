@@ -19,11 +19,7 @@ public class Button0 : TestUnit
             Normal = Color.Blue,
             Pressed = Color.Red,
         };
-        style.CornerRadius = new Selector<float?>
-        {
-            Normal = 0,
-            Pressed = 10,
-        };
+        style.CornerRadius = 20;
         style.Text.Text = "Button1";
         var button1 = new Button(style);
         root.Add(button1);
