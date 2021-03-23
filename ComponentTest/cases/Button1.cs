@@ -12,7 +12,7 @@ public class Button1 : TestUnit
         {
             Text = "Hello World!",
             IconURL = Tizen.Applications.Application.Current.DirectoryInfo.Resource + "Button1/icon.png",
-            IconPadding = new Extents(0, 0, 50, 0),
+            IconPadding = new Extents(0, 0, 0, 20),
             Size = new Size(200, 200),
             CornerRadius = 100,
             PositionUsesPivotPoint = true,

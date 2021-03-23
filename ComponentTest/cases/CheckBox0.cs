@@ -10,7 +10,7 @@ public class CheckBox0: TestUnit
         root.BackgroundColor = Color.White;
         
         // CheckBox1
-        var view0 = new CheckBox();
+        var view0 = new CheckBox() { Text = "CheckBox1" };
         root.Add(view0);
 
         // CheckBox2
@@ -18,6 +18,7 @@ public class CheckBox0: TestUnit
         {
             Position = new Position(0, 100),
             IsSelected = true,
+            Text = "CheckBox2"
         };
         root.Add(view1);
 
@@ -26,6 +27,7 @@ public class CheckBox0: TestUnit
         {
             Position = new Position(0, 200),
             IsEnabled = false,
+            Text = "CheckBox3"
         };
         root.Add(view2);
 
@@ -35,6 +37,7 @@ public class CheckBox0: TestUnit
             Position = new Position(0, 300),
             IsEnabled = false,
             IsSelected = true,
+            Text = "CheckBox4"
         };
         root.Add(view3);
 
@@ -44,13 +47,17 @@ public class CheckBox0: TestUnit
         style.PositionX = 400;
 
         // CheckBox5
-        root.Add(new CheckBox(style));
+        root.Add(new CheckBox(new ButtonStyle()
+        {
+            Text = new TextLabelStyle() { Text = "CheckBox5" }
+        }.Merge<ButtonStyle>(style)));
 
         // CheckBox6
         root.Add(new CheckBox(new ButtonStyle()
         {
             Position = new Position(0, 100),
             IsSelected = true,
+            Text = new TextLabelStyle() { Text = "CheckBox6" }
         }.Merge<ButtonStyle>(style)));
 
         // CheckBox7
@@ -58,6 +65,7 @@ public class CheckBox0: TestUnit
         {
             Position = new Position(0, 200),
             IsEnabled = false,
+            Text = new TextLabelStyle() { Text = "CheckBox7" }
         }.Merge(style)));
 
 
@@ -67,6 +75,7 @@ public class CheckBox0: TestUnit
             Position = new Position(0, 300),
             IsEnabled = false,
             IsSelected = true,
+            Text = new TextLabelStyle() { Text = "CheckBox8" }
         }.Merge(style)));
     }
 

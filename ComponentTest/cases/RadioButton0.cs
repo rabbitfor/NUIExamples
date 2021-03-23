@@ -8,7 +8,7 @@ public class RadioButton0: TestUnit
     public override void OnCreate(View root)
     {
         // RadioButton1
-        var view0 = new RadioButton();
+        var view0 = new RadioButton() { Text = "RadioButton1" };
         root.Add(view0);
 
         // RadioButton2
@@ -16,6 +16,7 @@ public class RadioButton0: TestUnit
         {
             Position = new Position(0, 100),
             IsSelected = true,
+            Text = "RadioButton2"
         };
         root.Add(view1);
 
@@ -24,6 +25,7 @@ public class RadioButton0: TestUnit
         {
             Position = new Position(0, 200),
             IsEnabled = false,
+            Text = "RadioButton3"
         };
         root.Add(view2);
 
@@ -33,6 +35,7 @@ public class RadioButton0: TestUnit
             Position = new Position(0, 300),
             IsEnabled = false,
             IsSelected = true,
+            Text = "RadioButton4"
         };
         root.Add(view3);
 
@@ -47,13 +50,16 @@ public class RadioButton0: TestUnit
         style.PositionX = 400;
 
         // RadioButton5
-        var view4 = new RadioButton(style);
+        var view4 = new RadioButton(new ButtonStyle() {
+            Text = new TextLabelStyle() { Text = "RadioButton5" }
+        }.Merge(style));
         root.Add(view4);
 
         // RadioButton6
         var view5 = new RadioButton(new ButtonStyle() {
             Position = new Position(0, 100),
             IsSelected = true,
+            Text = new TextLabelStyle() { Text = "RadioButton6" }
         }.Merge(style));
         root.Add(view5);
 
@@ -61,6 +67,7 @@ public class RadioButton0: TestUnit
         var view6 = new RadioButton(new ButtonStyle() {
             Position = new Position(0, 200),
             IsEnabled = false,
+            Text = new TextLabelStyle() { Text = "RadioButton7" }
         }.Merge(style));
         root.Add(view6);
 
@@ -69,6 +76,7 @@ public class RadioButton0: TestUnit
             Position = new Position(0, 300),
             IsEnabled = false,
             IsSelected = true,
+            Text = new TextLabelStyle() { Text = "RadioButton8" }
         }.Merge(style));
         root.Add(view7);
 

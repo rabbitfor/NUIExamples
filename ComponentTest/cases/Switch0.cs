@@ -7,10 +7,10 @@ public class Switch0 : TestUnit
 {
     public override void OnCreate(View root)
     {
-        root.BackgroundColor = Color.Black;
+        root.BackgroundColor = Color.White;
         
         // Switch1
-        var view0 = new Switch();
+        var view0 = new Switch() { Text = "Switch1" };
         root.Add(view0);
 
         // Switch2
@@ -18,6 +18,7 @@ public class Switch0 : TestUnit
         {
             Position = new Position(0, 100),
             IsSelected = true,
+            Text = "Switch2"
         };
         root.Add(view1);
 
@@ -26,6 +27,7 @@ public class Switch0 : TestUnit
         {
             Position = new Position(0, 200),
             IsEnabled = false,
+            Text = "Switch3"
         };
         root.Add(view2);
 
@@ -35,6 +37,7 @@ public class Switch0 : TestUnit
             Position = new Position(0, 300),
             IsEnabled = false,
             IsSelected = true,
+            Text = "Switch4"
         };
         root.Add(view3);
 
@@ -43,18 +46,22 @@ public class Switch0 : TestUnit
         style.PositionX = 400;
 
         // Switch5
-        root.Add(new Switch(style));
+        root.Add(new Switch(new SwitchStyle() {
+            Text = new TextLabelStyle() { Text = "Switch5" }
+        }.Merge(style)));
 
         // Switch6
         root.Add(new Switch(new SwitchStyle() {
             Position = new Position(0, 100),
             IsSelected = true,
+            Text = new TextLabelStyle() { Text = "Switch6" }
         }.Merge(style)));
 
         // Switch7
         root.Add(new Switch(new SwitchStyle() {
             Position = new Position(0, 200),
             IsEnabled = false,
+            Text = new TextLabelStyle() { Text = "Switch7" }
         }.Merge(style)));
 
         // Switch8
@@ -62,6 +69,7 @@ public class Switch0 : TestUnit
             Position = new Position(0, 300),
             IsEnabled = false,
             IsSelected = true,
+            Text = new TextLabelStyle() { Text = "Switch8" }
         }.Merge(style)));
     }
 
