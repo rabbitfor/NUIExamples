@@ -137,6 +137,7 @@ public class NUISampleApplication : NUIApplication
             SizeHeight = 30,
             WidthResizePolicy = ResizePolicyType.FillToParent,
             IsSelected = done,
+            BackgroundColor = Color.Red,
         });
     }
 

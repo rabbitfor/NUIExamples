@@ -47,7 +47,7 @@
       <Selector x:TypeArguments="Color" Other="#5D5D5D" Pressed="#707070" Selected="#888888" Disabled="#8C8C8C"/>
     </c:ButtonStyle.BackgroundColor>
     <c:ButtonStyle.Icon> <!--CheckBox Icon-->
-      <ImageViewStyle CornerRadius="6" WidthResizePolicy="SizeRelativeToParent" HeightResizePolicy="SizeRelativeToParent" SizeModeFactor="0.8, 0.8, 0.8">
+      <ImageViewStyle CornerRadius="6" ResourceUrl="">
         <ImageViewStyle.BackgroundColor>
           <Selector x:TypeArguments="Color" Other="#CCCCCC" Selected="#383838" Disabled="#BDBDBD"/>
         </ImageViewStyle.BackgroundColor>

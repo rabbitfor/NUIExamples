@@ -21,16 +21,16 @@
     </c:ButtonStyle.Text>
   </c:ButtonStyle>
 
-  <c:ButtonStyle x:Key="ItemCheckBox" TextPadding="10, 10, 0, 0">
+  <c:ButtonStyle x:Key="ItemCheckBox" TextPadding="10, 10, 0, 0" IconRelativeOrientation="Left">
     <c:ButtonStyle.Icon>
-      <ImageViewStyle CornerRadius="8" Size="30, 30">
+      <ImageViewStyle CornerRadius="8" Size="30, 30" ResourceUrl="">
         <ImageViewStyle.BackgroundColor>
           <Selector x:TypeArguments="Color" Other="White" Selected="#383838" Pressed="#888888" Disabled="#BDBDBD"/>
         </ImageViewStyle.BackgroundColor>
       </ImageViewStyle>
     </c:ButtonStyle.Icon>
     <c:ButtonStyle.Text>
-      <TextLabelStyle FontFamily="Grandstander" HorizontalAlignment="Begin">
+      <TextLabelStyle FontFamily="Grandstander" HorizontalAlignment="Begin" PixelSize="20">
         <TextLabelStyle.TextColor>
           <Selector x:TypeArguments="Color" Other="Black" Selected="#707070"/>
         </TextLabelStyle.TextColor>
