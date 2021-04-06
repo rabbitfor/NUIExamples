@@ -14,16 +14,8 @@ public class Shadow0 : TestUnit
             PivotPoint = PivotPoint.Center,
             ParentOrigin = ParentOrigin.Center,
             BackgroundColor = Color.Red,
-            ImageShadow = new ImageShadow
-            {
-                Border = new Rectangle(24, 24, 24, 24),
-                Extents = new Vector2(48, 48),
-            },
-            BoxShadow = new Shadow
-            {
-                Extents = new Vector2(50, 50),
-                BlurRadius = 50
-            }
+            ImageShadow = new ImageShadow(null, new Rectangle(24, 24, 24, 24), extents: new Vector2(48, 48)),
+            BoxShadow = new Shadow(50, null, null, new Vector2(50, 50))
         };
         root.Add(view);
     }

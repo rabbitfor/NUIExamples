@@ -13,12 +13,7 @@ public class Theme1 : TestUnit
             {
                 Size = new Size(500, 200),
                 BackgroundColor = Color.White,
-                BoxShadow = new Shadow
-                {
-                    Color = Color.Blue,
-                    BlurRadius = 6.0f,
-                    Extents = new Vector2(5, 5),
-                },
+                BoxShadow = new Shadow(6.0f, Color.Blue, extents: new Vector2(5, 5)),
                 Title = new TextLabelStyle
                 {
                     TextColor = Color.Black,
