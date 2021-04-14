@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://tizen.org/ns/packages" api-version="5.5" package="org.tizen.example.ThemeStyleVisualTest" version="1.0.0">
+<manifest xmlns="http://tizen.org/ns/packages" api-version="5.5" package="org.tizen.example.ThemeStyleUnitTest" version="1.0.0">
   <profile name="common" />
-  <ui-application appid="org.tizen.example.ThemeStyleVisualTest"
+  <ui-application appid="org.tizen.example.ThemeStyleUnitTest"
 					exec="ComponentTest.dll"
 					type="dotnet"
 					multiple="false"

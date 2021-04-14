@@ -84,7 +84,7 @@ public class Popup0 : TestUnit
     public override string RunningDescription => "There are two popups.";
 
     public override string PassCondition => "1. Click Left or Right button in Popup1\n"
-                                          + "-> Popup1 disappear and Popup0 shows the choosen text (Left or Right)\n\n"
+                                          + "-> Popup1 disappear and Popup0 shows the choosen text (Left or Right)\n"
                                           + "2. Click Left or Right button in Popup0\n"
                                           + "-> Popup0 disappear";
 }

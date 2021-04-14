@@ -63,5 +63,6 @@ public class Switch0 : TestUnit
                                                + " 2, 4: Seleceted normal switch button.\n";
 
     public override string PassCondition => "1. Check the look of the switch buttons by their state.\n"
-                                          + "2. When click 1, 2, 3, 4 -> Normal: white-grey, Selected: blue-white.\n";
+                                          + "2. When click 1, 2 -> Switch thumb moves to the right.\n"
+                                          + "3. When click 3, 4 -> Switch thumb moves to the left.";
 }

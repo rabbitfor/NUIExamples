@@ -62,7 +62,18 @@ public class NUISampleApplication : NUIApplication
 
     public void Next()
     {
-        if (currentIndex >= list.Count) return;
+        var window = NUIApplication.GetDefaultWindow();
+
+        if (currentIndex >= list.Count)
+        {
+            currentTest?.OnDestroy(currentView);
+            window.Remove(currentView);
+            currentView = null;
+            testDescription.Text = "All test is done!";
+            window.Remove(runningDescription);
+            window.Remove(passCondition);
+            return;
+        }
 
         string testName = list[currentIndex++];
         TestUnit testUnit = this.GetType().Assembly.CreateInstance(testName) as TestUnit;
@@ -72,8 +83,6 @@ public class NUISampleApplication : NUIApplication
             Next();
             return;
         }
-
-        var window = NUIApplication.GetDefaultWindow();
 
         if (currentTest != null)
         {
@@ -98,6 +107,7 @@ public class NUISampleApplication : NUIApplication
                 PivotPoint = PivotPoint.TopLeft,
             };
             window.Add(testDescription);
+            testDescription.TouchEvent += OnDescriptionTouch;
         }
 
         if (runningDescription == null)
@@ -140,6 +150,16 @@ public class NUISampleApplication : NUIApplication
         runningDescription.Text = "[First Look]\n" + testUnit.RunningDescription;
         passCondition.Text = "[Pass Condition]\n" + testUnit.PassCondition;
         window.Add(currentView);
+    }
+
+    public bool OnDescriptionTouch(object sender, View.TouchEventArgs args)
+    {
+        if (args.Touch.GetState(0) == PointStateType.Down)
+        {
+            Next();
+        }
+
+        return false;
     }
 
     public void OnKeyEvent(object sender, Window.KeyEventArgs e)

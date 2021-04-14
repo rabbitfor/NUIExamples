@@ -106,6 +106,7 @@ public class CheckBox0: TestUnit
                                           + "4, 8: Selected disabled checkbox.\n";
 
     public override string PassCondition => "1. Check the look of the checkboxes by their state.\n"
-                                          + "2. When click 1, 2, 5, 6 -> Normal: white, Pressed: blue, Selected: blue-checked\n"
-                                          + "3. When click 3, 4, 7, 8 -> no change\n";
+                                          + "2. When click 1, 5 -> Check sign should apprear.\n"
+                                          + "3. When click 2, 6 -> Check sign should disapprear.\n"
+                                          + "3. When click 3, 4, 7, 8 -> No change\n";
 }

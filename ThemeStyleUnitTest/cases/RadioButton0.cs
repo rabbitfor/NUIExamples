@@ -112,11 +112,12 @@ public class RadioButton0: TestUnit
                                                + " 1, 5: Unselected normal radio button.\n"
                                                + " 2, 6: Seleceted normal radio button.\n"
                                                + " 3, 7: Unseleced disabled radio button.\n"
-                                               + " 4, 8: Selected disabled radio button.\n";
+                                               + " 4, 8: Selected disabled radio button.";
 
     public override string PassCondition => "1. Check the look of the radio buttons by their state.\n"
-                                          + "2. Check 1, 2, 3, 4 are grouped well.\n"
-                                          + "3. Check 5, 6, 7, 8 are grouped well.\n"
-                                          + "4. When click 1, 2, 5, 6 -> Normal: white, Pressed: blue, Selected: blue-in-white-ring\n"
-                                          + "5. When click 3, 4, 7, 8 -> no change\n";
+                                          + "2. When click 1, 5: Change to filled circle.\n"
+                                          + "3. When click 2, 6: Change to empty circle.\n"
+                                          + "4. When click 3, 4, 7, 8 -> No change.\n"
+                                          + "5. Check 1, 2, 3, 4 are grouped well.\n"
+                                          + "6. Check 5, 6, 7, 8 are grouped well.";
 }

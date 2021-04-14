@@ -38,7 +38,7 @@ public class Theme2 : TestUnit
         });
     }
 
-    public override string TestDescription => "This tests theme with xaml file";
+    public override string TestDescription => "This tests theme with xaml file.";
 
     public override string RunningDescription => "";
 

@@ -174,9 +174,10 @@ public class Theme1 : TestUnit
         }
     }
 
-    public override string TestDescription => "This tests theme changing with popup components";
+    public override string TestDescription => "This tests theme changing with popup components.";
 
     public override string RunningDescription => "There are two popups.\n* PopupStyle1 is white background with cyan buttons.\n* PopupStyle2 is black background.";
 
-    public override string PassCondition => "1. Click 'ChangeTheme' button in the bottom popup.\nThe style of two popup are interchanged.";
+    public override string PassCondition => "1. Click 'ChangeTheme' button in the bottom popup.\nThe background color of two popup are interchanged.\n"
+                                          + "2. Close bottom popup and then close left one.";
 }
