@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../ProjectProperties/common.props" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>ComponentTest</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--PackageReference Include="Tizen.NET" Version="8.0.0.*" /-->
+    <PackageReference Include="Tizen.NET.Sdk" Version="1.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--Compile Remove="cases/DropDown0.cs" />
+    <Compile Remove="cases/Button0.cs" />
+    <Compile Remove="cases/Button1.cs" />
+    <Compile Remove="cases/CheckBox0.cs" />
+    <Compile Remove="cases/ImageView0.cs" />
+    <Compile Remove="cases/Pagination0.cs" />
+    <Compile Remove="cases/Popup0.cs" />
+    <Compile Remove="cases/RadioButton0.cs" />
+    <Compile Remove="cases/Selector0.cs" />
+    <Compile Remove="cases/Shadow0.cs" />
+    <Compile Remove="cases/View0.cs" />
+    <Compile Remove="cases/WearablePopup0.cs" /-->
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />
+    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
+    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Wearable/Tizen.NUI.Wearable.csproj" />
+  </ItemGroup>
+
+</Project>
+
