@@ -28,7 +28,7 @@ public class Popup0 : TestUnit
         popup0 = new Popup();
         popup0.BackgroundColor = Color.Cyan;
         popup0.Title.Text = "Popup0";
-        popup0.Size = new Size(300, 200);
+        popup0.Size = new Size(500, 400);
         popup0.AddButton("Left");
         popup0.AddButton("Right");
         popup0.ButtonHeight = 60;
@@ -36,7 +36,7 @@ public class Popup0 : TestUnit
         popup0.Post(NUIApplication.GetDefaultWindow());
 
         var style = (PopupStyle)Tizen.NUI.ThemeManager.GetStyle(typeof(Popup));
-        style.Size = new Size(300, 200);
+        style.Size = new Size(500, 400);
         style.Position = new Position(60, 60);
         style.BackgroundColor = Color.Magenta;
         style.Title.Text = "Popup1";

@@ -10,13 +10,13 @@ public class Theme3 : TestUnit
         var theme1 = new Theme();
         theme1.AddStyle("Button", new ButtonStyle {
             BackgroundColor = Color.Blue,
-            Position = new Position(100, 100)
+            Position = new Position(200, 200)
         });
 
         var theme2 = new Theme();
         theme2.AddStyle("Button", new ButtonStyle {
             BackgroundColor = Color.Red,
-            Size = new Size(100, 100),
+            Size = new Size(200, 200),
         });
 
         theme1.Merge(theme2);

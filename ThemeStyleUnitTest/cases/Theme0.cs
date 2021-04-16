@@ -18,7 +18,7 @@ public class Theme0 : TestUnit
                 Text = new TextLabelStyle
                 {
                     TextColor = Color.White,
-                    PointSize = 18,
+                    PixelSize = 18,
                 },
                 Icon = new ImageViewStyle
                 {
@@ -53,7 +53,7 @@ public class Theme0 : TestUnit
             Text = new TextLabelStyle
             {
                 TextColor = Color.Black,
-                PointSize = 16,
+                PixelSize = 16,
             },
             Icon = new ImageViewStyle
             {
@@ -68,7 +68,7 @@ public class Theme0 : TestUnit
             Text = new TextLabelStyle
             {
                 TextColor = Color.White,
-                PointSize = 18,
+                PixelSize = 18,
             },
             Icon = new ImageViewStyle
             {

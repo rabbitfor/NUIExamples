@@ -17,7 +17,7 @@ public class Theme1 : TestUnit
                 Title = new TextLabelStyle
                 {
                     TextColor = Color.Black,
-                    PointSize = 16,
+                    PixelSize = 16,
                     Text = "PopupStyle1"
                 },
                 Buttons = new ButtonStyle
@@ -35,7 +35,7 @@ public class Theme1 : TestUnit
                             Pressed = Color.White,
                             Other = Color.Black,
                         },
-                        PointSize = 12,
+                        PixelSize = 12,
                     },
                     ParentOrigin = ParentOrigin.BottomLeft,
                     PivotPoint = PivotPoint.BottomLeft,
@@ -82,7 +82,7 @@ public class Theme1 : TestUnit
             Title = new TextLabelStyle
             {
                 TextColor = Color.Black,
-                PointSize = 16,
+                PixelSize = 16,
                 Text = "PopupStyle1"
             },
             Buttons = new ButtonStyle
@@ -100,7 +100,7 @@ public class Theme1 : TestUnit
                         Pressed = Color.White,
                         Other = Color.Black,
                     },
-                    PointSize = 12,
+                    PixelSize = 12,
                 },
                 ParentOrigin = ParentOrigin.BottomLeft,
                 PivotPoint = PivotPoint.BottomLeft,

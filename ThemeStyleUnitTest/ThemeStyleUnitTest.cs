@@ -33,7 +33,7 @@ public class NUISampleApplication : NUIApplication
     private List<string> list = new List<string>();
 
 
-    public NUISampleApplication() : base(new Size2D(480, 800), new Position2D(0, 0))
+    public NUISampleApplication() : base(new Size2D(720, 1280), new Position2D(0, 0))
     {
     }
 
@@ -99,9 +99,9 @@ public class NUISampleApplication : NUIApplication
                 TextColor = Color.White,
                 MultiLine = true,
                 BackgroundColor = new Color(0.2f, 0.2f, 0.2f, 1.0f),
-                PointSize = 10,
-                Position = new Position(0, 500),
-                Size = new Size(480, 300),
+                PixelSize = 12,
+                Position = new Position(0, 880),
+                Size = new Size(720, 400),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,
@@ -117,9 +117,9 @@ public class NUISampleApplication : NUIApplication
                 TextColor = Color.Black,
                 MultiLine = true,
                 BackgroundColor = new Color(0.8f, 0.8f, 0.8f, 1.0f),
-                PointSize = 10,
-                Size = new Size(470, 122),
-                Position = new Position(5, 545),
+                PixelSize = 12,
+                Size = new Size(710, 175),
+                Position = new Position(5, 920),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,
@@ -134,9 +134,9 @@ public class NUISampleApplication : NUIApplication
                 TextColor = Color.Black,
                 MultiLine = true,
                 BackgroundColor = new Color(0.8f, 0.8f, 0.8f, 1.0f),
-                PointSize = 10,
-                Size = new Size(470, 122),
-                Position = new Position(5, 672),
+                PixelSize = 12,
+                Size = new Size(710, 175),
+                Position = new Position(5, 1105),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,

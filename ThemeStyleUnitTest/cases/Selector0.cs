@@ -19,7 +19,7 @@ public class Selector0 : TestUnit
                     Pressed = Color.Yellow,
                 },
                 Text = "Button0",
-                PointSize = 10,
+                PixelSize = 12,
             },
             BackgroundColor = Color.Yellow,
         });
@@ -34,7 +34,7 @@ public class Selector0 : TestUnit
             Text = new TextLabelStyle
             {
                 Text = "Button1",
-                PointSize = 10,
+                PixelSize = 12,
             },
             BackgroundColor = Color.Blue,
             Opacity = null
@@ -49,7 +49,7 @@ public class Selector0 : TestUnit
             Text = new TextLabelStyle
             {
                 Text = "Button2",
-                PointSize = 10,
+                PixelSize = 12,
             },
             BackgroundColor = Color.Red,
         });
@@ -64,7 +64,7 @@ public class Selector0 : TestUnit
             Text = new TextLabelStyle
             {
                 Text = "Button3",
-                PointSize = 10,
+                PixelSize = 12,
             },
             BackgroundColor = Color.Green,
             Opacity = new Selector<float?>
