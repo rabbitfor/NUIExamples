@@ -16,51 +16,75 @@
  */
 
 using System;
+using System.Collections.Generic;
 using Tizen.NUI;
 using Tizen.NUI.Components;
 using Tizen.NUI.BaseComponents;
 
 class HelloWorldExample : NUIApplication
 {
-    /// <summary>
-    /// Override to create the required scene
-    /// </summary>
+    List<TextLabel> list = new List<TextLabel>();
+    Timer timer;
+    View rootView;
+    const int interval = 3000;
+    const int maxCount = 1000;
+    int count = 0;
+
     protected override void OnCreate()
     {
         base.OnCreate();
 
-        Window window = NUIApplication.GetDefaultWindow();
-        window.BackgroundColor = Color.Black;
-        string resource = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
-
-        var textField = new TextField()
+        rootView = new View()
         {
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            HeightResizePolicy = ResizePolicyType.FillToParent,
             BackgroundColor = Color.White,
-            Size = new Size (200, 30),
-            EnableClearButton = true,
-            Position = new Position(10, 10)
         };
-        window.Add(textField);
+        NUIApplication.GetDefaultWindow().Add(rootView);
 
-        var button = new Button()
-        {
-            Size = new Size(200, 30),
-            Position = new Position(10, 70),
-            Focusable = true,
-            Text = "Remove focus from TextField"
-        };
-        button.Clicked += OnButtonClicked;
-        window.Add(button);
+        Show();
 
-        
+        timer = new Timer(interval);
+        timer.Tick += OnTick;
+        timer.Start();
     }
 
-    private void OnButtonClicked(object sender, EventArgs args)
+    bool OnTick(object sender, Timer.TickEventArgs e)
     {
-        FocusManager.Instance.SetCurrentFocusView((View)sender);
-        
+        if (list.Count > 0)
+        {
+            for (var i = 0; i < maxCount; i++)
+            {
+                rootView.Remove(list[i]);
+                list[i].Dispose();
+                list[i] = null;
+            }
+
+            list.Clear();
+            FullGC();
+            Tizen.Log.Info("JYJY", $"Clear text labels {count++}\n");
+        }
+        else
+        {
+            Show();
+            Tizen.Log.Info("JYJY", $"Create text labels {count++}\n");
+        }
+        return true;
     }
 
+    void Show()
+    {
+        for (int i = 0; i < maxCount; i++)
+        {
+            var t = new TextLabel()
+            {
+                Text = "Hello World" + i.ToString() + "!",
+                Position = new Position((float)((i/500)*100), (float)(i%500)),
+            };
+            list.Add(t);
+            rootView.Add(t);
+        }
+    }
 
     private void FullGC()
     {
@@ -95,9 +119,6 @@ class HelloWorldExample : NUIApplication
     [STAThread] // Forces app to use one thread to access NUI
     static void Main(string[] args)
     {
-        Tizen.NUI.EnvironmentVariable.SetEnvironmentVariable("DALI_DPI_HORIZONTAL", "75");
-        Tizen.NUI.EnvironmentVariable.SetEnvironmentVariable("DALI_DPI_VERTICAL", "75");
-
         HelloWorldExample example = new HelloWorldExample();
         example.Run(args);
     }
