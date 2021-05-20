@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://tizen.org/ns/packages" api-version="4" package="org.tizen.example.WebViewExample" version="1.0.0">
-  <profile name="common" />
+<manifest xmlns="http://tizen.org/ns/packages" api-version="6" package="org.tizen.example.WebViewExample" version="1.0.0">
+  <profile name="tv" />
   <ui-application appid="org.tizen.example.WebViewExample"
 					exec="WebViewExample.dll"
-					type="dotnet"
 					multiple="false"
-					taskmanage="true"
 					nodisplay="false"
+          taskmanage="true"
+          splash-screen-display="true"
+          type="dotnet-inhouse-apitest"
 					launch_mode="single">
     <label>WebViewExample</label>
     <icon>WebViewExample.png</icon>
-    <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
+    <metadata key="http://tizen.org/metadata/app_ui_type/base_screen_resolution" value="responsive" />
   </ui-application>
   <privileges>
+    <privilege>http://tizen.org/privilege/appmanager.launch</privilege>
+    <privilege>http://tizen.org/privilege/systemsettings.admin</privilege>
+    <privilege>http://tizen.org/privilege/widget.viewer</privilege>
+    <privilege>http://tizen.org/privilege/window.priority.set</privilege>
     <privilege>http://tizen.org/privilege/internet</privilege>
+    <privilege>http://developer.samsung.com/privilege/camera</privilege>
+    <privilege>http://developer.samsung.com/privilege/esplay</privilege>
   </privileges>
 </manifest>

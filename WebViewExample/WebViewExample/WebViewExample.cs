@@ -16,13 +16,14 @@ namespace WebViewExample
 
         void Initialize()
         {
-            string path = "file://" + Tizen.Applications.Application.Current.DirectoryInfo.Resource + "test.html";
+            // string path = "file://" + Tizen.Applications.Application.Current.DirectoryInfo.Resource + "test.html";
+            string path = "https://terms.account.samsung.com/contents/legal/kor/kor/customizedservicecontent.html";
 
             mWebView = new WebView();
             mWebView.LoadUrl(path);
             Tizen.Log.Info("JYJY", $"LoadUrl({path})");
             mWebView.Size2D = new Size2D(800, 800);
-            Window.Instance.GetDefaultLayer().Add(mWebView);
+            NUIApplication.GetDefaultWindow().Add(mWebView);
 
             // FocusManager.Instance.SetCurrentFocusView(mWebView);
 
