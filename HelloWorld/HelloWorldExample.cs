@@ -20,6 +20,12 @@ using System.Collections.Generic;
 using Tizen.NUI;
 using Tizen.NUI.Components;
 using Tizen.NUI.BaseComponents;
+using Tizen.NUI.Binding;
+using System.ComponentModel;
+using System;
+using Tizen.Applications.ThemeManager;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 class HelloWorldExample : NUIApplication
 {
@@ -34,21 +40,30 @@ class HelloWorldExample : NUIApplication
     {
         base.OnCreate();
 
-        rootView = new View()
+        var themeLoader = new ThemeLoader();
+        var theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
+        Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+        themeLoader.CurrentTheme = theme;
+
+        rootView = new View(new ViewStyle() {
+            BackgroundColor = new Selector<Color>()
+            {
+                Normal = Color.Red,
+                Pressed = Color.White
+            }
+        })
         {
+            EnableControlState = true,
             WidthResizePolicy = ResizePolicyType.FillToParent,
             HeightResizePolicy = ResizePolicyType.FillToParent,
-            BackgroundColor = Color.White,
         };
         NUIApplication.GetDefaultWindow().Add(rootView);
 
-        Show();
+        var button = new Button();
 
-        timer = new Timer(interval);
-        timer.Tick += OnTick;
-        timer.Start();
+        // var theme = new Tizen.NUI.Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "nui_theme_dark.xaml");
+
     }
-
     bool OnTick(object sender, Timer.TickEventArgs e)
     {
         if (list.Count > 0)

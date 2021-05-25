@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Theme
+  xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  Id="org.tizen.default-dark-theme"
+  Version="1.0.0" >
+
+    <TextLabelStyle x:Key="Tizen.NUI.BaseComponents.TextLabel"
+      FontFamily="BreezeSans"
+      PixelSize="32"
+      TextColor="1.00, 1.00, 1.00, 1" />
+
+    <TextFieldStyle x:Key="Tizen.NUI.BaseComponents.TextField"
+      FontFamily="BreezeSans"
+      PixelSize="32"
+      TextColor="1.00, 1.00, 1.00, 1"
+      PrimaryCursorColor="0.08, 0.45, 0.90, 1"
+      SecondaryCursorColor="0.08, 0.45, 0.90, 1"
+      CursorWidth="3"
+      SelectionHighlightColor="1.00, 1.00, 1.00, 0.20"
+      GrabHandleColor="0.08, 0.45, 0.90, 1"
+      GrabHandleImage="{NUIResourcePath IoT_handler_center_downW.png}" />
+  
+    <TextEditorStyle x:Key="Tizen.NUI.BaseComponents.TextEditor"
+      FontFamily="BreezeSans"
+      PixelSize="32"
+      TextColor="1.00, 1.00, 1.00, 1"
+      PrimaryCursorColor="0.08, 0.45, 0.90, 1"
+      SecondaryCursorColor="0.08, 0.45, 0.90, 1"
+      CursorWidth="3"
+      SelectionHighlightColor="1.00, 1.00, 1.00, 0.20"
+      GrabHandleColor="0.08, 0.45, 0.90, 1"
+      GrabHandleImage="{NUIResourcePath IoT_handler_center_downW.png}" />
+
+    <c:ButtonStyle x:Key="Tizen.NUI.Components.Button"
+      Size="339, 96"
+      CornerRadiusPolicy="Relative"
+      CornerRadius="0.2916"
+      ItemAlignment="Center">
+      <c:ButtonStyle.BackgroundColor>
+        <Selector x:TypeArguments="Color" Normal="0.039, 0.055, 0.29, 1" Pressed="0.106, 0.412, 0.792, 1" Focused="0, 0.2, 0.545, 1" Disabled="0.765, 0.792, 0.824, 1"/>
+      </c:ButtonStyle.BackgroundColor>
+      <c:ButtonStyle.Text>
+        <TextLabelStyle PointSize="32" TextColor="White" />
+      </c:ButtonStyle.Text>
+    </c:ButtonStyle>
+
+    <c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox"
+      ItemSpacing="32, 32"
+      ItemAlignment="CenterVertical">
+      <c:ButtonStyle.Icon>
+          <ImageViewStyle
+            Size="36, 36">
+            <ImageViewStyle.ResourceUrl>
+                <Selector x:TypeArguments="x:String"
+                  Normal="{NUIResourcePath IoT_check_off.png}"
+                  Pressed="{NUIResourcePath IoT_check_off_p.png}"
+                  Disabled="{NUIResourcePath IoT_check_off_d.png}"
+                  Focused="{NUIResourcePath IoT_check_off_f.png}"
+                  Selected="{NUIResourcePath IoT_check_on.png}"
+                  SelectedPressed="{NUIResourcePath IoT_check_on_p.png}"
+                  SelectedFocused="{NUIResourcePath IoT_check_on_f.png}"
+                  DisabledSelected="{NUIResourcePath IoT_check_on_d.png}" />
+            </ImageViewStyle.ResourceUrl>
+          </ImageViewStyle>
+      </c:ButtonStyle.Icon>
+      <c:ButtonStyle.Text>
+        <TextLabelStyle
+          PointSize="12"
+          TextColor="#001447"/>
+      </c:ButtonStyle.Text>
+    </c:ButtonStyle>
+
+    <c:PopupStyle x:Key="Tizen.NUI.Components.Popup"
+      Size="500, 280"
+      BackgroundColor="0.9, 0.9, 0.9, 1">
+      <c:PopupStyle.ImageShadow>
+        <ImageShadow>
+            <x:Arguments>
+                <x:String>{NUIResourcePath nui_component_default_popup_shadow.png}</x:String>
+                <Rectangle>24, 24, 24, 24</Rectangle>
+                <Vector2>0, 0</Vector2>
+                <Vector2>48, 48</Vector2>
+            </x:Arguments>
+        </ImageShadow>
+      </c:PopupStyle.ImageShadow>
+      <c:PopupStyle.Title>
+        <TextLabelStyle
+          PointSize="16"
+          Padding="20" />
+      </c:PopupStyle.Title>
+      <c:PopupStyle.Buttons>
+        <c:ButtonStyle
+          Size="0, 80">
+          <c:ButtonStyle.BackgroundColor>
+            <Selector x:TypeArguments="Color" Normal="1, 1, 1, 1" Pressed="1, 1, 1, 0.5"/>
+          </c:ButtonStyle.BackgroundColor>
+          <c:ButtonStyle.Overlay>
+            <ImageViewStyle>
+              <ImageViewStyle.BackgroundColor>
+                <Selector x:TypeArguments="Color" Pressed="0, 0, 0, 0.1" Other="1, 1, 1, 1"/>
+              </ImageViewStyle.BackgroundColor>
+            </ImageViewStyle>
+          </c:ButtonStyle.Overlay>
+          <c:ButtonStyle.Text>
+            <TextLabelStyle TextColor="0.05, 0.63, 0.9, 1" />
+          </c:ButtonStyle.Text>
+        </c:ButtonStyle>
+      </c:PopupStyle.Buttons>
+    </c:PopupStyle>
+
+    <c:ProgressStyle x:Key="Tizen.NUI.Components.Progress"
+      Size="200, 25"
+      IndeterminateImageUrl="{NUIResourcePath nui_component_default_progress_indeterminate.png}">
+      <c:ProgressStyle.Track>
+        <ImageViewStyle ResourceUrl="{NUIResourcePath IoT_progressindicator_empty.png}" BackgroundColor="0, 0, 0, 0.1" />
+      </c:ProgressStyle.Track>
+      <c:ProgressStyle.Buffer>
+        <ImageViewStyle BackgroundColor="0.05, 0.63, 0.9, 0.3" />
+      </c:ProgressStyle.Buffer>
+      <c:ProgressStyle.Progress>
+        <ImageViewStyle BackgroundColor="0.05, 0.63, 0.9, 1">
+          <ImageViewStyle.ResourceUrl>
+            <Selector x:TypeArguments="x:String"
+              Normal="{NUIResourcePath IoT_progressindicator_progress_dark.png}"
+              Disabled="{NUIResourcePath IoT_progressindicator_progressdisabled.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+      </c:ProgressStyle.Progress>
+    </c:ProgressStyle>
+
+    <c:ButtonStyle x:Key="Tizen.NUI.Components.RadioButton"
+      ItemSpacing="32, 32"
+      ItemAlignment="CenterVertical">
+      <c:ButtonStyle.Icon>
+        <ImageViewStyle>
+          <ImageViewStyle.ResourceUrl>
+              <Selector x:TypeArguments="x:String"
+                Normal="{NUIResourcePath IoT_radiobutton_off.png}"
+                Pressed="{NUIResourcePath IoT_radiobutton_off_p.png}"
+                Disabled="{NUIResourcePath IoT_radiobutton_off_d.png}"
+                Focused="{NUIResourcePath IoT_radiobutton_off_f.png}"
+                Selected="{NUIResourcePath IoT_radiobutton_on.png}"
+                SelectedPressed="{NUIResourcePath IoT_radiobutton_on_p.png}"
+                SelectedFocused="{NUIResourcePath IoT_radiobutton_on_f.png}"
+                DisabledSelected="{NUIResourcePath IoT_radiobutton_on_d.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+      </c:ButtonStyle.Icon>
+      <c:ButtonStyle.Text>
+          <TextLabelStyle
+            PointSize="32"
+            TextColor="#001447" />
+      </c:ButtonStyle.Text>
+    </c:ButtonStyle>
+
+    <c:SliderStyle x:Key="Tizen.NUI.Components.Slider"
+      Size="200, 50"
+      TrackThickness="8">
+      <c:SliderStyle.Track>
+        <ImageViewStyle
+          Size="100, 8"
+          BackgroundColor="1.0, 1.0, 1.0, 0.1">
+          <ImageViewStyle.ResourceUrl>
+              <Selector x:TypeArguments="x:String"
+                Normal="{NUIResourcePath IoT_slider_status_empty_track.png}"
+                Disabled="{NUIResourcePath IoT_slider_status_track_disabled.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+      </c:SliderStyle.Track>
+      <c:SliderStyle.Progress>
+          <ImageViewStyle
+            Size="100, 8"
+            ResourceUrl="{NUIResourcePath IoT_slider_status_trackW.png}"
+            BackgroundColor="1.0, 1.0, 1.0, 1.0" />
+      </c:SliderStyle.Progress>
+      <c:SliderStyle.Thumb>
+          <ImageViewStyle
+            Size="36, 36"
+            ResourceUrl="{NUIResourcePath IoT_slider_handler_normalW.png}" />
+      </c:SliderStyle.Thumb>
+      <c:SliderStyle.ValueIndicatorImage>
+          <ImageViewStyle
+            Size="49, 24"
+            BackgroundColor="1.0, 1.0, 1.0, 1.0" />
+      </c:SliderStyle.ValueIndicatorImage>
+    </c:SliderStyle>
+
+    <c:SwitchStyle x:Key="Tizen.NUI.Components.Switch"
+      ItemSpacing="32, 32"
+      ItemAlignment="CenterVertical">
+      <c:Switch.Track>
+        <ImageViewStyle Size="80, 40">
+          <ImageViewStyle.ResourceUrl>
+            <Selector x:TypeArguments="x:String"
+                Normal="{NUIResourcePath IoT_switch_track_off.png}"
+                Pressed="{NUIResourcePath IoT_switch_track_off_p.png}"
+                Disabled="{NUIResourcePath IoT_switch_track_off_d.png}"
+                Focused="{NUIResourcePath IoT_switch_track_off_f.png}"
+                Selected="{NUIResourcePath IoT_switch_track_on.png}"
+                SelectedPressed="{NUIResourcePath IoT_switch_track_on_p.png}"
+                SelectedFocused="{NUIResourcePath IoT_switch_track_on_f.png}"
+                DisabledSelected="{NUIResourcePath IoT_switch_track_on_d.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+      </c:Switch.Track>
+      <c:Switch.Thumb>
+          <ImageViewStyle Size="40, 40">
+            <ImageViewStyle.ResourceUrl>
+              <Selector x:TypeArguments="x:String"
+                Normal="{NUIResourcePath IoT_switch_thumb.png}"
+                Disabled="{NUIResourcePath IoT_switch_thumb_d.png}"
+                Selected="{NUIResourcePath IoT_switch_thumb_s.png}"
+                SelectedPressed="{NUIResourcePath IoT_switch_thumb_sp.png}"
+                SelectedFocused="{NUIResourcePath IoT_switch_thumb_sf.png}" />
+            </ImageViewStyle.ResourceUrl>
+          </ImageViewStyle>
+      </c:Switch.Thumb>
+      <c:Switch.Text>
+          <TextLabelStyle
+            PointSize="32"
+            TextColor="#001447" />
+      </c:Switch.Text>
+    </c:SwitchStyle>
+
+    <c:LoadingStyle x:Key="Tizen.NUI.Components.Loading" LoadingSize="100, 100" />
+
+    <c:PaginationStyle x:Key="Tizen.NUI.Components.Pagination"
+      IndicatorSize="10, 10">
+        <c:PaginationStyle.IndicatorImageUrl>
+            <Selector x:TypeArguments="x:String" Normal="{NUIResourcePath nui_component_default_pagination_normal_dot.png}" Selected="{NUIResourcePath nui_component_default_pagination_focus_dot.png}" />
+        </c:PaginationStyle.IndicatorImageUrl>
+    </c:PaginationStyle>
+
+    <c:ScrollbarStyle x:Key="Tizen.NUI.Components.Scrollbar"
+      TrackThickness="12"
+      ThumbThickness="12"
+      TrackColor="0, 0, 0, 0"
+      ThumbColor="#0A0E4AFF"
+      TrackPadding="4"
+      ThumbVerticalImageUrl="{NUIResourcePath nui_component_default_scroll_vbar.#.png}"
+      ThumbHorizontalImageUrl="{NUIResourcePath nui_component_default_scroll_hbar.#.png}" />
+
+    <ViewStyle x:Key="Tizen.NUI.Components.LinearLayouter"
+      Padding="64, 64, 0, 0"/>
+    
+    <ViewStyle x:Key="Tizen.NUI.Components.GridLayouter"
+      Padding="0, 0, 0, 0"/>
+    
+    <ViewStyle x:Key="Tizen.NUI.Components.ItemsLayouter"
+      Padding="0, 0, 0, 0"/>
+    
+    <c:RecyclerViewItemStyle x:Key="Tizen.NUI.Components.RecyclerViewItem">
+      <c:RecyclerViewItemStyle.BackgroundColor>
+        <Selector x:TypeArguments="Color"
+          Normal="1, 1, 1, 1"
+          Pressed="0.85, 0.85, 0.85, 1"
+          Disabled="0.70, 0.70, 0.70, 1"
+          Selected="0.701, 0.898, 0.937, 1" />
+      </c:RecyclerViewItemStyle.BackgroundColor>
+    </c:RecyclerViewItemStyle>
+
+    <c:DefaultLinearItemStyle x:Key="Tizen.NUI.Components.DefaultLinearItem"
+      SizeHeight="108"
+      Padding="64, 64, 18, 17"
+      Margin="0, 0, 0, 0" >
+      <c:DefaultLinearItemStyle.BackgroundColor>
+        <Selector x:TypeArguments="Color"
+          Normal="1, 1, 1, 1"
+          Pressed="0.85, 0.85, 0.85, 1"
+          Disabled="0.70, 0.70, 0.70, 1"
+          Selected="0.85, 0.85, 0.85, 1" />
+      </c:DefaultLinearItemStyle.BackgroundColor>
+      <c:DefaultLinearItemStyle.Label>
+        <TextLabelStyle
+          PixelSize="32"
+          Ellipsis="True"
+          FontFamily="BreezeSans"
+          TextColor="#001447FF"/>
+      </c:DefaultLinearItemStyle.Label>
+      <c:DefaultLinearItemStyle.SubLabel>
+        <TextLabelStyle
+          PixelSize="28"
+          Ellipsis="True"
+          FontFamily="BreezeSans"
+          TextColor="#001447FF"/>
+      </c:DefaultLinearItemStyle.SubLabel>
+      <c:DefaultLinearItemStyle.Icon>
+        <ViewStyle Margin="0, 32, 0, 0" />
+      </c:DefaultLinearItemStyle.Icon>
+      <c:DefaultLinearItemStyle.Extra>
+        <ViewStyle Margin="32, 0, 0, 0" />
+      </c:DefaultLinearItemStyle.Extra>
+      <c:DefaultLinearItemStyle.Seperator>
+        <ViewStyle
+          SizeHeight="1"
+          Margin="64, 64, 0, 0"
+          BackgroundColor="#C3CAD2FF" />
+      </c:DefaultLinearItemStyle.Seperator>
+    </c:DefaultLinearItemStyle>
+
+    <c:DefaultGridItemStyle x:Key="Tizen.NUI.Components.DefaultGridItem"
+      Padding="0, 0, 0, 0"
+      Margin="5, 5, 5, 5">
+      <c:DefaultGridItemStyle.Label>
+        <TextLabelStyle
+          SizeHeight="60"
+          PixelSize="24"
+          LineWrapMode="Character" />
+      </c:DefaultGridItemStyle.Label>
+      <c:DefaultGridItemStyle.Badge>
+        <ViewStyle
+         Margin="5, 5, 5, 5" />
+      </c:DefaultGridItemStyle.Badge>
+    </c:DefaultGridItemStyle>
+
+    <c:DefaultTitleItemStyle x:Key="Tizen.NUI.Components.DefaultTitleItem"
+      SizeHeight="60"
+      Padding="64, 64, 12, 12"
+      Margin="0, 0, 0, 0"
+      BackgroundColor="#EEEEF1FF">
+      <c:DefaultTitleItemStyle.Label>
+        <TextLabelStyle
+          PixelSize="28"
+          Ellipsis="True"
+          TextColor="#001447FF" />
+      </c:DefaultTitleItemStyle.Label>
+      <c:DefaultTitleItemStyle.Icon>
+        <ViewStyle
+          Margin="40, 0, 0, 0" />
+      </c:DefaultTitleItemStyle.Icon>
+      <c:DefaultTitleItemStyle.Seperator>
+        <ViewStyle
+          Margin="40, 0, 0, 0"
+          BackgroundColor="0, 0, 0, 0" />
+      </c:DefaultTitleItemStyle.Seperator>
+    </c:DefaultTitleItemStyle>
+
+    <c:AppBarStyle x:Key="Tizen.NUI.Components.AppBar"
+      Size="-1, 120"
+      BackgroundColor="#EEEFF1FF"
+      Padding="64, 64, 0, 0"
+      NavigationPadding="0, 24, 0, 0"
+      ActionPadding="40, 0, 0, 0"
+      ActionCellPadding="40, 0">
+      <c:AppBarStyle.BackButton>
+        <c:ButtonStyle
+          Size="48, 48"
+          CornerRadius="0"
+          BackgroundColor="0, 0, 0, 0">
+          <c:ButtonStyle.Icon>
+            <ImageViewStyle
+              Size="48, 48"
+              ResourceUrl="{NUIResourcePath nui_component_default_back_button.png}">
+              <ImageViewStyle.Color>
+                <Selector x:TypeArguments="Color"
+                  Normal="#0A0E4AFF"
+                  Focused="#00338BFF"
+                  Pressed="#1B69CAFF"
+                  Disabled="#C3CAD2FF" />
+              </ImageViewStyle.Color>
+            </ImageViewStyle>
+          </c:ButtonStyle.Icon>
+        </c:ButtonStyle>
+      </c:AppBarStyle.BackButton>
+      <c:AppBarStyle.TitleTextLabel>
+        <TextLabelStyle
+          PixelSize="40"
+          VerticalAlignment="Center"
+          TextColor="#000C2BFF"/>
+      </c:AppBarStyle.TitleTextLabel>
+      <c:AppBarStyle.ActionView>
+        <ViewStyle
+          Size="-1, 120"
+          CornerRadius="0"
+          BackgroundColor="0, 0, 0, 0"/>
+      </c:AppBarStyle.ActionView>
+      <c:AppBarStyle.ActionButton>
+        <c:ButtonStyle
+          Size="-1, 120"
+          CornerRadius="0"
+          BackgroundColor="0, 0, 0, 0">
+          <c:ButtonStyle.Text>
+            <TextLabelStyle PixelSize="26">
+              <TextLabelStyle.TextColor>
+                <Selector x:TypeArguments="Color"
+                  Normal="#0A0E4AFF"
+                  Focused="#00338BFF"
+                  Pressed="#1B69CAFF"
+                  Disabled="#C3CAD2FF" />
+              </TextLabelStyle.TextColor>
+            </TextLabelStyle>
+          </c:ButtonStyle.Text>
+          <c:ButtonStyle.Icon>
+            <ImageViewStyle Size="-1, 48">
+              <ImageViewStyle.Color>
+                <Selector x:TypeArguments="Color"
+                  Normal="#0A0E4AFF"
+                  Focused="#00338BFF"
+                  Pressed="#1B69CAFF"
+                  Disabled="#C3CAD2FF" />
+              </ImageViewStyle.Color>
+            </ImageViewStyle>
+          </c:ButtonStyle.Icon>
+        </c:ButtonStyle>
+      </c:AppBarStyle.ActionButton>
+    </c:AppBarStyle>
+
+    <c:PickerStyle x:Key="Tizen.NUI.Components.Picker"
+      Size="160, 339"
+      StartScrollOffset="0, 12">
+      <c:PickerStyle.ItemTextLabel>
+        <TextLabelStyle
+          PixelSize="32"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center"
+          Size="0, 72"
+          TextColor="#000C2BFF"
+          BackgroundColor="White"/>
+      </c:PickerStyle.ItemTextLabel>
+      <c:PickerStyle.Divider>
+        <ViewStyle
+          SizeHeight="2.0"
+          WidthResizePolicy="FillToParent"
+          Position="0, 132"
+          BackgroundColor="#0A0E4AFF"/>
+      </c:PickerStyle.Divider>
+    </c:PickerStyle>
+
+    <c:TabButtonStyle x:Key="Tizen.NUI.Components.TabButton"
+      Size="-1, 84"
+      CornerRadius="0"
+      BackgroundColor="White">
+      <c:TabButtonStyle.Text>
+        <TextLabelStyle
+          PixelSize="28"
+          Size="-2, -2">
+          <TextLabelStyle.TextColor>
+            <Selector x:TypeArguments="Color"
+              Normal="#000C2BFF"
+              Selected="#000C2BFF"
+              Pressed="#1473E6FF"
+              Disabled="#C3CAD2FF" />
+          </TextLabelStyle.TextColor>
+        </TextLabelStyle>
+      </c:TabButtonStyle.Text>
+      <c:TabButtonStyle.Icon>
+        <ImageViewStyle
+          Size="48, 48">
+          <ImageViewStyle.Color>
+            <Selector x:TypeArguments="Color"
+              Normal="#000C2BFF"
+              Selected="#000C2BFF"
+              Pressed="#1473E6FF"
+              Disabled="#C3CAD2FF" />
+          </ImageViewStyle.Color>
+        </ImageViewStyle>
+      </c:TabButtonStyle.Icon>
+      <c:TabButtonStyle.TopLine>
+        <ViewStyle
+          Size="-1, 1">
+          <ViewStyle.BackgroundColor>
+            <Selector x:TypeArguments="Color"
+              Normal="#000C2BFF"
+              Selected="#000C2BFF"
+              Pressed="#1473E6FF"
+              Disabled="#C3CAD2FF" />
+          </ViewStyle.BackgroundColor>
+        </ViewStyle>
+      </c:TabButtonStyle.TopLine>
+      <c:TabButtonStyle.BottomLine>
+       <ViewStyle
+          Size="-1, 8"
+          Position="0, 76">
+          <ViewStyle.BackgroundColor>
+            <Selector x:TypeArguments="Color"
+              Normal="Transparent"
+              Selected="#000C2BFF"
+              Pressed="#1473E6FF"
+              Disabled="Transparent" />
+          </ViewStyle.BackgroundColor>
+        </ViewStyle>
+      </c:TabButtonStyle.BottomLine>
+    </c:TabButtonStyle>
+
+    <TextLabelStyle x:Key="NotificationToast"
+      BackgroundImage="{NUIResourcePath IoT_Toast_1.png}"
+      BackgroundImageBorder="28, 28, 28, 28"
+      TextColor="#000C2B"
+      PixelSize="32"
+      WidthResizePolicy="UseNaturalSize"
+      HeightResizePolicy="UseNaturalSize"
+      PositionUsesPivotPoint="True"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      Padding="40, 40, 24, 24"
+      PositionY="120" />
+    
+    <c:AlertDialogStyle x:Key="Tizen.NUI.Components.AlertDialog"
+      Size="-2, -2"
+      Padding="80, 80, 0, 0"
+      BackgroundImage="{NUIResourcePath nui_component_default_dialog_bg.#.png}">
+      <c:AlertDialogStyle.TitleTextLabel>
+        <TextLabelStyle
+          Size="1024, -2"
+          Margin="0, 0, 40, 40"
+          PixelSize="40"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          TextColor="#000C2BFF" />
+      </c:AlertDialogStyle.TitleTextLabel>
+      <c:AlertDialogStyle.MessageTextLabel>
+        <TextLabelStyle
+          Size="1024, -2"
+          Margin="0, 0, 0, 64"
+          PixelSize="32"
+          MultiLine="True"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          TextColor="#000C2BFF"/>
+      </c:AlertDialogStyle.MessageTextLabel>
+      <c:AlertDialogStyle.ActionContent>
+        <ViewStyle
+          Size="1024, -2"/>
+      </c:AlertDialogStyle.ActionContent>
+    </c:AlertDialogStyle>
+
+    <c:TimePickerStyle x:Key="Tizen.NUI.Components.TimePicker"
+      CellPadding="50, 339">
+      <c:TimePickerStyle.Pickers>
+        <c:PickerStyle
+          Size="160, 339"
+          StartScrollOffset="0, 12">
+          <c:PickerStyle.ItemTextLabel>
+            <TextLabelStyle
+              PixelSize="32"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Size="0, 72"
+              TextColor="#000C2BFF"
+              BackgroundColor="White" />
+          </c:PickerStyle.ItemTextLabel>
+          <c:PickerStyle.Divider>
+            <ViewStyle
+              SizeHeight="2.0"
+              WidthResizePolicy="FillToParent"
+              Position="0, 132"
+              BackgroundColor="#0A0E4AFF"/>
+          </c:PickerStyle.Divider>
+        </c:PickerStyle>
+      </c:TimePickerStyle.Pickers>
+    </c:TimePickerStyle>
+
+    <c:DatePickerStyle x:Key="Tizen.NUI.Components.DatePicker"
+      CellPadding="50, 339">
+      <c:DatePickerStyle.Pickers>
+        <c:PickerStyle
+          Size="160, 339"
+          StartScrollOffset="0, 12">
+          <c:PickerStyle.ItemTextLabel>
+            <TextLabelStyle
+              PixelSize="32"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Size="0, 72"
+              TextColor="#000C2BFF"
+              BackgroundColor="White" />
+          </c:PickerStyle.ItemTextLabel>
+          <c:PickerStyle.Divider>
+            <ViewStyle
+              SizeHeight="2.0"
+              WidthResizePolicy="FillToParent"
+              Position="0, 132"
+              BackgroundColor="#0A0E4AFF"/>
+          </c:PickerStyle.Divider>
+        </c:PickerStyle>
+      </c:DatePickerStyle.Pickers>
+    </c:DatePickerStyle>
+
+    <c:ButtonStyle x:Key="Tizen.NUI.Components.MenuItem"
+      Size="480, -2"
+      MinimumSize="0, 72"
+      CornerRadius="0"
+      BackgroundImage="{NUIResourcePath nui_component_menu_item_bg.png}"
+      Padding="16, 16, 16, 16">
+      <c:ButtonStyle.Text>
+        <TextLabelStyle
+          PixelSize="32"
+          MultiLine="True"
+          HorizontalAlignment="Begin"
+          VerticalAlignment="Center">
+          <TextLabelStyle.TextColor>
+            <Selector x:TypeArguments="Color"
+              Normal="#001447FF"
+              Focused="#00338BFF"
+              Pressed="#1B69CAFF"
+              Disabled="#C3CAD2FF" />
+          </TextLabelStyle.TextColor>
+        </TextLabelStyle>
+      </c:ButtonStyle.Text>
+      <c:ButtonStyle.Icon>
+        <ImageViewStyle
+          Size="-2, 48">
+          <ImageViewStyle.Color>
+            <Selector x:TypeArguments="Color"
+              Normal="#001447FF"
+              Focused="#00338BFF"
+              Pressed="#1B69CAFF"
+              Disabled="#C3CAD2FF" />
+          </ImageViewStyle.Color>
+        </ImageViewStyle>
+      </c:ButtonStyle.Icon>
+    </c:ButtonStyle>
+</Theme>
