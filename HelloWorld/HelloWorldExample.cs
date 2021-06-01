@@ -29,76 +29,197 @@ using System.Collections.ObjectModel;
 
 class HelloWorldExample : NUIApplication
 {
-    List<TextLabel> list = new List<TextLabel>();
-    Timer timer;
     View rootView;
-    const int interval = 3000;
-    const int maxCount = 1000;
     int count = 0;
+    ThemeLoader themeLoader;
+
+    // private ContentPage firstPage, secondPage;
+    private Button firstButton, secondButton;
+
+    public HelloWorldExample() : base(new Size2D(1280, 720), new Position2D(0, 0))
+    {
+    }
 
     protected override void OnCreate()
     {
         base.OnCreate();
 
-        var themeLoader = new ThemeLoader();
-        var theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
-        Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-        themeLoader.CurrentTheme = theme;
-
-        rootView = new View(new ViewStyle() {
-            BackgroundColor = new Selector<Color>()
+        themeLoader = new ThemeLoader();
+        var button = new Button() { Text = "Light" };
+        button.Clicked += (s, e) => {
+            count++;
+            Tizen.Applications.ThemeManager.Theme theme;
+            if (count % 2 == 0)
             {
-                Normal = Color.Red,
-                Pressed = Color.White
+                theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
+                ((Button)s).Text = "Light";
             }
-        })
-        {
-            EnableControlState = true,
-            WidthResizePolicy = ResizePolicyType.FillToParent,
-            HeightResizePolicy = ResizePolicyType.FillToParent,
+            else
+            {
+                theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
+                ((Button)s).Text = "Dark";
+            }
+            Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+            themeLoader.CurrentTheme = theme;
         };
-        NUIApplication.GetDefaultWindow().Add(rootView);
 
-        var button = new Button();
-
-        // var theme = new Tizen.NUI.Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "nui_theme_dark.xaml");
-
-    }
-    bool OnTick(object sender, Timer.TickEventArgs e)
-    {
-        if (list.Count > 0)
+        var mainPage = new ContentPage()
         {
-            for (var i = 0; i < maxCount; i++)
+            UseThemeBackgroundColor = true,
+            // BackgroundColor = new Color("#0E1017"),
+            ThemeChangeSensitive = true,
+            AppBar = new AppBar()
             {
-                rootView.Remove(list[i]);
-                list[i].Dispose();
-                list[i] = null;
+                ThemeChangeSensitive = true,
+                AutoNavigationContent = false,
+                Title = "NUI theme sample",
+                Actions = new View[] { button },
+            },
+            Content = new ScrollableBase()
+            {
+                Layout = new LinearLayout()
+                {
+                    LinearOrientation = LinearLayout.Orientation.Vertical,
+                    CellPadding = new Size2D(20, 20)
+                },
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.FillToParent,
+                Padding = new Extents(30, 30, 20, 20)
             }
+        };
 
-            list.Clear();
-            FullGC();
-            Tizen.Log.Info("JYJY", $"Clear text labels {count++}\n");
-        }
-        else
-        {
-            Show();
-            Tizen.Log.Info("JYJY", $"Create text labels {count++}\n");
-        }
-        return true;
+        mainPage.Content.Add(CreateItem("Change theme", CreateChangeThemeExample()));
+        mainPage.Content.Add(CreateItem("RadioButton", CreateRadioButtonExample()));
+        mainPage.Content.Add(CreateItem("TimePicker", CreateTimePickerExample()));
+        mainPage.Content.Add(CreateItem("AlertDialog", CreateAlertDialogExample()));
+
+        NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(mainPage);
+
+        // rootView.Add(button);
+        // rootView.Add(new Switch() { Position = new Position(0, 100), ThemeChangeSensitive = true });
     }
 
-    void Show()
+    private View CreateItem(string title, View content)
     {
-        for (int i = 0; i < maxCount; i++)
+        var item = new View()
         {
-            var t = new TextLabel()
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            HeightResizePolicy = ResizePolicyType.FitToChildren,
+            Layout = new LinearLayout()
             {
-                Text = "Hello World" + i.ToString() + "!",
-                Position = new Position((float)((i/500)*100), (float)(i%500)),
-            };
-            list.Add(t);
-            rootView.Add(t);
-        }
+                LinearOrientation = LinearLayout.Orientation.Vertical,
+            },
+            BackgroundColor = new Color("#88888822"),
+            CornerRadius = 10.0f,
+            Padding = 20,
+        };
+        item.Add(new TextLabel()
+        {
+            PixelSize = 20.0f,
+            Text = title,
+            ThemeChangeSensitive = true,
+            Padding = new Extents(0, 0, 0, 20)
+        });
+        item.Add(content);
+        return item;
+    }
+
+    private View CreateChangeThemeExample()
+    {
+        var button = new Button()
+        {
+            ThemeChangeSensitive = true,
+            Text = "Light"
+        };
+        button.Clicked += (s, e) => {
+            count++;
+            Tizen.Applications.ThemeManager.Theme theme;
+            if (count % 2 == 0)
+            {
+                theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
+                ((Button)s).Text = "Light";
+            }
+            else
+            {
+                theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
+                ((Button)s).Text = "Dark";
+            }
+            Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+            themeLoader.CurrentTheme = theme;
+        };
+
+        return button;
+    }
+
+    private View CreateRadioButtonExample()
+    {
+        var view = new View()
+        {
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            HeightResizePolicy = ResizePolicyType.FitToChildren,
+            Layout = new LinearLayout()
+            {
+                LinearOrientation = LinearLayout.Orientation.Vertical,
+            },
+        };
+        var radio1 = new RadioButton() { Text = "Option1", ThemeChangeSensitive = true, Padding = 5 };
+        var radio2 = new RadioButton() { Text = "Option2", ThemeChangeSensitive = true, Padding = 5 };
+        var radio3 = new RadioButton() { Text = "Option3", ThemeChangeSensitive = true, Padding = 5 };
+
+        var group = new RadioButtonGroup();
+        group.Add(radio1);
+        group.Add(radio2);
+        group.Add(radio3);
+
+        view.Add(radio1);
+        view.Add(radio2);
+        view.Add(radio3);
+
+        return view;
+    }
+
+    private View CreateAlertDialogExample()
+    {
+        var button = new Button()
+        {
+            ThemeChangeSensitive = true,
+            Text = "Click to post alert!"
+        };
+        button.Clicked += (s, e) => {
+            // var dialogPage = new DialogPage()
+            // {
+            //     Content = new AlertDialog()
+            //     {
+            //         ThemeChangeSensitive = true,
+            //         Title = "Notice",
+            //         Message = "Please click close button to dismiss",
+            //         // Actions =  actions,
+            //     },
+            // };
+
+            // NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(dialogPage);
+            DialogPage.ShowAlertDialog("Notice", "Please touch outer area to dismiss");
+        };
+
+        return button;
+    }
+
+    private View CreateTimePickerExample()
+    {
+        // var timePicker = new TimePicker()
+        // {
+        //     // ParentOrigin = ParentOrigin.Center,
+        //     // PivotPoint = PivotPoint.Center,
+        //     // PositionUsesPivotPoint = true,
+        //     Size = new Size(200, 200),
+        //     Hour = 12,
+        //     Minute = 30,
+        //     Is24HourView = false,
+        // };
+        // // timePicker.TimeChanged += TimeChanged;
+        // // window.Add(timePicker);
+        // return timePicker;
+        return null;
     }
 
     private void FullGC()

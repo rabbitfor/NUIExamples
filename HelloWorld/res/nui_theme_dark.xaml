@@ -39,10 +39,15 @@
       CornerRadius="0.2916"
       ItemAlignment="Center">
       <c:ButtonStyle.BackgroundColor>
-        <Selector x:TypeArguments="Color" Normal="0.039, 0.055, 0.29, 1" Pressed="0.106, 0.412, 0.792, 1" Focused="0, 0.2, 0.545, 1" Disabled="0.765, 0.792, 0.824, 1"/>
+        <Selector x:TypeArguments="Color"
+          Normal="#1473e6"
+          Pressed="#2b5fb9"
+          Focused="#00338b"
+          Disabled="#c3cad2"/>
       </c:ButtonStyle.BackgroundColor>
       <c:ButtonStyle.Text>
-        <TextLabelStyle PointSize="32" TextColor="White" />
+        <TextLabelStyle
+          TextColor="White" />
       </c:ButtonStyle.Text>
     </c:ButtonStyle>
 
@@ -54,21 +59,20 @@
             Size="36, 36">
             <ImageViewStyle.ResourceUrl>
                 <Selector x:TypeArguments="x:String"
-                  Normal="{NUIResourcePath IoT_check_off.png}"
-                  Pressed="{NUIResourcePath IoT_check_off_p.png}"
+                  Normal="{ThemeResourcePath IoT_check_off_W.png}"
+                  Pressed="{ThemeResourcePath IoT_check_off_pW.png}"
                   Disabled="{NUIResourcePath IoT_check_off_d.png}"
-                  Focused="{NUIResourcePath IoT_check_off_f.png}"
-                  Selected="{NUIResourcePath IoT_check_on.png}"
-                  SelectedPressed="{NUIResourcePath IoT_check_on_p.png}"
-                  SelectedFocused="{NUIResourcePath IoT_check_on_f.png}"
-                  DisabledSelected="{NUIResourcePath IoT_check_on_d.png}" />
+                  Focused="{ThemeResourcePath IoT_check_off_fW.png}"
+                  Selected="{ThemeResourcePath IoT_check_on_W.png}"
+                  SelectedPressed="{ThemeResourcePath IoT_check_on_pW.png}"
+                  SelectedFocused="{ThemeResourcePath IoT_check_on_fW.png}"
+                  DisabledSelected="{ThemeResourcePath IoT_check_on_dW.png}" />
             </ImageViewStyle.ResourceUrl>
           </ImageViewStyle>
       </c:ButtonStyle.Icon>
       <c:ButtonStyle.Text>
         <TextLabelStyle
-          PointSize="12"
-          TextColor="#001447"/>
+          TextColor="#ffffff"/>
       </c:ButtonStyle.Text>
     </c:ButtonStyle>
 
@@ -137,21 +141,20 @@
         <ImageViewStyle>
           <ImageViewStyle.ResourceUrl>
               <Selector x:TypeArguments="x:String"
-                Normal="{NUIResourcePath IoT_radiobutton_off.png}"
-                Pressed="{NUIResourcePath IoT_radiobutton_off_p.png}"
-                Disabled="{NUIResourcePath IoT_radiobutton_off_d.png}"
-                Focused="{NUIResourcePath IoT_radiobutton_off_f.png}"
-                Selected="{NUIResourcePath IoT_radiobutton_on.png}"
-                SelectedPressed="{NUIResourcePath IoT_radiobutton_on_p.png}"
-                SelectedFocused="{NUIResourcePath IoT_radiobutton_on_f.png}"
-                DisabledSelected="{NUIResourcePath IoT_radiobutton_on_d.png}" />
+                Normal="{ThemeResourcePath IoT_radiobutton_off_W.png}"
+                Pressed="{ThemeResourcePath IoT_radiobutton_off_pW.png}"
+                Disabled="{ThemeResourcePath IoT_radiobutton_off_dW.png}"
+                Focused="{ThemeResourcePath IoT_radiobutton_off_fW.png}"
+                Selected="{ThemeResourcePath IoT_radiobutton_on_W.png}"
+                SelectedPressed="{ThemeResourcePath IoT_radiobutton_on_pW.png}"
+                SelectedFocused="{ThemeResourcePath IoT_radiobutton_on_fW.png}"
+                DisabledSelected="{ThemeResourcePath IoT_radiobutton_on_dW.png}" />
           </ImageViewStyle.ResourceUrl>
         </ImageViewStyle>
       </c:ButtonStyle.Icon>
       <c:ButtonStyle.Text>
           <TextLabelStyle
-            PointSize="32"
-            TextColor="#001447" />
+            TextColor="#ffffff" />
       </c:ButtonStyle.Text>
     </c:ButtonStyle>
 
@@ -194,14 +197,14 @@
         <ImageViewStyle Size="80, 40">
           <ImageViewStyle.ResourceUrl>
             <Selector x:TypeArguments="x:String"
-                Normal="{NUIResourcePath IoT_switch_track_off.png}"
-                Pressed="{NUIResourcePath IoT_switch_track_off_p.png}"
+                Normal="{ThemeResourcePath IoT_switch_track_off_W.png}"
+                Pressed="{ThemeResourcePath IoT_switch_track_off_pW.png}"
                 Disabled="{NUIResourcePath IoT_switch_track_off_d.png}"
-                Focused="{NUIResourcePath IoT_switch_track_off_f.png}"
+                Focused="{ThemeResourcePath IoT_switch_track_off_fW.png}"
                 Selected="{NUIResourcePath IoT_switch_track_on.png}"
-                SelectedPressed="{NUIResourcePath IoT_switch_track_on_p.png}"
-                SelectedFocused="{NUIResourcePath IoT_switch_track_on_f.png}"
-                DisabledSelected="{NUIResourcePath IoT_switch_track_on_d.png}" />
+                SelectedPressed="{ThemeResourcePath IoT_switch_track_on_fW.png}"
+                SelectedFocused="{ThemeResourcePath IoT_switch_track_on_fW.png}"
+                DisabledSelected="{ThemeResourcePath IoT_switch_track_on_dW.png}" />
           </ImageViewStyle.ResourceUrl>
         </ImageViewStyle>
       </c:Switch.Track>
@@ -209,18 +212,17 @@
           <ImageViewStyle Size="40, 40">
             <ImageViewStyle.ResourceUrl>
               <Selector x:TypeArguments="x:String"
-                Normal="{NUIResourcePath IoT_switch_thumb.png}"
+                Normal="{NUIResourcePath IoT_switch_thumb_d.png}"
                 Disabled="{NUIResourcePath IoT_switch_thumb_d.png}"
-                Selected="{NUIResourcePath IoT_switch_thumb_s.png}"
-                SelectedPressed="{NUIResourcePath IoT_switch_thumb_sp.png}"
-                SelectedFocused="{NUIResourcePath IoT_switch_thumb_sf.png}" />
+                Selected="{ThemeResourcePath IoT_switch_thumb_sW.png}"
+                SelectedPressed="{ThemeResourcePath IoT_switch_thumb_spW.png}"
+                SelectedFocused="{ThemeResourcePath IoT_switch_thumb_sfW.png}" />
             </ImageViewStyle.ResourceUrl>
           </ImageViewStyle>
       </c:Switch.Thumb>
       <c:Switch.Text>
           <TextLabelStyle
-            PointSize="32"
-            TextColor="#001447" />
+            TextColor="#ffffff" />
       </c:Switch.Text>
     </c:SwitchStyle>
 
@@ -339,7 +341,7 @@
 
     <c:AppBarStyle x:Key="Tizen.NUI.Components.AppBar"
       Size="-1, 120"
-      BackgroundColor="#EEEFF1FF"
+      BackgroundColor="#0E1017"
       Padding="64, 64, 0, 0"
       NavigationPadding="0, 24, 0, 0"
       ActionPadding="40, 0, 0, 0"
@@ -355,10 +357,10 @@
               ResourceUrl="{NUIResourcePath nui_component_default_back_button.png}">
               <ImageViewStyle.Color>
                 <Selector x:TypeArguments="Color"
-                  Normal="#0A0E4AFF"
-                  Focused="#00338BFF"
-                  Pressed="#1B69CAFF"
-                  Disabled="#C3CAD2FF" />
+                  Normal="#FFFFFF"
+                  Focused="#00338B"
+                  Pressed="#1473E6"
+                  Disabled="#6B707C" />
               </ImageViewStyle.Color>
             </ImageViewStyle>
           </c:ButtonStyle.Icon>
@@ -368,7 +370,7 @@
         <TextLabelStyle
           PixelSize="40"
           VerticalAlignment="Center"
-          TextColor="#000C2BFF"/>
+          TextColor="#FFFFFF"/>
       </c:AppBarStyle.TitleTextLabel>
       <c:AppBarStyle.ActionView>
         <ViewStyle
@@ -385,10 +387,10 @@
             <TextLabelStyle PixelSize="26">
               <TextLabelStyle.TextColor>
                 <Selector x:TypeArguments="Color"
-                  Normal="#0A0E4AFF"
-                  Focused="#00338BFF"
-                  Pressed="#1B69CAFF"
-                  Disabled="#C3CAD2FF" />
+                  Normal="#FFFFFF"
+                  Focused="#00338B"
+                  Pressed="#1473E6"
+                  Disabled="#6B707C" />
               </TextLabelStyle.TextColor>
             </TextLabelStyle>
           </c:ButtonStyle.Text>
@@ -396,10 +398,10 @@
             <ImageViewStyle Size="-1, 48">
               <ImageViewStyle.Color>
                 <Selector x:TypeArguments="Color"
-                  Normal="#0A0E4AFF"
-                  Focused="#00338BFF"
-                  Pressed="#1B69CAFF"
-                  Disabled="#C3CAD2FF" />
+                  Normal="#FFFFFF"
+                  Focused="#00338B"
+                  Pressed="#1473E6"
+                  Disabled="#6B707C" />
               </ImageViewStyle.Color>
             </ImageViewStyle>
           </c:ButtonStyle.Icon>
@@ -416,15 +418,15 @@
           VerticalAlignment="Center"
           HorizontalAlignment="Center"
           Size="0, 72"
-          TextColor="#000C2BFF"
-          BackgroundColor="White"/>
+          TextColor="#FFFFFF"
+          BackgroundColor="#0E1017"/>
       </c:PickerStyle.ItemTextLabel>
       <c:PickerStyle.Divider>
         <ViewStyle
           SizeHeight="2.0"
           WidthResizePolicy="FillToParent"
           Position="0, 132"
-          BackgroundColor="#0A0E4AFF"/>
+          BackgroundColor="#FFFFFF"/>
       </c:PickerStyle.Divider>
     </c:PickerStyle>
 
@@ -500,7 +502,9 @@
     <c:AlertDialogStyle x:Key="Tizen.NUI.Components.AlertDialog"
       Size="-2, -2"
       Padding="80, 80, 0, 0"
-      BackgroundImage="{NUIResourcePath nui_component_default_dialog_bg.#.png}">
+      BackgroundColor="#000209"
+      CornerRadius="28"
+      BoxShadow="2.0 | #00000029 | 2, 2">
       <c:AlertDialogStyle.TitleTextLabel>
         <TextLabelStyle
           Size="1024, -2"
@@ -508,7 +512,7 @@
           PixelSize="40"
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
-          TextColor="#000C2BFF" />
+          TextColor="White" />
       </c:AlertDialogStyle.TitleTextLabel>
       <c:AlertDialogStyle.MessageTextLabel>
         <TextLabelStyle
@@ -518,7 +522,7 @@
           MultiLine="True"
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
-          TextColor="#000C2BFF"/>
+          TextColor="White"/>
       </c:AlertDialogStyle.MessageTextLabel>
       <c:AlertDialogStyle.ActionContent>
         <ViewStyle
@@ -538,15 +542,15 @@
               VerticalAlignment="Center"
               HorizontalAlignment="Center"
               Size="0, 72"
-              TextColor="#000C2BFF"
-              BackgroundColor="White" />
+              TextColor="#FFFFFF"
+              BackgroundColor="#0E1017" />
           </c:PickerStyle.ItemTextLabel>
           <c:PickerStyle.Divider>
             <ViewStyle
               SizeHeight="2.0"
               WidthResizePolicy="FillToParent"
               Position="0, 132"
-              BackgroundColor="#0A0E4AFF"/>
+              BackgroundColor="#FFFFFF"/>
           </c:PickerStyle.Divider>
         </c:PickerStyle>
       </c:TimePickerStyle.Pickers>
@@ -564,15 +568,15 @@
               VerticalAlignment="Center"
               HorizontalAlignment="Center"
               Size="0, 72"
-              TextColor="#000C2BFF"
-              BackgroundColor="White" />
+              TextColor="#FFFFFF"
+              BackgroundColor="0E1017" />
           </c:PickerStyle.ItemTextLabel>
           <c:PickerStyle.Divider>
             <ViewStyle
               SizeHeight="2.0"
               WidthResizePolicy="FillToParent"
               Position="0, 132"
-              BackgroundColor="#0A0E4AFF"/>
+              BackgroundColor="#FFFFFF"/>
           </c:PickerStyle.Divider>
         </c:PickerStyle>
       </c:DatePickerStyle.Pickers>

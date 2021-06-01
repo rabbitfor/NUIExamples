@@ -42,7 +42,8 @@
         <Selector x:TypeArguments="Color" Normal="0.039, 0.055, 0.29, 1" Pressed="0.106, 0.412, 0.792, 1" Focused="0, 0.2, 0.545, 1" Disabled="0.765, 0.792, 0.824, 1"/>
       </c:ButtonStyle.BackgroundColor>
       <c:ButtonStyle.Text>
-        <TextLabelStyle PointSize="32" TextColor="White" />
+        <TextLabelStyle
+          TextColor="White" />
       </c:ButtonStyle.Text>
     </c:ButtonStyle>
 
@@ -67,7 +68,6 @@
       </c:ButtonStyle.Icon>
       <c:ButtonStyle.Text>
         <TextLabelStyle
-          PointSize="12"
           TextColor="#001447"/>
       </c:ButtonStyle.Text>
     </c:ButtonStyle>
@@ -150,7 +150,6 @@
       </c:ButtonStyle.Icon>
       <c:ButtonStyle.Text>
           <TextLabelStyle
-            PointSize="32"
             TextColor="#001447" />
       </c:ButtonStyle.Text>
     </c:ButtonStyle>
@@ -219,7 +218,6 @@
       </c:Switch.Thumb>
       <c:Switch.Text>
           <TextLabelStyle
-            PointSize="32"
             TextColor="#001447" />
       </c:Switch.Text>
     </c:SwitchStyle>
