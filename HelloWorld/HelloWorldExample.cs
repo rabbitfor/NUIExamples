@@ -36,8 +36,14 @@ class HelloWorldExample : NUIApplication
     // private ContentPage firstPage, secondPage;
     private Button firstButton, secondButton;
 
-    public HelloWorldExample() : base(new Size2D(1280, 720), new Position2D(0, 0))
+    // public HelloWorldExample() : base(new Size2D(1280, 720), new Position2D(0, 0))
+    // {
+    // }
+
+    protected override void OnAppControlReceived(Tizen.Applications.AppControlReceivedEventArgs e)
     {
+        base.OnAppControlReceived(e);
+        NUIApplication.GetDefaultWindow().Show();
     }
 
     protected override void OnCreate()
@@ -45,35 +51,16 @@ class HelloWorldExample : NUIApplication
         base.OnCreate();
 
         themeLoader = new ThemeLoader();
-        var button = new Button() { Text = "Light" };
-        button.Clicked += (s, e) => {
-            count++;
-            Tizen.Applications.ThemeManager.Theme theme;
-            if (count % 2 == 0)
-            {
-                theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
-                ((Button)s).Text = "Light";
-            }
-            else
-            {
-                theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
-                ((Button)s).Text = "Dark";
-            }
-            Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-            themeLoader.CurrentTheme = theme;
-        };
 
         var mainPage = new ContentPage()
         {
             UseThemeBackgroundColor = true,
-            // BackgroundColor = new Color("#0E1017"),
             ThemeChangeSensitive = true,
             AppBar = new AppBar()
             {
                 ThemeChangeSensitive = true,
                 AutoNavigationContent = false,
                 Title = "NUI theme sample",
-                Actions = new View[] { button },
             },
             Content = new ScrollableBase()
             {
@@ -88,15 +75,46 @@ class HelloWorldExample : NUIApplication
             }
         };
 
-        mainPage.Content.Add(CreateItem("Change theme", CreateChangeThemeExample()));
+        mainPage.Content.Add(CreateClickableItem("Theme change", "Change theme", delegate() {
+            // NUIApplication.GetDefaultWindow().Hide();
+            if (themeLoader.CurrentTheme.Id == "org.tizen.default-dark-theme")
+            {
+                var theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
+                Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+                themeLoader.CurrentTheme = theme;
+            }
+            else
+            {
+                var theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
+                Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+                themeLoader.CurrentTheme = theme;
+            }
+        }));
+        
         mainPage.Content.Add(CreateItem("RadioButton", CreateRadioButtonExample()));
-        mainPage.Content.Add(CreateItem("TimePicker", CreateTimePickerExample()));
-        mainPage.Content.Add(CreateItem("AlertDialog", CreateAlertDialogExample()));
+
+        mainPage.Content.Add(CreateItem("Switch", CreateSwitchExample()));
+        
+        mainPage.Content.Add(CreateClickableItem("AlertDialog", "Click to post alert", delegate() {
+            var dialogPage = new DialogPage()
+            {
+                ScrimColor = new Color("#888888BB"),
+                Content = new AlertDialog()
+                {
+                    ThemeChangeSensitive = true,
+                    Title = "Notice",
+                    Message = "Please click close button to dismiss",
+                    // Actions =  actions,
+                },
+            };
+
+            NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(dialogPage);
+            // DialogPage.ShowAlertDialog("Notice", "Please touch outer area to dismiss");
+        }));
+
+        mainPage.Content.Add(CreateItem("CheckBox", CreateCheckBoxExample()));
 
         NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(mainPage);
-
-        // rootView.Add(button);
-        // rootView.Add(new Switch() { Position = new Position(0, 100), ThemeChangeSensitive = true });
     }
 
     private View CreateItem(string title, View content)
@@ -109,13 +127,13 @@ class HelloWorldExample : NUIApplication
             {
                 LinearOrientation = LinearLayout.Orientation.Vertical,
             },
-            BackgroundColor = new Color("#88888822"),
-            CornerRadius = 10.0f,
+            BackgroundColor = new Color("#88888860"),
+            CornerRadius = 16.0f,
             Padding = 20,
         };
         item.Add(new TextLabel()
         {
-            PixelSize = 20.0f,
+            PixelSize = 22.0f,
             Text = title,
             ThemeChangeSensitive = true,
             Padding = new Extents(0, 0, 0, 20)
@@ -124,31 +142,53 @@ class HelloWorldExample : NUIApplication
         return item;
     }
 
-    private View CreateChangeThemeExample()
+    private View CreateClickableItem(string title, string subtitle, Action clicked)
     {
-        var button = new Button()
+        var item = new View()
         {
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            HeightResizePolicy = ResizePolicyType.FitToChildren,
+            Layout = new LinearLayout()
+            {
+                LinearOrientation = LinearLayout.Orientation.Vertical,
+            },
+            BackgroundColor = new Color("#88888860"),
+            CornerRadius = 16.0f,
+            Padding = 20,
+            LeaveRequired = true,
+        };
+        item.TouchEvent += (s, e) => {
+            var state = e.Touch.GetState(0);
+            if (state == PointStateType.Down)
+            {
+                ((View)s).BackgroundColor = new Color("#888888BB");
+            }
+            else if (state == PointStateType.Up)
+            {
+                ((View)s).BackgroundColor = new Color("#88888860");
+                clicked?.Invoke();
+            }
+            else if (state == PointStateType.Leave || state == PointStateType.Interrupted)
+            {
+                ((View)s).BackgroundColor = new Color("#88888860");
+            }
+            return false;
+        };
+        item.Add(new TextLabel()
+        {
+            PixelSize = 22.0f,
+            Text = title,
             ThemeChangeSensitive = true,
-            Text = "Light"
-        };
-        button.Clicked += (s, e) => {
-            count++;
-            Tizen.Applications.ThemeManager.Theme theme;
-            if (count % 2 == 0)
-            {
-                theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
-                ((Button)s).Text = "Light";
-            }
-            else
-            {
-                theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
-                ((Button)s).Text = "Dark";
-            }
-            Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-            themeLoader.CurrentTheme = theme;
-        };
-
-        return button;
+            Padding = new Extents(0, 0, 0, 20)
+        });
+        item.Add(new TextLabel()
+        {
+            PixelSize = 32.0f,
+            Text = subtitle,
+            ThemeChangeSensitive = true,
+            VerticalAlignment = VerticalAlignment.Center,
+        });
+        return item;
     }
 
     private View CreateRadioButtonExample()
@@ -162,9 +202,9 @@ class HelloWorldExample : NUIApplication
                 LinearOrientation = LinearLayout.Orientation.Vertical,
             },
         };
-        var radio1 = new RadioButton() { Text = "Option1", ThemeChangeSensitive = true, Padding = 5 };
-        var radio2 = new RadioButton() { Text = "Option2", ThemeChangeSensitive = true, Padding = 5 };
-        var radio3 = new RadioButton() { Text = "Option3", ThemeChangeSensitive = true, Padding = 5 };
+        var radio1 = new RadioButton() { Text = "Always on", ThemeChangeSensitive = true, Padding = 7 };
+        var radio2 = new RadioButton() { Text = "10 minutes", ThemeChangeSensitive = true, Padding = 7 };
+        var radio3 = new RadioButton() { Text = "1 minutes", ThemeChangeSensitive = true, Padding = 7 };
 
         var group = new RadioButtonGroup();
         group.Add(radio1);
@@ -175,6 +215,37 @@ class HelloWorldExample : NUIApplication
         view.Add(radio2);
         view.Add(radio3);
 
+        radio1.IsSelected = true;
+
+        return view;
+    }
+
+    private View CreateSwitchExample()
+    {
+        var view = new View()
+        {
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            HeightResizePolicy = ResizePolicyType.FitToChildren,
+        };
+        var textLabel = new TextLabel()
+        {
+            ThemeChangeSensitive = true,
+            Text = "Auto update : on"
+        };
+        view.Add(textLabel);
+
+        var switchButton = new Switch()
+        {
+            ThemeChangeSensitive = true,
+            ParentOrigin = ParentOrigin.CenterRight,
+            PivotPoint = PivotPoint.CenterRight,
+            PositionUsesPivotPoint = true,
+            IsSelected = true,
+        };
+        switchButton.SelectedChanged += (s, e) => {
+            textLabel.Text = $"Daily auto update : {(((Switch)s).IsSelected ? "on" : "off")}";
+        };
+        view.Add(switchButton);
         return view;
     }
 
@@ -202,6 +273,31 @@ class HelloWorldExample : NUIApplication
         };
 
         return button;
+    }
+
+    private View CreateCheckBoxExample()
+    {
+        var view = new View()
+        {
+            WidthResizePolicy = ResizePolicyType.FillToParent,
+            HeightResizePolicy = ResizePolicyType.FitToChildren,
+            Layout = new LinearLayout()
+            {
+                LinearOrientation = LinearLayout.Orientation.Vertical,
+            },
+        };
+        var check1 = new CheckBox() { Text = "Food", ThemeChangeSensitive = true, Padding = 7 };
+        var check2 = new CheckBox() { Text = "Animal", ThemeChangeSensitive = true, Padding = 7 };
+        var check3 = new CheckBox() { Text = "Vehicle", ThemeChangeSensitive = true, Padding = 7 };
+
+        view.Add(check1);
+        view.Add(check2);
+        view.Add(check3);
+
+        check2.IsSelected = true;
+        check3.IsSelected = true;
+
+        return view;
     }
 
     private View CreateTimePickerExample()
