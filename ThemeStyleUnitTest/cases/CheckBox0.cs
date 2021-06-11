@@ -59,41 +59,42 @@ public class CheckBox0: TestUnit
 
         
         //================================================================
-        var style = ThemeManager.GetStyle(typeof(CheckBox)) as ButtonStyle;
-        style.PositionX = 220;
-        style.Text.PointSize = 18;
-
         // CheckBox5
         container.Add(new CheckBox(new ButtonStyle()
         {
-            Text = new TextLabelStyle() { Text = "5" }
-        }.Merge<ButtonStyle>(style)));
+            IncludeDefaultStyle = true,
+            Text = new TextLabelStyle() { Text = "5", PointSize = 18 },
+            PositionX = 220,
+        }));
 
         // CheckBox6
         container.Add(new CheckBox(new ButtonStyle()
         {
-            Position = new Position(0, 100),
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 100),
             IsSelected = true,
-            Text = new TextLabelStyle() { Text = "6" }
-        }.Merge<ButtonStyle>(style)));
+            Text = new TextLabelStyle() { Text = "6", PointSize = 18 }
+        }));
 
         // CheckBox7
         container.Add(new CheckBox(new ButtonStyle()
         {
-            Position = new Position(0, 200),
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 200),
             IsEnabled = false,
-            Text = new TextLabelStyle() { Text = "7" }
-        }.Merge(style)));
+            Text = new TextLabelStyle() { Text = "7", PointSize = 18 }
+        }));
 
 
         // CheckBox8
         container.Add(new CheckBox(new ButtonStyle()
         {
-            Position = new Position(0, 300),
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 300),
             IsEnabled = false,
             IsSelected = true,
-            Text = new TextLabelStyle() { Text = "8" }
-        }.Merge(style)));
+            Text = new TextLabelStyle() { Text = "8", PointSize = 18 }
+        }));
 
         root.Add(container);
     }

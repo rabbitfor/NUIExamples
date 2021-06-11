@@ -42,35 +42,37 @@ public class Switch0 : TestUnit
         root.Add(view3);
 
         //================================================================
-        var style = ThemeManager.GetStyle(typeof(Switch)) as SwitchStyle;
-        style.PositionX = 400;
-
         // Switch5
         root.Add(new Switch(new SwitchStyle() {
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 0),
             Text = new TextLabelStyle() { Text = "Switch5" }
-        }.Merge(style)));
+        }));
 
         // Switch6
         root.Add(new Switch(new SwitchStyle() {
-            Position = new Position(0, 100),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 100),
             IsSelected = true,
             Text = new TextLabelStyle() { Text = "Switch6" }
-        }.Merge(style)));
+        }));
 
         // Switch7
         root.Add(new Switch(new SwitchStyle() {
-            Position = new Position(0, 200),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 200),
             IsEnabled = false,
             Text = new TextLabelStyle() { Text = "Switch7" }
-        }.Merge(style)));
+        }));
 
         // Switch8
         root.Add(new Switch(new SwitchStyle() {
-            Position = new Position(0, 300),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 300),
             IsEnabled = false,
             IsSelected = true,
             Text = new TextLabelStyle() { Text = "Switch8" }
-        }.Merge(style)));
+        }));
     }
 
     public override string RunningDescription => "* Numbering from the top-left corner, counter clockwise:\n"

@@ -59,7 +59,8 @@ public class Theme0 : TestUnit
             {
                 ResourceUrl = Tizen.Applications.Application.Current.DirectoryInfo.Resource + "image.jpg",
                 Size = new Size(30, 30)
-            }
+            },
+            ThemeChangeSensitive = true,
         };
         var buttonStyle2 = new ButtonStyle()
         {
@@ -74,7 +75,8 @@ public class Theme0 : TestUnit
             {
                 ResourceUrl = "",
                 Size = new Size(0, 0)
-            }
+            },
+            ThemeChangeSensitive = true,
         };
 
         theme1 = new Theme();

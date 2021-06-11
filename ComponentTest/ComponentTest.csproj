@@ -32,15 +32,16 @@
     <Compile Remove="cases/RadioButton0.cs" />
     <Compile Remove="cases/Selector0.cs" />
     <Compile Remove="cases/Shadow0.cs" />
-    <Compile Remove="cases/View0.cs" />
-    <Compile Remove="cases/WearablePopup0.cs" /-->
+    <Compile Remove="cases/View0.cs" /-->
+    <Compile Remove="cases/CircularSlider0.cs" />
+    <Compile Remove="cases/WearablePopup0.cs" />
 
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Wearable/Tizen.NUI.Wearable.csproj" />
+    <!--ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Wearable/Tizen.NUI.Wearable.csproj" /-->
   </ItemGroup>
 
 </Project>

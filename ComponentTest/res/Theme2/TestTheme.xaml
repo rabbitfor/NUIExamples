@@ -4,7 +4,7 @@
   xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   Id="TestTheme"
-  BasedOn="Tizen.NUI.Theme.Common">
+  BasedOn="org.tizen.default-light-theme">
 
   <!--CheckBox-->
   <c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox" Size="30, 30">

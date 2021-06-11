@@ -43,40 +43,43 @@ public class CheckBox0: TestUnit
 
         
         //================================================================
-        var style = ThemeManager.GetStyle(typeof(CheckBox)) as ButtonStyle;
-        style.PositionX = 400;
 
         // CheckBox5
         root.Add(new CheckBox(new ButtonStyle()
         {
-            Text = new TextLabelStyle() { Text = "CheckBox5" }
-        }.Merge<ButtonStyle>(style)));
+            IncludeDefaultStyle = true,
+            Text = new TextLabelStyle() { Text = "CheckBox5" },
+            PositionX = 300,
+        }));
 
         // CheckBox6
         root.Add(new CheckBox(new ButtonStyle()
         {
-            Position = new Position(0, 100),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 100),
             IsSelected = true,
             Text = new TextLabelStyle() { Text = "CheckBox6" }
-        }.Merge<ButtonStyle>(style)));
+        }));
 
         // CheckBox7
         root.Add(new CheckBox(new ButtonStyle()
         {
-            Position = new Position(0, 200),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 200),
             IsEnabled = false,
             Text = new TextLabelStyle() { Text = "CheckBox7" }
-        }.Merge(style)));
+        }));
 
 
         // CheckBox8
         root.Add(new CheckBox(new ButtonStyle()
         {
-            Position = new Position(0, 300),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 300),
             IsEnabled = false,
             IsSelected = true,
             Text = new TextLabelStyle() { Text = "CheckBox8" }
-        }.Merge(style)));
+        }));
     }
 
     public override string RunningDescription => "Numbering from the top-left corner, counter clockwise:\n"

@@ -46,38 +46,41 @@ public class RadioButton0: TestUnit
         group0.Add(view3);
 
         //================================================================
-        var style = ThemeManager.GetStyle(typeof(RadioButton)) as ButtonStyle;
-        style.PositionX = 400;
 
         // RadioButton5
         var view4 = new RadioButton(new ButtonStyle() {
-            Text = new TextLabelStyle() { Text = "RadioButton5" }
-        }.Merge(style));
+            IncludeDefaultStyle = true,
+            Text = new TextLabelStyle() { Text = "RadioButton5" },
+            PositionX = 300
+        });
         root.Add(view4);
 
         // RadioButton6
         var view5 = new RadioButton(new ButtonStyle() {
-            Position = new Position(0, 100),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 100),
             IsSelected = true,
             Text = new TextLabelStyle() { Text = "RadioButton6" }
-        }.Merge(style));
+        });
         root.Add(view5);
 
         // RadioButton7
         var view6 = new RadioButton(new ButtonStyle() {
-            Position = new Position(0, 200),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 200),
             IsEnabled = false,
             Text = new TextLabelStyle() { Text = "RadioButton7" }
-        }.Merge(style));
+        });
         root.Add(view6);
 
         // RadioButton8
         var view7 = new RadioButton(new ButtonStyle() {
-            Position = new Position(0, 300),
+            IncludeDefaultStyle = true,
+            Position = new Position(300, 300),
             IsEnabled = false,
             IsSelected = true,
             Text = new TextLabelStyle() { Text = "RadioButton8" }
-        }.Merge(style));
+        });
         root.Add(view7);
 
         var group1 = new RadioButtonGroup();

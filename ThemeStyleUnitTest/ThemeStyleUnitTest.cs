@@ -30,6 +30,7 @@ public class NUISampleApplication : NUIApplication
     private TextLabel passCondition;
     private TextLabel testDescription;
     private int currentIndex;
+    private bool testDone = false;
     private List<string> list = new List<string>();
 
 
@@ -64,7 +65,7 @@ public class NUISampleApplication : NUIApplication
     {
         var window = NUIApplication.GetDefaultWindow();
 
-        if (currentIndex >= list.Count)
+        if (currentIndex == list.Count)
         {
             currentTest?.OnDestroy(currentView);
             window.Remove(currentView);
@@ -72,6 +73,7 @@ public class NUISampleApplication : NUIApplication
             testDescription.Text = "All test is done!";
             window.Remove(runningDescription);
             window.Remove(passCondition);
+            testDone = true;
             return;
         }
 
@@ -156,7 +158,8 @@ public class NUISampleApplication : NUIApplication
     {
         if (args.Touch.GetState(0) == PointStateType.Down)
         {
-            Next();
+            if (testDone) Exit();
+            else Next();
         }
 
         return false;

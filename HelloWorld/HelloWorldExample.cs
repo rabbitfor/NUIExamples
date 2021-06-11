@@ -35,10 +35,11 @@ class HelloWorldExample : NUIApplication
 
     // private ContentPage firstPage, secondPage;
     private Button firstButton, secondButton;
+    private Tizen.NUI.Theme light, dark, current;
 
-    // public HelloWorldExample() : base(new Size2D(1280, 720), new Position2D(0, 0))
-    // {
-    // }
+    public HelloWorldExample() : base(ThemeOption.PlatformThemeEnabled | ThemeOption.ThemeChangeSensitive)
+    {
+    }
 
     protected override void OnAppControlReceived(Tizen.Applications.AppControlReceivedEventArgs e)
     {
@@ -52,69 +53,107 @@ class HelloWorldExample : NUIApplication
 
         themeLoader = new ThemeLoader();
 
-        var mainPage = new ContentPage()
+        var style = new PopupStyle()
         {
-            UseThemeBackgroundColor = true,
-            ThemeChangeSensitive = true,
-            AppBar = new AppBar()
+            Size = new Size(300, 200),
+            Position = new Position(60, 60),
+            BackgroundColor = Color.Magenta,
+            Title = new TextLabelStyle()
             {
-                ThemeChangeSensitive = true,
-                AutoNavigationContent = false,
-                Title = "NUI theme sample",
+                Text = "Popup1",
+                TextColor = Color.White,
             },
-            Content = new ScrollableBase()
+            Buttons = new ButtonStyle()
             {
-                Layout = new LinearLayout()
-                {
-                    LinearOrientation = LinearLayout.Orientation.Vertical,
-                    CellPadding = new Size2D(20, 20)
-                },
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent,
-                Padding = new Extents(30, 30, 20, 20)
+                CornerRadius = 0,
+                // SizeHeight = 60
             }
         };
+        var popup1 = new Popup(style);
+        popup1.AddButton("Left");
+        popup1.AddButton("Right");
+        popup1.Post(NUIApplication.GetDefaultWindow());
 
-        mainPage.Content.Add(CreateClickableItem("Theme change", "Change theme", delegate() {
-            // NUIApplication.GetDefaultWindow().Hide();
-            if (themeLoader.CurrentTheme.Id == "org.tizen.default-dark-theme")
-            {
-                var theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
-                Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-                themeLoader.CurrentTheme = theme;
-            }
-            else
-            {
-                var theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
-                Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-                themeLoader.CurrentTheme = theme;
-            }
-        }));
+        // var mainPage = new ContentPage()
+        // {
+        //     ThemeChangeSensitive = true,
+        //     AppBar = new AppBar()
+        //     {
+        //         AutoNavigationContent = false,
+        //         Title = "NUI theme sample",
+        //     },
+        //     Content = new ScrollableBase()
+        //     {
+        //         Layout = new LinearLayout()
+        //         {
+        //             LinearOrientation = LinearLayout.Orientation.Vertical,
+        //             CellPadding = new Size2D(20, 20)
+        //         },
+        //         WidthResizePolicy = ResizePolicyType.FillToParent,
+        //         HeightResizePolicy = ResizePolicyType.FillToParent,
+        //         Padding = new Extents(30, 30, 20, 20)
+        //     }
+        // };
+
+        // // light = new Tizen.NUI.Theme("/home/jy/dali/tizen-theme-manager/default_theme/light/shared/res/Tizen.NUI.Theme.xaml");
+        // // light.Merge(new Tizen.NUI.Theme("/home/jy/dali/tizen-theme-manager/default_theme/light/shared/res/Tizen.NUI.Components.Theme.xaml"));
+        // // dark = new Tizen.NUI.Theme("/home/jy/dali/tizen-theme-manager/default_theme/dark/shared/res/Tizen.NUI.Theme.xaml");
+        // // dark.Merge(new Tizen.NUI.Theme("/home/jy/dali/tizen-theme-manager/default_theme/dark/shared/res/Tizen.NUI.Components.Theme.xaml"));
+        // // current = light;
+        // var title = $"Current theme: {(themeLoader.CurrentTheme.Id == "org.tizen.default-dark-theme" ? "Dark" : "Light")}";
+
+        // mainPage.Content.Add(CreateClickableItem("Theme change", title, delegate(View view) {
+        //     TextLabel text = view.Children[1] as TextLabel;
+
+        //     if (themeLoader.CurrentTheme.Id == "org.tizen.default-dark-theme")
+        //     {
+        //         var theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
+        //         Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+        //         themeLoader.CurrentTheme = theme;
+        //         text.Text = "Current theme: Light";
+        //     }
+        //     else
+        //     {
+        //         var theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
+        //         Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
+        //         themeLoader.CurrentTheme = theme;
+        //         text.Text = "Current theme: Dark";
+        //     }
+        //     // if (current == light)
+        //     // {
+        //     //     Tizen.NUI.ThemeManager.ApplyTheme(dark);
+        //     //     current = dark;
+        //     // }
+        //     // else
+        //     // {
+        //     //     Tizen.NUI.ThemeManager.ApplyTheme(light);
+        //     //     current = light;
+        //     // }
+        // }));
         
-        mainPage.Content.Add(CreateItem("RadioButton", CreateRadioButtonExample()));
+        // mainPage.Content.Add(CreateItem("RadioButton", CreateRadioButtonExample()));
 
-        mainPage.Content.Add(CreateItem("Switch", CreateSwitchExample()));
+        // mainPage.Content.Add(CreateItem("Switch", CreateSwitchExample()));
         
-        mainPage.Content.Add(CreateClickableItem("AlertDialog", "Click to post alert", delegate() {
-            var dialogPage = new DialogPage()
-            {
-                ScrimColor = new Color("#888888BB"),
-                Content = new AlertDialog()
-                {
-                    ThemeChangeSensitive = true,
-                    Title = "Notice",
-                    Message = "Please click close button to dismiss",
-                    // Actions =  actions,
-                },
-            };
+        // mainPage.Content.Add(CreateClickableItem("AlertDialog", "Click to post alert", delegate(View view) {
+        //     var dialogPage = new DialogPage()
+        //     {
+        //         ScrimColor = new Color("#888888BB"),
+        //         Content = new AlertDialog()
+        //         {
+        //             Title = "Notice",
+        //             Message = "Please click close button to dismiss",
+        //             // Actions =  actions,
+        //         },
+        //     };
 
-            NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(dialogPage);
-            // DialogPage.ShowAlertDialog("Notice", "Please touch outer area to dismiss");
-        }));
+        //     NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(dialogPage);
+        //     // DialogPage.ShowAlertDialog("Notice", "Please touch outer area to dismiss");
+        // }));
 
-        mainPage.Content.Add(CreateItem("CheckBox", CreateCheckBoxExample()));
+        // mainPage.Content.Add(CreateItem("CheckBox", CreateCheckBoxExample()));
 
-        NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(mainPage);
+        // NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(mainPage);
     }
 
     private View CreateItem(string title, View content)
@@ -135,14 +174,13 @@ class HelloWorldExample : NUIApplication
         {
             PixelSize = 22.0f,
             Text = title,
-            ThemeChangeSensitive = true,
             Padding = new Extents(0, 0, 0, 20)
         });
         item.Add(content);
         return item;
     }
 
-    private View CreateClickableItem(string title, string subtitle, Action clicked)
+    private View CreateClickableItem(string title, string subtitle, Action<View> clicked)
     {
         var item = new View()
         {
@@ -166,7 +204,7 @@ class HelloWorldExample : NUIApplication
             else if (state == PointStateType.Up)
             {
                 ((View)s).BackgroundColor = new Color("#88888860");
-                clicked?.Invoke();
+                clicked?.Invoke(item);
             }
             else if (state == PointStateType.Leave || state == PointStateType.Interrupted)
             {
@@ -178,14 +216,12 @@ class HelloWorldExample : NUIApplication
         {
             PixelSize = 22.0f,
             Text = title,
-            ThemeChangeSensitive = true,
             Padding = new Extents(0, 0, 0, 20)
         });
         item.Add(new TextLabel()
         {
             PixelSize = 32.0f,
             Text = subtitle,
-            ThemeChangeSensitive = true,
             VerticalAlignment = VerticalAlignment.Center,
         });
         return item;
@@ -202,9 +238,9 @@ class HelloWorldExample : NUIApplication
                 LinearOrientation = LinearLayout.Orientation.Vertical,
             },
         };
-        var radio1 = new RadioButton() { Text = "Always on", ThemeChangeSensitive = true, Padding = 7 };
-        var radio2 = new RadioButton() { Text = "10 minutes", ThemeChangeSensitive = true, Padding = 7 };
-        var radio3 = new RadioButton() { Text = "1 minutes", ThemeChangeSensitive = true, Padding = 7 };
+        var radio1 = new RadioButton() { Text = "Always on", Padding = 7 };
+        var radio2 = new RadioButton() { Text = "10 minutes", Padding = 7 };
+        var radio3 = new RadioButton() { Text = "1 minutes", Padding = 7 };
 
         var group = new RadioButtonGroup();
         group.Add(radio1);
@@ -229,14 +265,12 @@ class HelloWorldExample : NUIApplication
         };
         var textLabel = new TextLabel()
         {
-            ThemeChangeSensitive = true,
             Text = "Auto update : on"
         };
         view.Add(textLabel);
 
         var switchButton = new Switch()
         {
-            ThemeChangeSensitive = true,
             ParentOrigin = ParentOrigin.CenterRight,
             PivotPoint = PivotPoint.CenterRight,
             PositionUsesPivotPoint = true,
@@ -253,7 +287,6 @@ class HelloWorldExample : NUIApplication
     {
         var button = new Button()
         {
-            ThemeChangeSensitive = true,
             Text = "Click to post alert!"
         };
         button.Clicked += (s, e) => {
@@ -286,9 +319,9 @@ class HelloWorldExample : NUIApplication
                 LinearOrientation = LinearLayout.Orientation.Vertical,
             },
         };
-        var check1 = new CheckBox() { Text = "Food", ThemeChangeSensitive = true, Padding = 7 };
-        var check2 = new CheckBox() { Text = "Animal", ThemeChangeSensitive = true, Padding = 7 };
-        var check3 = new CheckBox() { Text = "Vehicle", ThemeChangeSensitive = true, Padding = 7 };
+        var check1 = new CheckBox() { Text = "Food", Padding = 7 };
+        var check2 = new CheckBox() { Text = "Animal", Padding = 7 };
+        var check3 = new CheckBox() { Text = "Vehicle", Padding = 7 };
 
         view.Add(check1);
         view.Add(check2);

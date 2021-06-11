@@ -62,39 +62,41 @@ public class RadioButton0: TestUnit
         group0.Add(view3);
 
         //================================================================
-        var style = ThemeManager.GetStyle(typeof(RadioButton)) as ButtonStyle;
-        style.PositionX = 220;
-        style.Text.PointSize = 18;
 
         // RadioButton5
         var view4 = new RadioButton(new ButtonStyle() {
-            Text = new TextLabelStyle() { Text = "5" }
-        }.Merge(style));
+            IncludeDefaultStyle = true,
+            Text = new TextLabelStyle() { Text = "5", PointSize = 18 },
+            PositionX = 220
+        });
         container.Add(view4);
 
         // RadioButton6
         var view5 = new RadioButton(new ButtonStyle() {
-            Position = new Position(0, 100),
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 100),
             IsSelected = true,
-            Text = new TextLabelStyle() { Text = "6" }
-        }.Merge(style));
+            Text = new TextLabelStyle() { Text = "6", PointSize = 18 }
+        });
         container.Add(view5);
 
         // RadioButton7
         var view6 = new RadioButton(new ButtonStyle() {
-            Position = new Position(0, 200),
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 200),
             IsEnabled = false,
-            Text = new TextLabelStyle() { Text = "7" }
-        }.Merge(style));
+            Text = new TextLabelStyle() { Text = "7", PointSize = 18 }
+        });
         container.Add(view6);
 
         // RadioButton8
         var view7 = new RadioButton(new ButtonStyle() {
-            Position = new Position(0, 300),
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 300),
             IsEnabled = false,
             IsSelected = true,
-            Text = new TextLabelStyle() { Text = "8" }
-        }.Merge(style));
+            Text = new TextLabelStyle() { Text = "8", PointSize = 18 }
+        });
         container.Add(view7);
 
         var group1 = new RadioButtonGroup();

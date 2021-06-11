@@ -29,19 +29,46 @@ public class Popup0 : TestUnit
         popup0.BackgroundColor = Color.Cyan;
         popup0.Title.Text = "Popup0";
         popup0.Size = new Size(500, 400);
+        popup0.ButtonHeight = 60;
         popup0.AddButton("Left");
         popup0.AddButton("Right");
-        popup0.ButtonHeight = 60;
         popup0.PopupButtonClickEvent += Popup0ButtonClickedEvent;
         popup0.Post(NUIApplication.GetDefaultWindow());
 
-        var style = (PopupStyle)Tizen.NUI.ThemeManager.GetStyle(typeof(Popup));
-        style.Size = new Size(500, 400);
-        style.Position = new Position(60, 60);
-        style.BackgroundColor = Color.Magenta;
-        style.Title.Text = "Popup1";
-        style.Title.TextColor = Color.White;
-        style.Buttons.SizeHeight = 60;
+        var style = new PopupStyle()
+        {
+            IncludeDefaultStyle = true,
+            Size = new Size(500, 400),
+            Position = new Position(60, 60),
+            BackgroundColor = Color.Magenta,
+            Title = new TextLabelStyle()
+            {
+                Text = "Popup1",
+                TextColor = Color.White,
+            },
+            Buttons = new ButtonStyle()
+            {
+                CornerRadius = 0,
+                SizeHeight = 60,
+                BackgroundColor = new Selector<Color>()
+                {
+                    Normal = new Color(1, 1, 1, 1),
+                    Pressed = new Color(1, 1, 1, 0.5f),
+                },
+                Overlay = new ImageViewStyle()
+                {
+                    BackgroundColor = new Selector<Color>()
+                    {
+                        Pressed = new Color(0, 0, 0, 0.1f),
+                        Other = new Color(1, 1, 1, 0.1f),
+                    },
+                },
+                Text = new TextLabelStyle()
+                {
+                    TextColor = new Color(0.05f, 0.63f, 0.9f, 1),
+                }
+            }
+        };
         popup1 = new Popup(style);
         popup1.AddButton("Left");
         popup1.AddButton("Right");

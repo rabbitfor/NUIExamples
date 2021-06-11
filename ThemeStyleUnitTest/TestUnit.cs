@@ -8,5 +8,5 @@ public abstract class TestUnit
 
     public abstract string RunningDescription { get; }
     public abstract string PassCondition { get; }
-    public abstract string TestDescription { get; }
+    public virtual string TestDescription { get; } = string.Empty;
 }

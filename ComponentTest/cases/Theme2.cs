@@ -14,26 +14,26 @@ public class Theme2 : TestUnit
         var switchStyle = theme.GetStyle(typeof(Switch)) as SwitchStyle;
 
         root.Add(new TextLabel(){
-            Position = new Position(), 
+            Position = new Position(),
             Text = "Test1: " + (buttonStyle == null ? "FAIL" : "PASS"),
         });
 
         root.Add(new TextLabel(){
-            Position = new Position(0, 30), 
+            Position = new Position(0, 30),
             Text = "Test2: " + ((checkBoxStyle == null ? false : (checkBoxStyle.Icon.Opacity == null ? false : (checkBoxStyle.Icon.Opacity.All == 0.8f))) ? "PASS" : "FAIL"),
         });
         root.Add(new TextLabel(){
-            Position = new Position(0, 60), 
+            Position = new Position(0, 60),
             Text = "Test3: " + ((checkBoxStyle == null ? false : (checkBoxStyle.Icon.ResourceUrl == null ? false : !string.IsNullOrEmpty(checkBoxStyle.Icon.ResourceUrl.Selected))) ? "PASS" : "FAIL"),
         });
 
         root.Add(new TextLabel(){
-            Position = new Position(0, 90), 
+            Position = new Position(0, 90),
             Text = "Test4: " + ((switchStyle == null ? false : (switchStyle.Track.Border == null ? false : (switchStyle.Track.Border.All == null))) ? "PASS" : "FAIL"),
         });
 
         root.Add(new TextLabel(){
-            Position = new Position(0, 120), 
+            Position = new Position(0, 120),
             Text = "Test5: " + ((switchStyle == null ? false : (switchStyle.Track.Size == null ? false : switchStyle.Track.Size.Equals(new Size(96, 96)))) ? "PASS" : "FAIL"),
         });
     }

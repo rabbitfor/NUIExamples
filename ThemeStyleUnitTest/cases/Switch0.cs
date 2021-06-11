@@ -37,21 +37,20 @@ public class Switch0 : TestUnit
         container.Add(view1);
 
         //================================================================
-        var style = ThemeManager.GetStyle(typeof(Switch)) as SwitchStyle;
-        style.PositionX = 220;
-        style.Text.PointSize = 18;
-
         // Switch5
-        container.Add(new Switch(new SwitchStyle() {
+        root.Add(new Switch(new SwitchStyle() {
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 0),
             Text = new TextLabelStyle() { Text = "3" }
-        }.Merge(style)));
+        }));
 
         // Switch6
-        container.Add(new Switch(new SwitchStyle() {
-            Position = new Position(0, 100),
+        root.Add(new Switch(new SwitchStyle() {
+            IncludeDefaultStyle = true,
+            Position = new Position(220, 100),
             IsSelected = true,
-            Text = new TextLabelStyle() { Text = "4" }
-        }.Merge(style)));
+            Text = new TextLabelStyle() { Text = "3" }
+        }));
 
         root.Add(container);
     }

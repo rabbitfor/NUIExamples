@@ -35,6 +35,7 @@ public class Selector0 : TestUnit
             {
                 Text = "Button1",
                 PointSize = 10,
+                TextColor = Color.Black
             },
             BackgroundColor = Color.Blue,
             Opacity = null
@@ -46,7 +47,9 @@ public class Selector0 : TestUnit
         {
             Size = new Size(200, 60),
             Position = new Position(0, 120),
+            CornerRadius = 0,
             Text = "Button2",
+            TextColor = Color.Black,
             PointSize = 10,
             BackgroundColor = Color.Red,
         };
@@ -62,6 +65,7 @@ public class Selector0 : TestUnit
             {
                 Text = "Button3",
                 PointSize = 10,
+                TextColor = Color.Black
             },
             BackgroundColor = Color.Green,
             Opacity = new Selector<float?>

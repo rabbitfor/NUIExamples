@@ -21,11 +21,11 @@
     <PackageReference Include="Tizen.NET.Sdk" Version="1.0.8" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--ItemGroup>
     <Compile Remove="cases/CheckBox0.cs" />
     <Compile Remove="cases/RadioButton0.cs" />
     <Compile Remove="cases/Switch0.cs" />
-  </ItemGroup>
+  </ItemGroup-->
 
   <!--ItemGroup>
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />

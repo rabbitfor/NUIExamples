@@ -5,69 +5,6 @@ using Tizen.NUI.Components;
 
 public class Theme1 : TestUnit
 {
-    public class Popup1 : Tizen.NUI.Components.StyleBase
-    {
-        protected override ViewStyle GetViewStyle()
-        {
-            return new PopupStyle()
-            {
-                Size = new Size(500, 200),
-                BackgroundColor = Color.White,
-                BoxShadow = new Shadow(6.0f, Color.Blue, extents: new Vector2(5, 5)),
-                Title = new TextLabelStyle
-                {
-                    TextColor = Color.Black,
-                    PixelSize = 16,
-                    Text = "PopupStyle1"
-                },
-                Buttons = new ButtonStyle
-                {
-                    SizeHeight = 50,
-                    BackgroundColor = new Selector<Color>
-                    {
-                        Pressed = Color.Black,
-                        Other = Color.Cyan,
-                    },
-                    Text = new TextLabelStyle
-                    {
-                        TextColor = new Selector<Color>
-                        {
-                            Pressed = Color.White,
-                            Other = Color.Black,
-                        },
-                        PixelSize = 12,
-                    },
-                    ParentOrigin = ParentOrigin.BottomLeft,
-                    PivotPoint = PivotPoint.BottomLeft,
-                    PositionUsesPivotPoint = true
-                }
-            };
-        }
-    }
-
-    public class Popup2 : Popup1
-    {
-        protected override ViewStyle GetViewStyle()
-        {
-            var result = (PopupStyle)base.GetViewStyle();
-            result.BackgroundColor = Color.Black;
-            result.Title.Text = "PopupStyle2";
-            result.Title.TextColor = Color.Cyan;
-            result.Buttons.SizeHeight = 80;
-            result.Buttons.BackgroundColor = new Selector<Color>
-            {
-                Pressed = Color.Cyan,
-                Other = Color.Black,
-            };
-            result.Buttons.Text.TextColor = new Selector<Color>
-            {
-                Pressed = Color.Black,
-                Other = Color.White,
-            };
-            return result;
-        }
-    }
-
     int clickCount = 0;
     Popup popup0, popup1;
     Theme theme1, theme2;
@@ -105,7 +42,8 @@ public class Theme1 : TestUnit
                 ParentOrigin = ParentOrigin.BottomLeft,
                 PivotPoint = PivotPoint.BottomLeft,
                 PositionUsesPivotPoint = true
-            }
+            },
+            ThemeChangeSensitive = true,
         };
 
         var popupStyle2 = popupStyle1.Clone() as PopupStyle;

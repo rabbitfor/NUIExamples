@@ -35,6 +35,7 @@ public class Selector0 : TestUnit
             {
                 Text = "Button1",
                 PixelSize = 12,
+                TextColor = Color.Black
             },
             BackgroundColor = Color.Blue,
             Opacity = null
@@ -50,6 +51,7 @@ public class Selector0 : TestUnit
             {
                 Text = "Button2",
                 PixelSize = 12,
+                TextColor = Color.Black
             },
             BackgroundColor = Color.Red,
         });
@@ -65,6 +67,7 @@ public class Selector0 : TestUnit
             {
                 Text = "Button3",
                 PixelSize = 12,
+                TextColor = Color.Black
             },
             BackgroundColor = Color.Green,
             Opacity = new Selector<float?>

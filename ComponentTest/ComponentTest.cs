@@ -28,11 +28,13 @@ public class NUISampleApplication : NUIApplication
     private View currentView;
     private TextLabel runningDescription;
     private TextLabel passCondition;
+    private TextLabel testDescription;
     private int currentIndex;
+    private bool testDone = false;
     private List<string> list = new List<string>();
 
 
-    public NUISampleApplication() : base(new Size2D(600, 800), new Position2D(0, 0))
+    public NUISampleApplication() : base(new Size2D(720, 1280), new Position2D(0, 0))
     {
     }
 
@@ -61,7 +63,21 @@ public class NUISampleApplication : NUIApplication
 
     public void Next()
     {
-        if (currentIndex >= list.Count) return;
+        var window = NUIApplication.GetDefaultWindow();
+
+        if (currentIndex == list.Count)
+        {
+            currentTest?.OnDestroy(currentView);
+            window.Remove(currentView);
+            currentView = null;
+            testDescription.Text = "All test is done!";
+            window.Remove(runningDescription);
+            window.Remove(passCondition);
+            testDone = true;
+            return;
+        }
+
+        if (currentIndex >= list.Count) Exit();
 
         string testName = list[currentIndex++];
         TestUnit testUnit = this.GetType().Assembly.CreateInstance(testName) as TestUnit;
@@ -72,8 +88,6 @@ public class NUISampleApplication : NUIApplication
             return;
         }
 
-        var window = NUIApplication.GetDefaultWindow();
-
         if (currentTest != null)
         {
             currentTest.OnDestroy(currentView);
@@ -82,16 +96,34 @@ public class NUISampleApplication : NUIApplication
         }
         currentTest = testUnit;
 
-        if (!runningDescription)
+        if (testDescription == null)
+        {
+            testDescription = new TextLabel
+            {
+                TextColor = Color.White,
+                MultiLine = true,
+                BackgroundColor = new Color(0.2f, 0.2f, 0.2f, 1.0f),
+                PixelSize = 12,
+                Position = new Position(0, 880),
+                Size = new Size(720, 400),
+                PositionUsesPivotPoint = true,
+                ParentOrigin = ParentOrigin.TopLeft,
+                PivotPoint = PivotPoint.TopLeft,
+            };
+            window.Add(testDescription);
+            testDescription.TouchEvent += OnDescriptionTouch;
+        }
+
+        if (runningDescription == null)
         {
             runningDescription = new TextLabel
             {
                 TextColor = Color.Black,
                 MultiLine = true,
-                BackgroundColor = Color.Yellow,
-                PointSize = 10,
-                Size = new Size(600, 150),
-                Position = new Position(0, 500),
+                BackgroundColor = new Color(0.8f, 0.8f, 0.8f, 1.0f),
+                PixelSize = 12,
+                Size = new Size(710, 175),
+                Position = new Position(5, 920),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,
@@ -99,16 +131,16 @@ public class NUISampleApplication : NUIApplication
             window.Add(runningDescription);
         }
 
-        if (!passCondition)
+        if (passCondition == null)
         {
             passCondition = new TextLabel
             {
                 TextColor = Color.Black,
                 MultiLine = true,
-                BackgroundColor = Color.Magenta,
-                PointSize = 10,
-                Size = new Size(600, 150),
-                Position = new Position(0, 650),
+                BackgroundColor = new Color(0.8f, 0.8f, 0.8f, 1.0f),
+                PixelSize = 12,
+                Size = new Size(710, 175),
+                Position = new Position(5, 1105),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,
@@ -118,14 +150,25 @@ public class NUISampleApplication : NUIApplication
 
         currentView = TestUtils.CreateEmptyView();
         testUnit.OnCreate(currentView);
-        runningDescription.Text = "<TC: " + testName + ">\n\n[First Look]\n\n" + testUnit.RunningDescription;
-        passCondition.Text = "[Pass Condition]\n\n" +testUnit.PassCondition;
+        testDescription.Text = "<TC: " + testName + ">\n" + testUnit.TestDescription;
+        runningDescription.Text = "[First Look]\n" + testUnit.RunningDescription;
+        passCondition.Text = "[Pass Condition]\n" + testUnit.PassCondition;
         window.Add(currentView);
+    }
+
+    public bool OnDescriptionTouch(object sender, View.TouchEventArgs args)
+    {
+        if (args.Touch.GetState(0) == PointStateType.Down)
+        {
+            if (testDone) Exit();
+            else Next();
+        }
+
+        return false;
     }
 
     public void OnKeyEvent(object sender, Window.KeyEventArgs e)
     {
-        Tizen.Log.Info("JYJY", e.Key.KeyPressedName);
         if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
         {
             Exit();

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns="http://tizen.org/ns/packages" api-version="5.5" package="org.tizen.example.ComponentTest" version="1.0.0">
   <profile name="common" />
-  <ui-application appid="org.tizen.example.NUISampleApplication"
+  <ui-application appid="org.tizen.example.ComponentTest"
 					exec="ComponentTest.dll"
 					type="dotnet"
 					multiple="false"
@@ -11,7 +11,6 @@
 					api-version="6">
     <label>ComponentTest</label>
     <icon>ComponentTest.png</icon>
-    <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
   </ui-application>
   <privileges>
 	  <privilege>http://tizen.org/privilege/window.priority.set</privilege>

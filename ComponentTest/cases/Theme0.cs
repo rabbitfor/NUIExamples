@@ -7,28 +7,6 @@ using Tizen.NUI.Components;
 // Test reuse of button style
 public class Theme0 : TestUnit
 {
-    public class Button1 : Tizen.NUI.Components.StyleBase
-    {
-        protected override ViewStyle GetViewStyle()
-        {
-            return new ButtonStyle()
-            {
-                Size = new Size(160, 100),
-                BackgroundColor = Color.Blue,
-                Text = new TextLabelStyle
-                {
-                    TextColor = Color.Black,
-                    PointSize = 16,
-                },
-                Icon = new ImageViewStyle
-                {
-                    ResourceUrl = Tizen.Applications.Application.Current.DirectoryInfo.Resource + "image.jpg",
-                    Size = new Size(30, 30)
-                }
-            };
-        }
-    }
-
     public class Button2 : Tizen.NUI.Components.StyleBase
     {
         protected override ViewStyle GetViewStyle()
@@ -40,7 +18,7 @@ public class Theme0 : TestUnit
                 Text = new TextLabelStyle
                 {
                     TextColor = Color.White,
-                    PointSize = 18,
+                    PixelSize = 18,
                 },
                 Icon = new ImageViewStyle
                 {
@@ -64,15 +42,57 @@ public class Theme0 : TestUnit
 
     int clickCount = 0;
 
-    public override void OnCreate(View root)
-    {       
-        Tizen.NUI.Components.StyleManager.Instance.Theme = "Theme1";
+    Theme theme1, theme2, theme3;
 
-        Tizen.NUI.Components.StyleManager.Instance.RegisterStyle("Button1", "Theme1", typeof(Button1));
-        Tizen.NUI.Components.StyleManager.Instance.RegisterStyle("Button2", "Theme1", typeof(Button2));
-        Tizen.NUI.Components.StyleManager.Instance.RegisterStyle("Button1", "Theme2", typeof(Button2));
-        Tizen.NUI.Components.StyleManager.Instance.RegisterStyle("Button2", "Theme2", typeof(Button1));
-        Tizen.NUI.Components.StyleManager.Instance.RegisterStyle("Button1", null, typeof(Button3));
+    public override void OnCreate(View root)
+    {
+        var buttonStyle1 = new ButtonStyle()
+        {
+            Size = new Size(160, 100),
+            BackgroundColor = Color.Blue,
+            Text = new TextLabelStyle
+            {
+                TextColor = Color.Black,
+                PixelSize = 16,
+            },
+            Icon = new ImageViewStyle
+            {
+                ResourceUrl = Tizen.Applications.Application.Current.DirectoryInfo.Resource + "image.jpg",
+                Size = new Size(30, 30)
+            },
+            ThemeChangeSensitive = true,
+        };
+        var buttonStyle2 = new ButtonStyle()
+        {
+            Size = new Size(120, 120),
+            BackgroundColor = Color.Red,
+            Text = new TextLabelStyle
+            {
+                TextColor = Color.White,
+                PixelSize = 18,
+            },
+            Icon = new ImageViewStyle
+            {
+                ResourceUrl = "",
+                Size = new Size(0, 0)
+            },
+            ThemeChangeSensitive = true,
+        };
+
+        theme1 = new Theme();
+        theme1.AddStyle("Button1", buttonStyle1);
+        theme1.AddStyle("Button2", buttonStyle2);
+
+        theme2 = new Theme();
+        theme2.AddStyle("Button1", buttonStyle2);
+        theme2.AddStyle("Button2", buttonStyle1);
+
+        theme3 = new Theme();
+        buttonStyle2.BackgroundColor = Color.Yellow;
+        buttonStyle2.Text.TextColor = Color.Black;
+        theme3.AddStyle("Button1", buttonStyle2);
+
+        ThemeManager.ApplyTheme(theme1);
 
         var button = new Button("Button1")
         {
@@ -114,29 +134,28 @@ public class Theme0 : TestUnit
 
     public void OnClicked(object target, ClickedEventArgs args)
     {
-        Tizen.Log.Info("JYJY", "OnClicked\n");
         clickCount = (clickCount + 1) % 3;
         if (clickCount == 0)
         {
-            Tizen.NUI.Components.StyleManager.Instance.Theme = "Theme1";
+            ThemeManager.ApplyTheme(theme1);
         }
         else if (clickCount == 1)
         {
-            Tizen.NUI.Components.StyleManager.Instance.Theme = "Theme2";
+            ThemeManager.ApplyTheme(theme2);
         }
         else
         {
-            Tizen.NUI.Components.StyleManager.Instance.Theme = "Default";
+            ThemeManager.ApplyTheme(theme3);
         }
     }
 
-    public override string RunningDescription => "There are 3 blue boxes in left side with a small icon.\n"
-                                               + "There are 2 red boxes in the right with no image.";
+    public override string RunningDescription => "There are 3 blue boxes in left side with a small image: A, B, C.\n"
+                                               + "There are 2 red boxes in the right with no image: B, C.";
 
-    public override string PassCondition => "Click A!\n"
-                                          + "* A, C will be red boxes. And B, D will be blue boxes with icon. No changes for E.\n\n"
-                                          + "Click A again!\n"
-                                          + "* A, C will have look of yellow boxes. No changes for B, D, E.\n\n"
-                                          + "Click A again!\n"
-                                          + "* A, C will be blue boxes with icon. And B, D will be red boxes. No changes for E.";
+    public override string PassCondition => "1. Click A\n"
+                                          + "-> A, C will be red boxes. And B, D will be blue boxes with icon. No changes for E.\n\n"
+                                          + "2. Click A again!\n"
+                                          + "-> A, C will have look of yellow boxes. No changes for B, D, E.\n\n"
+                                          + "3. Click A again!\n"
+                                          + "-> A, C will be blue boxes with icon. And B, D will be red boxes. No changes for E.";
 }
