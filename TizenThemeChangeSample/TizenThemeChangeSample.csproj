@@ -18,15 +18,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--PackageReference Include="Tizen.NET" Version="8.0.0.*" /-->
+    <!--PackageReference Include="Tizen.NET" Version="9.0.0.*" /-->
     <PackageReference Include="Tizen.NET.Sdk" Version="1.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Wearable/Tizen.NUI.Wearable.csproj" />
-    <!--ProjectReference Include="$(TizenFXDir)/../../fhub-nui/Tizen.FH.NUI/Tizen.FH.NUI.csproj" /-->
   </ItemGroup>
 
 </Project>

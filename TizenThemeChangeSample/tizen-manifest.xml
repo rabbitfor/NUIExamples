@@ -3,7 +3,7 @@
   <profile name="common" />
   <ui-application appid="org.tizen.example.NUISampleApplication"
 					exec="NUISampleApplication.dll"
-					type="dotnet"
+					type="dotnet-nui"
 					multiple="false"
 					taskmanage="true"
 					nodisplay="false"
@@ -11,7 +11,6 @@
 					api-version="6">
     <label>NUISampleApplication</label>
     <icon>NUISampleApplication.png</icon>
-    <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
   </ui-application>
   <privileges>
 	  <privilege>http://tizen.org/privilege/window.priority.set</privilege>
