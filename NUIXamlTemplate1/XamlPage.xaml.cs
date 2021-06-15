@@ -4,9 +4,9 @@ using Tizen.NUI.BaseComponents;
 
 namespace NUIXamlTemplate1
 {
-    public partial class XamlPage : ContentPage
+    public partial class XamlPage : View
     {
-        public XamlPage(Window win) : base(win)
+        public XamlPage() : base()
         {
             InitializeComponent();
         }

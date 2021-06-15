@@ -44,8 +44,8 @@
     <ProjectReference Include="$(TizenFXDir)/Tizen/Tizen.csproj" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <NeedInjection>False</NeedInjection>
-  </PropertyGroup>
+  <!--PropertyGroup>
+    <NeedInjection>True</NeedInjection>
+  </PropertyGroup-->
 
 </Project>

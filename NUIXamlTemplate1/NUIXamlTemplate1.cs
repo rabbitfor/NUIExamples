@@ -14,7 +14,8 @@ namespace NUIXamlTemplate1
             Window.Instance.BackgroundColor = Color.Blue;
             Window.Instance.KeyEvent += OnKeyEvent;
 
-            XamlPage page = new XamlPage(Window.Instance);
+            XamlPage page = new XamlPage();
+            Window.Instance.Add(page);
 
             // animation = new Animation(2000);
             // animation.AnimateTo(page.text, "Orientation", new Rotation(new Radian(new Degree(180.0f)), PositionAxis.X), 0, 500);
@@ -22,12 +23,14 @@ namespace NUIXamlTemplate1
             // animation.Looping = true;
             // animation.Play();
 
+            // Window.Instance.Add(new Button());
+
             // TextLabel text = new TextLabel(new TextLabelStyle
             // {
             //     TextColor = Color.Yellow,
             // });
             // text.Text = "Hello!!!!!";
-            // Window.Instance.Add(text);
+            // Window.Instance.Add(page);
         }
 
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)
