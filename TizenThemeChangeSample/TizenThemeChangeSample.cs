@@ -91,10 +91,10 @@ class HelloWorldExample : NUIApplication
                 text.Text = "Current theme: Dark";
             }
         }));
-        
-        mainPage.Content.Add(CreateItem("RadioButton", CreateRadioButtonExample()));
 
         mainPage.Content.Add(CreateItem("Switch", CreateSwitchExample()));
+        
+        mainPage.Content.Add(CreateItem("RadioButton", CreateRadioButtonExample()));
         
         mainPage.Content.Add(CreateClickableItem("AlertDialog", "Click to post alert", delegate(View view) {
             var dialogPage = new DialogPage()
@@ -112,6 +112,10 @@ class HelloWorldExample : NUIApplication
         }));
 
         mainPage.Content.Add(CreateItem("CheckBox", CreateCheckBoxExample()));
+
+        mainPage.Content.Add(CreateClickableItem("Exit", "Click to exit application", delegate(View view) {
+            Exit();
+        }));
 
         NUIApplication.GetDefaultWindow().GetDefaultNavigator().Push(mainPage);
     }
@@ -170,7 +174,7 @@ class HelloWorldExample : NUIApplication
             {
                 ((View)s).BackgroundColor = new Color("#88888860");
             }
-            return false;
+            return true;
         };
         item.Add(new TextLabel()
         {
@@ -200,7 +204,7 @@ class HelloWorldExample : NUIApplication
         };
         var radio1 = new RadioButton() { Text = "Always on", Padding = 7 };
         var radio2 = new RadioButton() { Text = "10 minutes", Padding = 7 };
-        var radio3 = new RadioButton() { Text = "1 minutes", Padding = 7 };
+        var radio3 = new RadioButton() { Text = "1 minute", Padding = 7 };
 
         var group = new RadioButtonGroup();
         group.Add(radio1);
