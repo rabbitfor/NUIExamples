@@ -4,34 +4,10 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components" >
 
-    <!--View.XamlResources>
-      <TextLabelStyle x:Name="TextLabelStyle1" x:Key="TextLabelStyleKey">
-        <TextLabelStyle.TextColor>
-          <Selector x:TypeArguments="Color" All="Yellow"/>
-        </TextLabelStyle.TextColor>
-      </TextLabelStyle>
-    </View.XamlResources-->
 
-    <!--TextLabel PositionUsesPivotPoint="True" ParentOrigin="Center" PivotPoint="Center" Text="Hello World!" PointSize="17">
-
-    </TextLabel-->
-
-    <c:Button>
-      <x:Arguments>
-        
-      </x:Arguments>
-      <c:Button.IconURLSelector>
-        <c:StringSelector 
-          Normal="{ApplicationResourcePath Arrow_rigt_blur_bg.svg}"
-          Pressed="{ApplicationResourcePath ButtonPressed.png}"/>
-      </c:Button.IconURLSelector>
-    </c:Button>
-
-    <!--ImageView Size="500,500">
-      <x:Arguments>
-        {x:Reference imageViewStyle1}
-      </x:Arguments>
-    </ImageView-->
-    
+    <c:Button StyleName="YelloButton" Size="100, 50" Position="0, 0" Text="Button1"/>
+    <c:Button StyleName="BlueButton" Size="100, 50" Position="0, 60" Text="Button2"/>
+    <c:Button StyleName="YelloButton" Size="100, 50" Position="0, 120" Text="Button3"/>
+    <c:Button StyleName="BlueButton" Size="100, 50" Position="0, 180" Text="Button4"/>
 
 </View>

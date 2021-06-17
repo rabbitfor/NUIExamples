@@ -11,26 +11,12 @@ namespace NUIXamlTemplate1
         protected override void OnCreate()
         {
             base.OnCreate();
-            Window.Instance.BackgroundColor = Color.Blue;
+            Window.Instance.BackgroundColor = Color.White;
             Window.Instance.KeyEvent += OnKeyEvent;
 
+            ThemeManager.ApplyTheme(new Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "theme/theme.xaml"));
             XamlPage page = new XamlPage();
             Window.Instance.Add(page);
-
-            // animation = new Animation(2000);
-            // animation.AnimateTo(page.text, "Orientation", new Rotation(new Radian(new Degree(180.0f)), PositionAxis.X), 0, 500);
-            // animation.AnimateTo(page.text, "Orientation", new Rotation(new Radian(new Degree(0.0f)), PositionAxis.X), 500, 1000);
-            // animation.Looping = true;
-            // animation.Play();
-
-            // Window.Instance.Add(new Button());
-
-            // TextLabel text = new TextLabel(new TextLabelStyle
-            // {
-            //     TextColor = Color.Yellow,
-            // });
-            // text.Text = "Hello!!!!!";
-            // Window.Instance.Add(page);
         }
 
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)

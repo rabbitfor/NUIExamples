@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Theme
+  xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  Id="sampleTheme" >
+
+  <c:ButtonStyle x:Key="YelloButton" CornerRadius="0">
+    <c:ButtonStyle.BackgroundColor>
+      <Selector x:TypeArguments="Color" Normal="Yellow" Pressed="Red" />
+    </c:ButtonStyle.BackgroundColor>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle TextColor="Blue" PixelSize="12"/>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle>
+
+  <c:ButtonStyle x:Key="BlueButton"  CornerRadius="25">
+    <c:ButtonStyle.BackgroundColor>
+      <Selector x:TypeArguments="Color" Normal="Blue" Pressed="Black" />
+    </c:ButtonStyle.BackgroundColor>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle TextColor="White" PixelSize="12"/>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle>
+
+</Theme>
