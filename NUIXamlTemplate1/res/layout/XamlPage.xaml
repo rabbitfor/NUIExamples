@@ -5,7 +5,7 @@
   xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components" >
 
 
-    <c:Button StyleName="YelloButton" Size="100, 50" Position="0, 0" Text="Button1"/>
+    <c:Button Size="100, 50" Position="0, 0" Text="Button1"/>
     <c:Button StyleName="BlueButton" Size="100, 50" Position="0, 60" Text="Button2"/>
     <c:Button StyleName="YelloButton" Size="100, 50" Position="0, 120" Text="Button3"/>
     <c:Button StyleName="BlueButton" Size="100, 50" Position="0, 180" Text="Button4"/>

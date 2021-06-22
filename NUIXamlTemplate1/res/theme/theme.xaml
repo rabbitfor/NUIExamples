@@ -5,7 +5,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   Id="sampleTheme" >
 
-  <c:ButtonStyle x:Key="YelloButton" CornerRadius="0">
+  <c:ButtonStyle x:Key="YelloButton" CornerRadius="25">
     <c:ButtonStyle.BackgroundColor>
       <Selector x:TypeArguments="Color" Normal="Yellow" Pressed="Red" />
     </c:ButtonStyle.BackgroundColor>
@@ -14,10 +14,10 @@
     </c:ButtonStyle.Text>
   </c:ButtonStyle>
 
-  <c:ButtonStyle x:Key="BlueButton"  CornerRadius="25">
-    <c:ButtonStyle.BackgroundColor>
-      <Selector x:TypeArguments="Color" Normal="Blue" Pressed="Black" />
-    </c:ButtonStyle.BackgroundColor>
+  <c:ButtonStyle x:Key="BlueButton"  CornerRadius="0">
+    <c:ButtonStyle.BackgroundImage>
+      <Selector x:TypeArguments="x:String" Normal="{ApplicationResourcePath blue.png}" Pressed="{ApplicationResourcePath purple.png}" />
+    </c:ButtonStyle.BackgroundImage>
     <c:ButtonStyle.Text>
       <TextLabelStyle TextColor="White" PixelSize="12"/>
     </c:ButtonStyle.Text>
