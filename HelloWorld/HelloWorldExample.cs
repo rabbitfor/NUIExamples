@@ -42,11 +42,13 @@ class HelloWorldExample : NUIApplication
         };
         NUIApplication.GetDefaultWindow().Add(rootView);
 
-        Show();
+        // Show();
 
-        timer = new Timer(interval);
-        timer.Tick += OnTick;
-        timer.Start();
+        // timer = new Timer(interval);
+        // timer.Tick += OnTick;
+        // timer.Start();
+
+        
     }
 
     bool OnTick(object sender, Timer.TickEventArgs e)

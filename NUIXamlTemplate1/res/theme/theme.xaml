@@ -1,26 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Theme
   xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
-  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
   Id="sampleTheme" >
 
-  <c:ButtonStyle x:Key="YelloButton" CornerRadius="25">
-    <c:ButtonStyle.BackgroundColor>
-      <Selector x:TypeArguments="Color" Normal="Yellow" Pressed="Red" />
-    </c:ButtonStyle.BackgroundColor>
-    <c:ButtonStyle.Text>
-      <TextLabelStyle TextColor="Blue" PixelSize="12"/>
-    </c:ButtonStyle.Text>
-  </c:ButtonStyle>
-
-  <c:ButtonStyle x:Key="BlueButton"  CornerRadius="0">
-    <c:ButtonStyle.BackgroundImage>
-      <Selector x:TypeArguments="x:String" Normal="{ApplicationResourcePath blue.png}" Pressed="{ApplicationResourcePath purple.png}" />
-    </c:ButtonStyle.BackgroundImage>
-    <c:ButtonStyle.Text>
-      <TextLabelStyle TextColor="White" PixelSize="12"/>
-    </c:ButtonStyle.Text>
-  </c:ButtonStyle>
+  <!-- Put styles with x:Key here -->
 
 </Theme>

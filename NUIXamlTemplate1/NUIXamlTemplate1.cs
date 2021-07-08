@@ -7,14 +7,13 @@ namespace NUIXamlTemplate1
 {
     class Program : NUIApplication
     {
-        Animation animation;
         protected override void OnCreate()
         {
             base.OnCreate();
-            Window.Instance.BackgroundColor = Color.White;
-            Window.Instance.KeyEvent += OnKeyEvent;
 
-            ThemeManager.ApplyTheme(new Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "theme/theme.xaml"));
+            // NOTE To use theme.xaml, uncomment below line.
+            // ThemeManager.ApplyTheme(new Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "theme/theme.xaml"));
+
             XamlPage page = new XamlPage();
             Window.Instance.Add(page);
         }

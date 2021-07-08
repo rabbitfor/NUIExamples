@@ -28,24 +28,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Tizen.NUI.XamlBuild" Version="1.0.10" />
+    <PackageReference Include="Tizen.NUI.XamlBuild" Version="1.0.12" />
     <!--PackageReference Include="Tizen.NET" Version="8.0.0.15187" /-->
     <PackageReference Include="Tizen.NET.Sdk" Version="1.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="$(TizenFXDir)/Tizen.Applications.Common/Tizen.Applications.Common.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.Applications.ComponentBased/Tizen.Applications.ComponentBased.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.Log/Tizen.Log.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.System.Information/Tizen.System.Information.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen.System.SystemSettings/Tizen.System.SystemSettings.csproj" />
-    <ProjectReference Include="$(TizenFXDir)/Tizen/Tizen.csproj" />
+    <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
   </ItemGroup>
 
-  <!--PropertyGroup>
+  <PropertyGroup>
     <NeedInjection>True</NeedInjection>
-  </PropertyGroup-->
+  </PropertyGroup>
 
 </Project>
