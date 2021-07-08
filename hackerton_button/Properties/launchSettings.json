@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ButtonSample": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    }
+  }
+}
