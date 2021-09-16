@@ -23,12 +23,7 @@ using Tizen.NUI.BaseComponents;
 
 class HelloWorldExample : NUIApplication
 {
-    List<TextLabel> list = new List<TextLabel>();
-    Timer timer;
     View rootView;
-    const int interval = 3000;
-    const int maxCount = 1000;
-    int count = 0;
 
     protected override void OnCreate()
     {
@@ -42,50 +37,27 @@ class HelloWorldExample : NUIApplication
         };
         NUIApplication.GetDefaultWindow().Add(rootView);
 
-        // Show();
-
-        // timer = new Timer(interval);
-        // timer.Tick += OnTick;
-        // timer.Start();
-
-        
-    }
-
-    bool OnTick(object sender, Timer.TickEventArgs e)
-    {
-        if (list.Count > 0)
+        var button = new Button()
         {
-            for (var i = 0; i < maxCount; i++)
+            Text = "Start"
+        };
+        button.Clicked += (s, e) => {
+            for (var i = 0; i < 1000; i++)
             {
-                rootView.Remove(list[i]);
-                list[i].Dispose();
-                list[i] = null;
+                var view = new View() {
+                    Size = new Size(10, 10),
+                    Position = new Position(i, i),
+                    BackgroundColor = Color.Blue
+                };
+                var size = view.Size;
+                var pos = view.Position;
+                var bg = view.BackgroundColor;
+                var name = view.Name;
+                var sensitive = view.Sensitive;
+                rootView.Add(view);
             }
-
-            list.Clear();
-            FullGC();
-            Tizen.Log.Info("JYJY", $"Clear text labels {count++}\n");
-        }
-        else
-        {
-            Show();
-            Tizen.Log.Info("JYJY", $"Create text labels {count++}\n");
-        }
-        return true;
-    }
-
-    void Show()
-    {
-        for (int i = 0; i < maxCount; i++)
-        {
-            var t = new TextLabel()
-            {
-                Text = "Hello World" + i.ToString() + "!",
-                Position = new Position((float)((i/500)*100), (float)(i%500)),
-            };
-            list.Add(t);
-            rootView.Add(t);
-        }
+        };
+        rootView.Add(button);
     }
 
     private void FullGC()
