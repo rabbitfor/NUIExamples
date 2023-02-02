@@ -21,29 +21,38 @@
     <Folder Include="res/" />
   </ItemGroup>
   
-    <ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="res/layout/XamlPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="res/theme/NewTheme.xaml">
+    <EmbeddedResource Include="res/theme/ApplicationTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <!--PackageReference Include="Tizen.NUI.XamlBuild" Version="1.0.12" /-->
-    <!--PackageReference Include="Tizen.NET" Version="*" /-->
+    <PackageReference Include="Tizen.NET" Version="*" />
     <PackageReference Include="Tizen.NET.Sdk" Version="*" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--ItemGroup>
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.XamlBuild/Tizen.NUI.XamlBuild.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI/Tizen.NUI.csproj" />
     <ProjectReference Include="$(TizenFXDir)/Tizen.NUI.Components/Tizen.NUI.Components.csproj" />
-  </ItemGroup>
+  </ItemGroup-->
+
+  <!--PropertyGroup>
+    <NeedInjection>True</NeedInjection>
+  </PropertyGroup-->
+
 
   <PropertyGroup>
-    <NeedInjection>True</NeedInjection>
+    <XamlOptimization>1</XamlOptimization>
   </PropertyGroup>
+
+  <!--ImportGroup>
+    <Import Project="$(TizenFXDir)/../pkg/Tizen.NET.API11/xamlbuild/Tizen.NUI.XamlBuild.targets" />
+  </ImportGroup-->
 
 </Project>

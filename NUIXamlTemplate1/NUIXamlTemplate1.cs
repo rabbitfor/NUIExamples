@@ -11,8 +11,19 @@ namespace NUIXamlTemplate1
         {
             base.OnCreate();
 
-            // NOTE To use theme.xaml, uncomment below line.
-            ThemeManager.ApplyTheme(new NewTheme());
+            // // NOTE To use theme.xaml, uncomment below line.
+            // ThemeManager.ApplyTheme(new ApplicationTheme());
+            var theme = new ApplicationTheme();
+            // var theme = new Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "theme/ApplicationTheme.xaml");
+
+
+            Button button = new Button();
+            button.Text = "Hello";
+            button.Size = new Size(100, 100);
+            button.BackgroundColor = Color.Aqua;
+            // button.ControlStateChangedEvent += OnControlStateChanged;
+            Window.Instance.Add(button);
+
 
             XamlPage page = new XamlPage();
             Window.Instance.Add(page);

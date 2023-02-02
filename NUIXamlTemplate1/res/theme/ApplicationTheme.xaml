@@ -1,0 +1,33 @@
+<Theme x:Class="NUIXamlTemplate1.ApplicationTheme"
+  xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
+  Id="sampleTheme" >
+
+  <!-- Put styles with x:Key here -->
+  <!--c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox">
+  </c:ButtonStyle-->
+
+  <!--c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox">
+    <c:ButtonStyle.Icon>
+        <ImageViewStyle>
+          <ImageViewStyle.ResourceUrl>
+              <Selector x:TypeArguments="x:String"
+                Normal="{NUIResourcePath IoT_check_off.png}"
+                Pressed="{NUIResourcePath IoT_check_off_p.png}"
+                Disabled="{NUIResourcePath IoT_check_off_d.png}"
+                Focused="{NUIResourcePath IoT_check_off_f.png}"
+                Selected="{NUIResourcePath IoT_check_on.png}"
+                SelectedPressed="{NUIResourcePath IoT_check_on_p.png}"
+                SelectedFocused="{NUIResourcePath IoT_check_on_f.png}"
+                DisabledSelected="{NUIResourcePath IoT_check_on_d.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+    </c:ButtonStyle.Icon>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle
+        TextColor="#001447"/>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle-->
+
+</Theme>

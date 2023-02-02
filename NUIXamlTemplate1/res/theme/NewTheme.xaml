@@ -1,9 +1,0 @@
-<Theme x:Class="NUIXamlTemplate1.NewTheme"
-  xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
-  Id="sampleTheme" >
-
-  <!-- Put styles with x:Key here -->
-
-</Theme>
