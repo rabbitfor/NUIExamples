@@ -12,7 +12,7 @@ namespace NUIXamlTemplate1
             base.OnCreate();
 
             // NOTE To use theme.xaml, uncomment below line.
-            // ThemeManager.ApplyTheme(new Theme(Tizen.Applications.Application.Current.DirectoryInfo.Resource + "theme/theme.xaml"));
+            ThemeManager.ApplyTheme(new NewTheme());
 
             XamlPage page = new XamlPage();
             Window.Instance.Add(page);

@@ -4,9 +4,9 @@ using Tizen.NUI.BaseComponents;
 
 namespace NUIXamlTemplate1
 {
-    public partial class XamlPage : View
+    public partial class NewTheme : Theme
     {
-        public XamlPage() : base()
+        public NewTheme() : base()
         {
         }
     }
