@@ -5,10 +5,17 @@
   Id="sampleTheme" >
 
   <!-- Put styles with x:Key here -->
-  <!--c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox">
-  </c:ButtonStyle-->
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.Button">
+    <c:ButtonStyle.BackgroundColor>
+      <Selector x:TypeArguments="Color"
+        Normal="#FF00FF"
+        Pressed="00FF00"
+        Focused="00FFFF"
+        Disabled="000000"/>
+    </c:ButtonStyle.BackgroundColor>
+  </c:ButtonStyle>
 
-  <!--c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox">
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox">
     <c:ButtonStyle.Icon>
         <ImageViewStyle>
           <ImageViewStyle.ResourceUrl>
@@ -28,6 +35,6 @@
       <TextLabelStyle
         TextColor="#001447"/>
     </c:ButtonStyle.Text>
-  </c:ButtonStyle-->
+  </c:ButtonStyle>
 
 </Theme>
