@@ -7,7 +7,7 @@ public class TestUtils
     {
         return new View
         {
-            Size = new Size(720, 880),
+            Size = new Size(720, 440),
             PositionUsesPivotPoint = true,
             ParentOrigin = ParentOrigin.TopLeft,
             PivotPoint = PivotPoint.TopLeft,

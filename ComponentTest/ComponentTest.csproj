@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
     <AssemblyName>ComponentTest</AssemblyName>
   </PropertyGroup>
 
@@ -22,20 +22,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--Compile Remove="cases/DropDown0.cs" />
-    <Compile Remove="cases/Button0.cs" />
+    <!--Compile Remove="cases/Button0.cs" />
     <Compile Remove="cases/Button1.cs" />
-    <Compile Remove="cases/CheckBox0.cs" />
-    <Compile Remove="cases/ImageView0.cs" />
+    <Compile Remove="cases/Button2.cs" />
+    <Compile Remove="cases/CheckBox0.cs" /-->
+    <Compile Remove="cases/CircularSlider0.cs" />
+    <!--Compile Remove="cases/Loading0.cs" />
     <Compile Remove="cases/Pagination0.cs" />
     <Compile Remove="cases/Popup0.cs" />
+    <Compile Remove="cases/Progress0.cs" />
     <Compile Remove="cases/RadioButton0.cs" />
+    <Compile Remove="cases/ScrollableBase0.cs" />
     <Compile Remove="cases/Selector0.cs" />
-    <Compile Remove="cases/Shadow0.cs" />
+    <Compile Remove="cases/Shadow0.cs" /-->
+    <Compile Remove="cases/Slider0.cs" />
+    <!--Compile Remove="cases/Switch0.cs" />
+    <Compile Remove="cases/Switch1.cs" />
+    <Compile Remove="cases/ImageView0.cs" />
+    <Compile Remove="cases/Theme0.cs" />
+    <Compile Remove="cases/Theme1.cs" />
+    <Compile Remove="cases/Theme2.cs" />
+    <Compile Remove="cases/Theme3.cs" />
+    <Compile Remove="cases/Theme4.cs" />
     <Compile Remove="cases/View0.cs" /-->
-    <Compile Remove="cases/CircularSlider0.cs" />
     <Compile Remove="cases/WearablePopup0.cs" />
-
   </ItemGroup>
 
   <ItemGroup>
@@ -45,4 +55,3 @@
   </ItemGroup>
 
 </Project>
-

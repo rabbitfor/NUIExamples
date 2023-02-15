@@ -6,6 +6,9 @@
   Id="TestTheme"
   BasedOn="org.tizen.default-light-theme">
 
+  <c:ControlStyle x:Key="Tizen.NUI.Components.Control">
+  </c:ControlStyle>
+
   <!--CheckBox-->
   <c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox" Size="30, 30">
     <c:ButtonStyle.Icon>

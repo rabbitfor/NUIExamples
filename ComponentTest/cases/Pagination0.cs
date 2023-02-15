@@ -24,6 +24,7 @@ public class Pagination0 : TestUnit
         nextButton.Clicked += OnNextClicked;
 
         pagination = new Pagination() {
+            PositionUsesPivotPoint = true,
             ParentOrigin = ParentOrigin.Center,
             PivotPoint = PivotPoint.Center,
             IndicatorCount = 3,

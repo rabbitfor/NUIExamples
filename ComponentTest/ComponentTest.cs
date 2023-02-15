@@ -34,7 +34,7 @@ public class NUISampleApplication : NUIApplication
     private List<string> list = new List<string>();
 
 
-    public NUISampleApplication() : base(new Size2D(720, 1280), new Position2D(0, 0))
+    public NUISampleApplication() : base(new Size2D(720, 980), new Position2D(0, 0))
     {
     }
 
@@ -104,7 +104,7 @@ public class NUISampleApplication : NUIApplication
                 MultiLine = true,
                 BackgroundColor = new Color(0.2f, 0.2f, 0.2f, 1.0f),
                 PixelSize = 12,
-                Position = new Position(0, 880),
+                Position = new Position(0, 580),
                 Size = new Size(720, 400),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
@@ -123,7 +123,7 @@ public class NUISampleApplication : NUIApplication
                 BackgroundColor = new Color(0.8f, 0.8f, 0.8f, 1.0f),
                 PixelSize = 12,
                 Size = new Size(710, 175),
-                Position = new Position(5, 920),
+                Position = new Position(5, 620),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,
@@ -140,7 +140,7 @@ public class NUISampleApplication : NUIApplication
                 BackgroundColor = new Color(0.8f, 0.8f, 0.8f, 1.0f),
                 PixelSize = 12,
                 Size = new Size(710, 175),
-                Position = new Position(5, 1105),
+                Position = new Position(5, 805),
                 PositionUsesPivotPoint = true,
                 ParentOrigin = ParentOrigin.TopLeft,
                 PivotPoint = PivotPoint.TopLeft,

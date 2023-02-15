@@ -9,7 +9,7 @@ public class Theme2 : TestUnit
     {       
         var resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
         var theme = new Theme(resourcePath + "Theme2/TestTheme.xaml");
-        var buttonStyle = theme.GetStyle(typeof(Button)) as ButtonStyle;
+        var buttonStyle = theme.GetStyle(typeof(Button));
         var checkBoxStyle = theme.GetStyle(typeof(CheckBox)) as ButtonStyle;
         var switchStyle = theme.GetStyle(typeof(Switch)) as SwitchStyle;
 
