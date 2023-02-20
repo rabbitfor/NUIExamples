@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Theme
+  xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
+  xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  Id="org.tizen.default-dark-theme"
+  Version="1.0.0" >
+
+  <ViewStyle x:Key="Tizen.NUI.Components.ContentPage"
+    BackgroundColor="#16131A" />
+
+  <TextLabelStyle x:Key="Tizen.NUI.BaseComponents.TextLabel"
+    TextColor="0.99, 0.99, 0.99, 1" />
+
+  <TextFieldStyle x:Key="Tizen.NUI.BaseComponents.TextField"
+    TextColor="0.99, 0.99, 0.99, 1"
+    PlaceholderTextColor="0.79, 0.79, 0.79, 1"
+    PrimaryCursorColor="0.99, 0.99, 0.99, 1"
+    SecondaryCursorColor="0.99, 0.99, 0.99, 1"
+    SelectionHighlightColor="1, 0.54, 0, 0.3"
+    GrabHandleColor="1, 1, 1, 1" />
+
+  <TextEditorStyle x:Key="Tizen.NUI.BaseComponents.TextEditor"
+    TextColor="0.99, 0.99, 0.99, 1"
+    PlaceholderTextColor="0.79, 0.79, 0.79, 1"
+    PrimaryCursorColor="0.99, 0.99, 0.99, 1"
+    SecondaryCursorColor="0.99, 0.99, 0.99, 1"
+    SelectionHighlightColor="1, 0.54, 0, 0.3"
+    GrabHandleColor="1, 1, 1, 1" />
+
+  <c:AppBarStyle x:Key="Tizen.NUI.Components.AppBar">
+    <c:AppBarStyle.BackButton>
+      <c:ButtonStyle>
+        <c:ButtonStyle.Icon>
+          <ImageViewStyle>
+            <ImageViewStyle.Color>
+              <Selector x:TypeArguments="Color" Normal="#FF8A00" Pressed="#3B393E" Focused="#1F1C22" Disabled="#3B393E" />
+            </ImageViewStyle.Color>
+          </ImageViewStyle>
+        </c:ButtonStyle.Icon>
+      </c:ButtonStyle>
+    </c:AppBarStyle.BackButton>
+    <c:AppBarStyle.TitleTextLabel>
+      <TextLabelStyle TextColor="#FDFDFD"/>
+    </c:AppBarStyle.TitleTextLabel>
+    <c:AppBarStyle.ActionButton>
+      <c:ButtonStyle>
+        <c:ButtonStyle.Text>
+          <TextLabelStyle>
+            <TextLabelStyle.TextColor>
+              <Selector x:TypeArguments="Color" Normal="#FF8A00" Pressed="#995300" Focused="#E67C00" Disabled="#666666" />
+            </TextLabelStyle.TextColor>
+          </TextLabelStyle>
+        </c:ButtonStyle.Text>
+        <c:ButtonStyle.Icon>
+          <ImageViewStyle Color="#16131A" />
+        </c:ButtonStyle.Icon>
+      </c:ButtonStyle>
+    </c:AppBarStyle.ActionButton>
+  </c:AppBarStyle>
+
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.Button">
+    <c:ButtonStyle.BackgroundColor>
+      <Selector x:TypeArguments="Color" Normal="#FF8A00" Pressed="#CC6E00" Focused="#E57C00" Selected="#995300" Disabled="#666666" />
+    </c:ButtonStyle.BackgroundColor>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle TextColor="#16131A"/>
+    </c:ButtonStyle.Text>
+    <c:ButtonStyle.Icon>
+      <ImageViewStyle Color="#16131A"/>
+    </c:ButtonStyle.Icon>
+  </c:ButtonStyle>
+
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.Button.Outlined">
+    <c:ButtonStyle.BorderlineColorSelector>
+      <Selector x:TypeArguments="Color" Normal="#FF8A00" Pressed="#CC6E00" Focused="#E57C00" Selected="#995300" Disabled="#666666" />
+    </c:ButtonStyle.BorderlineColorSelector>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle>
+        <TextLabelStyle.TextColor>
+          <Selector x:TypeArguments="Color" Normal="#FF8A00" Pressed="#CC6E00" Focused="#E57C00" Selected="#995300" Disabled="#666666" />
+        </TextLabelStyle.TextColor>
+      </TextLabelStyle>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle>
+
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.Button.TextOnly">
+    <c:ButtonStyle.Text>
+      <TextLabelStyle>
+        <TextLabelStyle.TextColor>
+          <Selector x:TypeArguments="Color" Normal="#FF8A00" Pressed="#CC6E00" Focused="#E57C00" Selected="#995300" Disabled="#666666" />
+        </TextLabelStyle.TextColor>
+      </TextLabelStyle>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle>
+
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.CheckBox">
+    <c:ButtonStyle.Icon>
+        <ImageViewStyle>
+          <ImageViewStyle.ResourceUrl>
+              <Selector x:TypeArguments="x:String"
+                Normal="{ThemeResourcePath IoT_check_off.png}"
+                Pressed="{ThemeResourcePath IoT_check_off.png}"
+                Disabled="{ThemeResourcePath IoT_check_off_d.png}"
+                Focused="{ThemeResourcePath IoT_check_off_f.png}"
+                Selected="{ThemeResourcePath IoT_check_on.png}"
+                SelectedPressed="{ThemeResourcePath IoT_check_on.png}"
+                SelectedFocused="{ThemeResourcePath IoT_check_on_f.png}"
+                DisabledSelected="{ThemeResourcePath IoT_check_on_d.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+    </c:ButtonStyle.Icon>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle>
+        <TextLabelStyle.TextColor>
+          <Selector x:TypeArguments="Color" Normal="#FDFDFD" Selected="#FF8A00" Disabled="#666666" />
+        </TextLabelStyle.TextColor>
+      </TextLabelStyle>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle>
+
+  <c:ButtonStyle x:Key="Tizen.NUI.Components.RadioButton">
+    <c:ButtonStyle.Icon>
+      <ImageViewStyle>
+        <ImageViewStyle.ResourceUrl>
+            <Selector x:TypeArguments="x:String"
+              Normal="{ThemeResourcePath IoT_radiobutton_off_W.png}"
+              Disabled="{ThemeResourcePath IoT_radiobutton_off_dW.png}"
+              Focused="{ThemeResourcePath IoT_radiobutton_off_fW.png}"
+              Selected="{ThemeResourcePath IoT_radiobutton_on_W.png}"
+              SelectedFocused="{ThemeResourcePath IoT_radiobutton_on_fW.png}"
+              DisabledSelected="{ThemeResourcePath IoT_radiobutton_on_dW.png}" />
+        </ImageViewStyle.ResourceUrl>
+      </ImageViewStyle>
+    </c:ButtonStyle.Icon>
+    <c:ButtonStyle.Text>
+      <TextLabelStyle>
+        <TextLabelStyle.TextColor>
+          <Selector x:TypeArguments="Color" Normal="#FDFDFD" Selected="#FF8A00" Disabled="#666666" />
+        </TextLabelStyle.TextColor>
+      </TextLabelStyle>
+    </c:ButtonStyle.Text>
+  </c:ButtonStyle>
+
+  <c:ProgressStyle x:Key="Tizen.NUI.Components.Progress"
+    IndeterminateImageUrl="{ThemeResourcePath IoT_progress_indeterminate.png}">
+    <c:ProgressStyle.Track>
+      <ImageViewStyle BackgroundColor="#3B393E" />
+    </c:ProgressStyle.Track>
+    <c:ProgressStyle.Buffer>
+      <ImageViewStyle BackgroundColor="#FF8A00" />
+    </c:ProgressStyle.Buffer>
+    <c:ProgressStyle.Progress>
+      <ImageViewStyle BackgroundColor="#FF8A00" />
+    </c:ProgressStyle.Progress>
+  </c:ProgressStyle>
+
+  <c:SwitchStyle x:Key="Tizen.NUI.Components.Switch">
+    <c:SwitchStyle.Track>
+      <ImageViewStyle>
+        <ImageViewStyle.ResourceUrl>
+          <Selector x:TypeArguments="x:String"
+              Normal="{ThemeResourcePath IoT_switch_track.png}"
+              Disabled="{ThemeResourcePath IoT_switch_track_d.png}"
+              Focused="{ThemeResourcePath IoT_switch_track_f.png}"
+              Selected="{ThemeResourcePath IoT_switch_track_s.png}"
+              SelectedFocused="{ThemeResourcePath IoT_switch_fs.png}"
+              DisabledSelected="{ThemeResourcePath IoT_switch_track_d.png}" />
+        </ImageViewStyle.ResourceUrl>
+      </ImageViewStyle>
+    </c:SwitchStyle.Track>
+    <c:SwitchStyle.Thumb>
+        <ImageViewStyle>
+          <ImageViewStyle.ResourceUrl>
+            <Selector x:TypeArguments="x:String"
+              Normal="{ThemeResourcePath IoT_switch_thumb.png}"
+              Disabled="{ThemeResourcePath IoT_switch_thumb_d.png}"
+              Selected="{ThemeResourcePath IoT_switch_thumb_s.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+    </c:SwitchStyle.Thumb>
+    <c:SwitchStyle.Text>
+        <TextLabelStyle TextColor="#FDFDFD" />
+    </c:SwitchStyle.Text>
+  </c:SwitchStyle>
+
+  <c:LoadingStyle x:Key="Tizen.NUI.Components.Loading" LottieResourceUrl="{ThemeResourcePath IoT_loading_circle_dark.json}" />
+
+  <c:SliderStyle x:Key="Tizen.NUI.Components.Slider">
+    <c:SliderStyle.Track>
+        <ImageViewStyle BackgroundColor="#3B393E" />
+    </c:SliderStyle.Track>
+    <c:SliderStyle.Progress>
+        <ImageViewStyle>
+          <ImageViewStyle.BackgroundColor>
+            <Selector x:TypeArguments="Color" Normal="#FF8A00" Disabled="#CACACA" />
+          </ImageViewStyle.BackgroundColor>
+        </ImageViewStyle>
+    </c:SliderStyle.Progress>
+    <c:SliderStyle.Thumb>
+      <ImageViewStyle>
+        <ImageViewStyle.ResourceUrl>
+          <Selector x:TypeArguments="x:String"
+            Normal="{ThemeResourcePath IoT_slider_handler_normal.png}"
+            Pressed="{ThemeResourcePath IoT_slider_handler_pressed.png}"
+            Disabled="{NUIResourcePath IoT_slider_handler_disabled.png}" />
+        </ImageViewStyle.ResourceUrl>
+      </ImageViewStyle>
+    </c:SliderStyle.Thumb>
+    <c:SliderStyle.ValueIndicatorImage>
+        <ImageViewStyle BorderlineColor="#FF8A00" />
+    </c:SliderStyle.ValueIndicatorImage>
+    <c:SliderStyle.ValueIndicatorText>
+        <TextLabelStyle TextColor="#FF8A00" />
+    </c:SliderStyle.ValueIndicatorText>
+  </c:SliderStyle>
+
+  <c:PaginationStyle x:Key="Tizen.NUI.Components.Pagination">
+    <c:PaginationStyle.IndicatorImageUrl>
+      <Selector x:TypeArguments="x:String"
+        Normal="{ThemeResourcePath IoT_pagination.png}"
+        Selected="{ThemeResourcePath IoT_pagination_s.png}" />
+    </c:PaginationStyle.IndicatorImageUrl>
+  </c:PaginationStyle>
+
+    <!--c:SliderStyle x:Key="Tizen.NUI.Components.Slider">
+      <c:SliderStyle.Progress>
+          <ImageViewStyle
+            ResourceUrl="{NUIResourcePath IoT_slider_status_trackW.png}"
+            BackgroundColor="White" />
+      </c:SliderStyle.Progress>
+      <c:SliderStyle.Thumb>
+          <ImageViewStyle
+            ResourceUrl="{NUIResourcePath IoT_slider_handler_normalW.png}" />
+      </c:SliderStyle.Thumb>
+      <c:SliderStyle.ValueIndicatorImage>
+          <ImageViewStyle
+            BackgroundColor="White" />
+      </c:SliderStyle.ValueIndicatorImage>
+    </c:SliderStyle>
+
+    <c:SwitchStyle x:Key="Tizen.NUI.Components.Switch">
+      <c:SwitchStyle.Track>
+        <ImageViewStyle>
+          <ImageViewStyle.ResourceUrl>
+            <Selector x:TypeArguments="x:String"
+                Normal="{ThemeResourcePath IoT_switch_track_off_W.png}"
+                Pressed="{ThemeResourcePath IoT_switch_track_off_pW.png}"
+                Disabled="{NUIResourcePath IoT_switch_track_off_d.png}"
+                Focused="{ThemeResourcePath IoT_switch_track_off_fW.png}"
+                Selected="{NUIResourcePath IoT_switch_track_on.png}"
+                SelectedPressed="{ThemeResourcePath IoT_switch_track_on_fW.png}"
+                SelectedFocused="{ThemeResourcePath IoT_switch_track_on_fW.png}"
+                DisabledSelected="{ThemeResourcePath IoT_switch_track_on_dW.png}" />
+          </ImageViewStyle.ResourceUrl>
+        </ImageViewStyle>
+      </c:SwitchStyle.Track>
+      <c:SwitchStyle.Thumb>
+          <ImageViewStyle>
+            <ImageViewStyle.ResourceUrl>
+              <Selector x:TypeArguments="x:String"
+                Normal="{NUIResourcePath IoT_switch_thumb_d.png}"
+                Disabled="{NUIResourcePath IoT_switch_thumb_d.png}"
+                Selected="{ThemeResourcePath IoT_switch_thumb_sW.png}"
+                SelectedPressed="{ThemeResourcePath IoT_switch_thumb_spW.png}"
+                SelectedFocused="{ThemeResourcePath IoT_switch_thumb_sfW.png}" />
+            </ImageViewStyle.ResourceUrl>
+          </ImageViewStyle>
+      </c:SwitchStyle.Thumb>
+      <c:SwitchStyle.Text>
+          <TextLabelStyle
+            TextColor="White" />
+      </c:SwitchStyle.Text>
+    </c:SwitchStyle>
+
+    <ViewStyle x:Key="Tizen.NUI.Components.ContentPage"
+      BackgroundColor="#0E1017" />
+
+    <c:AppBarStyle x:Key="Tizen.NUI.Components.AppBar"
+      BackgroundColor="#0E1017">
+      <c:AppBarStyle.BackButton>
+        <c:ButtonStyle>
+          <c:ButtonStyle.Icon>
+            <ImageViewStyle>
+              <ImageViewStyle.Color>
+                <Selector x:TypeArguments="Color"
+                  Normal="White"
+                  Focused="#00338B"
+                  Pressed="#1473E6"
+                  Disabled="#6B707C" />
+              </ImageViewStyle.Color>
+            </ImageViewStyle>
+          </c:ButtonStyle.Icon>
+        </c:ButtonStyle>
+      </c:AppBarStyle.BackButton>
+      <c:AppBarStyle.TitleTextLabel>
+        <TextLabelStyle
+          TextColor="White"/>
+      </c:AppBarStyle.TitleTextLabel>
+      <c:AppBarStyle.ActionButton>
+        <c:ButtonStyle>
+          <c:ButtonStyle.Text>
+            <TextLabelStyle>
+              <TextLabelStyle.TextColor>
+                <Selector x:TypeArguments="Color"
+                  Normal="White"
+                  Focused="#00338B"
+                  Pressed="#1473E6"
+                  Disabled="#6B707C" />
+              </TextLabelStyle.TextColor>
+            </TextLabelStyle>
+          </c:ButtonStyle.Text>
+          <c:ButtonStyle.Icon>
+            <ImageViewStyle>
+              <ImageViewStyle.Color>
+                <Selector x:TypeArguments="Color"
+                  Normal="White"
+                  Focused="#00338B"
+                  Pressed="#1473E6"
+                  Disabled="#6B707C" />
+              </ImageViewStyle.Color>
+            </ImageViewStyle>
+          </c:ButtonStyle.Icon>
+        </c:ButtonStyle>
+      </c:AppBarStyle.ActionButton>
+    </c:AppBarStyle>
+
+    <TextLabelStyle x:Key="NotificationToast"
+      BackgroundColor="#000209"
+      TextColor="White" />
+
+    <c:AlertDialogStyle x:Key="Tizen.NUI.Components.AlertDialog"
+      BackgroundColor="#000209">
+      <c:AlertDialogStyle.TitleTextLabel>
+        <TextLabelStyle
+          TextColor="White" />
+      </c:AlertDialogStyle.TitleTextLabel>
+      <c:AlertDialogStyle.MessageTextLabel>
+        <TextLabelStyle
+          TextColor="White"/>
+      </c:AlertDialogStyle.MessageTextLabel>
+    </c:AlertDialogStyl-->
+</Theme>
