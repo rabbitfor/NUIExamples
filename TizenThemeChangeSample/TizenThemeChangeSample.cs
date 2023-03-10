@@ -16,21 +16,22 @@
  */
 
 using System;
-using System.Collections.Generic;
 using Tizen.NUI;
 using Tizen.NUI.Components;
 using Tizen.NUI.BaseComponents;
-using Tizen.NUI.Binding;
-using System.ComponentModel;
-using System;
-using Tizen.Applications.ThemeManager;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 class HelloWorldExample : NUIApplication
 {
-    ThemeLoader themeLoader;
-
+    // ThemeOptions
+    // * PlatformThemeEnabled : Specify this flag when you want to change platform theme manually
+    //                          or want to receive platform theme changed event.
+    // * ThemeChangeSensitive : Basically, if you want a NUI View to automatically change its appearance
+    //                          whenever the theme changes, you need to set "view.ThemeChangeSensitive = true"
+    //                          for the view. It's "false" by default. However if this flag is specified,
+    //                          the default value will be "true" so you won't be bother to set it for each view.
+    //                          Please note that this flag makes NUI to track all views for theme update, therefore
+    //                          it may slow down your application. It's recommended to use this option only when
+    //                          absolutely necessary.
     public HelloWorldExample() : base(ThemeOptions.PlatformThemeEnabled | ThemeOptions.ThemeChangeSensitive)
     {
     }
@@ -38,8 +39,6 @@ class HelloWorldExample : NUIApplication
     protected override void OnCreate()
     {
         base.OnCreate();
-
-        themeLoader = new ThemeLoader();
 
         var closeButton = new Button()
         {
@@ -71,24 +70,20 @@ class HelloWorldExample : NUIApplication
             }
         };
 
-        var title = $"Current theme: {(themeLoader.CurrentTheme.Id == "org.tizen.default-dark-theme" ? "Dark" : "Light")}";
+        var title = $"Click to change theme to {(ThemeManager.PlatformThemeId == ThemeManager.DefaultLightThemeName ? "Dark" : "Light")}";
 
         mainPage.Content.Add(CreateClickableItem("Theme change", title, delegate(View view) {
             TextLabel text = view.Children[1] as TextLabel;
 
-            if (themeLoader.CurrentTheme.Id == "org.tizen.default-dark-theme")
+            if (ThemeManager.PlatformThemeId == ThemeManager.DefaultDarkThemeName)
             {
-                var theme = themeLoader.LoadTheme("org.tizen.default-light-theme");
-                Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-                themeLoader.CurrentTheme = theme;
-                text.Text = "Current theme: Light";
+                ThemeManager.ApplyPlatformTheme(ThemeManager.DefaultLightThemeName);
+                text.Text = "Click to change theme to Dark";
             }
             else
             {
-                var theme = themeLoader.LoadTheme("org.tizen.default-dark-theme");
-                Tizen.Log.Info("JYJY", $"Id: {theme.Id}, Version: {theme.Version}");
-                themeLoader.CurrentTheme = theme;
-                text.Text = "Current theme: Dark";
+                ThemeManager.ApplyPlatformTheme(ThemeManager.DefaultDarkThemeName);
+                text.Text = "Click to change theme to Light";
             }
         }));
 
@@ -104,7 +99,6 @@ class HelloWorldExample : NUIApplication
                 {
                     Title = "Notice",
                     Message = "Please touch outer area to dismiss",
-                    // Actions =  actions,
                 },
             };
 
@@ -202,9 +196,9 @@ class HelloWorldExample : NUIApplication
                 LinearOrientation = LinearLayout.Orientation.Vertical,
             },
         };
-        var radio1 = new RadioButton() { Text = "Always on", Padding = 7 };
-        var radio2 = new RadioButton() { Text = "10 minutes", Padding = 7 };
-        var radio3 = new RadioButton() { Text = "1 minute", Padding = 7 };
+        var radio1 = new RadioButton() { Text = "Radio1", Padding = 7 };
+        var radio2 = new RadioButton() { Text = "Radio2", Padding = 7 };
+        var radio3 = new RadioButton() { Text = "Radio3", Padding = 7 };
 
         var group = new RadioButtonGroup();
         group.Add(radio1);

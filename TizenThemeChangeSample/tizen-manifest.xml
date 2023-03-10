@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://tizen.org/ns/packages" api-version="5.5" package="org.tizen.example.NUISampleApplication" version="1.0.0">
+<manifest xmlns="http://tizen.org/ns/packages" api-version="5.5" package="org.tizen.example.TizenThemeChangeSample" version="1.0.0">
   <profile name="common" />
-  <ui-application appid="org.tizen.example.NUISampleApplication"
-					exec="NUISampleApplication.dll"
+  <ui-application appid="org.tizen.example.TizenThemeChangeSample"
+					exec="TizenThemeChangeSample.dll"
 					type="dotnet-nui"
 					multiple="false"
 					taskmanage="true"
 					nodisplay="false"
 					launch_mode="single"
 					api-version="6">
-    <label>NUISampleApplication</label>
-    <icon>NUISampleApplication.png</icon>
+    <label>TizenThemeChangeSample</label>
+    <icon>TizenThemeChangeSample.png</icon>
   </ui-application>
   <privileges>
 	  <privilege>http://tizen.org/privilege/window.priority.set</privilege>
