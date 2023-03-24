@@ -1,0 +1,31 @@
+[1;34mINFO:[21m DALI: WindowRenderSurface::SetThreadSynchronization: called
+[0m[1;34mINFO:[21m DALI: EGL Information
+            PartialUpdate  1
+            Vendor:        NVIDIA
+            Version:       1.4
+            Client APIs:   OpenGL_ES OpenGL
+            Extensions:    EGL_EXT_buffer_age EGL_EXT_create_context_robustness EGL_EXT_output_base EGL_EXT_stream_acquire_mode EGL_IMG_context_priority EGL_KHR_config_attribs EGL_KHR_create_context_no_error EGL_KHR_create_context EGL_KHR_display_reference EGL_KHR_fence_sync EGL_KHR_get_all_proc_addresses EGL_KHR_partial_update EGL_KHR_swap_buffers_with_damage EGL_KHR_gl_colorspace EGL_KHR_gl_renderbuffer_image EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_3D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_image EGL_KHR_image_base EGL_KHR_image_pixmap EGL_KHR_reusable_sync EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_KHR_stream_cross_process_fd EGL_KHR_stream_fifo EGL_KHR_stream_producer_eglsurface EGL_KHR_surfaceless_context EGL_NV_post_sub_buffer EGL_NV_stream_metadata EGL_NV_stream_reset EGL_NV_stream_sync EGL_NV_stream_consumer_gltexture_yuv EGL_NV_stream_attrib EGL_NV_sync EGL_NV_system_time EGL_NV_output_drm_flip_event
+[0m[1;34mINFO:[21m DALI: Using OpenGL es 3.0.
+[0m[1;34mINFO:[21m DALI: CombinedUpdateRenderController::Start
+[0m[1;34mINFO:[21m DALI: Adaptor::NotifySceneCreated: Adaptor is running
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Update requested.
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Update requested.
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Update requested.
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Update requested.
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Update requested.
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: Using OpenGL es 3.0.
+[0m[1;34mINFO:[21m DALI: WindowRenderSurface::CreateSurface: WinId (62914562), w = 480 h = 800 angle = 0 screen rotation = 0
+[0m[1;34mINFO:[21m DALI: WindowRenderSurface::DestroySurface: WinId (62914562)
+[0m[1;34mINFO:[21m DALI: CombinedUpdateRenderController::Stop
+[0m[1;34mINFO:[21m DALI: Adaptor::Stop
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Adaptor is not paused state.[5]
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: Adaptor::OnWindowShown: Adaptor is not paused state.[5]
+[0m[1;34mINFO:[21m DALI: Window (0x1fc87a0), WinId (62914562), Deiconified: visible = 1
+[0m[1;34mINFO:[21m DALI: CombinedUpdateRenderController::Stop
+[0m
