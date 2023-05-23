@@ -3,8 +3,7 @@
   xmlns="http://tizen.org/Tizen.NUI/2018/XAML"
   xmlns:c="clr-namespace:Tizen.NUI.Components;assembly=Tizen.NUI.Components"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  Id="GreenTheme"
-  BasedOn="Tizen.NUI.Theme.Common">
+  Id="GreenTheme">
 
   <!--TextLabelTypeA-->
   <TextLabelStyle x:Key="TextLabelTypeA" TextColor="0.36, 0.45, 0.31, 0.8" />

@@ -21,6 +21,20 @@ using Tizen.NUI.Components;
 
 public class NUISampleApplication : NUIApplication
 {
+    // ThemeOptions
+    // * PlatformThemeEnabled : Specify this flag when you want to change platform theme manually
+    //                          or want to receive platform theme changed event.
+    // * ThemeChangeSensitive : Basically, if you want a NUI View to automatically change its appearance
+    //                          whenever the theme changes, you need to set "view.ThemeChangeSensitive = true"
+    //                          for the view. It's "false" by default. However if this flag is specified,
+    //                          the default value will be "true" so you won't be bother to set it for each view.
+    //                          Please note that this flag makes NUI to track all views for theme update, therefore
+    //                          it may slow down your application. It's recommended to use this option only when
+    //                          absolutely necessary.
+    public NUISampleApplication() : base(ThemeOptions.PlatformThemeEnabled)
+    {
+    }
+
     protected override void OnCreate()
     {
         base.OnCreate();
@@ -58,6 +72,7 @@ public class NUISampleApplication : NUIApplication
             StyleName = "TextLabelTypeA",
             Position = new Position(30, 120),
             Text = "Hello World!",
+            ThemeChangeSensitive = true
         });
 
         // [Sample 2]
@@ -66,31 +81,30 @@ public class NUISampleApplication : NUIApplication
         root.Add(new Button("ButtonDefault") {
             Position = new Position(30, 180),
             Text = "Button",
+            ThemeChangeSensitive = true
         });
 
         // [Sample 3-1]
         root.Add(new Switch("SwitchFancy") {
             Position = new Position(30, 280),
+            ThemeChangeSensitive = true
         });
 
         // [Sample 3-2]
         // Set ThemeChangedSensitive to false if you don't want this view to be affected by theme changes.
-        // Note that the ThemeChangedSensitive is "false" by default, but turned to true when setting StyleName explitcitly.
-        // (Either by setting StyleName property or by using constructor with style name)
+        // Note that the ThemeChangedSensitive is "false" by default,
+        // unless the application has ThemeOptions.ThemeChangeSensitive explitcitly.
         root.Add(new Switch("SwitchFancy") {
             Position = new Position(200, 280),
-            ThemeChangeSensitive = false,
         });
 
-        // [Sample 4-1][Advanced]
+        // [Sample 4-1]
         // The view without style name uses a style named its type name. ("Tizen.NUI.Components.CheckBox" in this case)
-        // Note that, because the style name was not set explicitly, the ThemeChangedSensitive is false,
-        // which means it is not affected by theme changes.
         root.Add(new CheckBox() {
             Position = new Position(30, 380),
         });
 
-        // [Sample 4-2][Advanced]
+        // [Sample 4-2]
         // Set ThemeChangedSensitive to true if you want this view to be affected by theme changes.
         root.Add(new CheckBox() {
             Position = new Position(200, 380),
