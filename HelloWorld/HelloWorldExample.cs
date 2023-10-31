@@ -19,72 +19,62 @@ using System;
 using System.Collections.Generic;
 using Tizen.NUI;
 using Tizen.NUI.Components;
+using Tizen.NUI.Components.Extension;
 using Tizen.NUI.BaseComponents;
 
 class HelloWorldExample : NUIApplication
 {
-    View rootView;
-
     protected override void OnCreate()
     {
         base.OnCreate();
 
-        rootView = new View()
-        {
-            WidthResizePolicy = ResizePolicyType.FillToParent,
-            HeightResizePolicy = ResizePolicyType.FillToParent,
-            BackgroundColor = Color.White,
-        };
-        NUIApplication.GetDefaultWindow().Add(rootView);
+        const float width = 300;
+        const float height = 80;
+        const float arbitraryFieldOfView = MathF.PI / 4.0f;
+        string resourcePath = Tizen.Applications.Application.Current.DirectoryInfo.Resource;
 
-        var button = new Button()
+        var source = new TextLabel()
         {
-            Text = "Start"
+            Text = "Hello World!",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+            PixelSize = 50,
+            TextColor = new Color(1, 1, 1, 0.5f),
+            Size = new Size(width, height)
         };
-        button.Clicked += (s, e) => {
-            for (var i = 0; i < 1000; i++)
-            {
-                var view = new View() {
-                    Size = new Size(10, 10),
-                    Position = new Position(i, i),
-                    BackgroundColor = Color.Blue
-                };
-                var size = view.Size;
-                var pos = view.Position;
-                var bg = view.BackgroundColor;
-                var name = view.Name;
-                var sensitive = view.Sensitive;
-                rootView.Add(view);
-            }
-        };
-        rootView.Add(button);
-    }
+        Window.Instance.Add(source);
 
-    private void FullGC()
-    {
-        global::System.GC.Collect();
-        global::System.GC.WaitForPendingFinalizers();
-        global::System.GC.Collect();
-    }
+        var camera = new Camera();
+        camera.SetInvertYAxis(true);
+        camera.ParentOrigin = Tizen.NUI.ParentOrigin.Center;
+        camera.SetAspectRatio(width / height);
+        camera.Position = new Vector3(0.0f, 0.0f, height * 0.5f / MathF.Tan(arbitraryFieldOfView * 0.5f));
+        camera.SetFieldOfView(arbitraryFieldOfView);
+        camera.SetNearClippingPlane(1.0f);
+        camera.SetType(CameraType.FreeLook);
+        source.Add(camera);
 
-    /// <summary>
-    /// Called when any key event is received.
-    /// Will use this to exit the application if the Back or Escape key is pressed
-    /// </summary>
-    private void OnKeyEvent( object sender, Window.KeyEventArgs eventArgs )
-    {
-        if( eventArgs.Key.State == Key.StateType.Down )
+        var renderTask = Window.Instance.GetRenderTaskList().CreateTask();
+        renderTask.SetSourceView(source);
+        renderTask.SetExclusive(false);
+        renderTask.SetInputEnabled(true);
+        renderTask.SetClearEnabled(true);
+        renderTask.SetClearColor(Color.Transparent);
+        renderTask.SetCamera(camera);
+        renderTask.SetRefreshRate((uint)RenderTask.RefreshRate.REFRESH_ALWAYS);
+
+        var frameBuffer = new FrameBuffer((uint)width, (uint)height, (uint)FrameBuffer.Attachment.Mask.NONE);
+        renderTask.SetFrameBuffer(frameBuffer);
+        var frameBufferUrl = frameBuffer.GenerateUrl(PixelFormat.RGBA8888, (int)width, (int)height);
+
+        var image = new ImageView()
         {
-            switch( eventArgs.Key.KeyPressedName )
-            {
-                case "Escape":
-                case "Back":
-                {
-                    Exit();
-                }
-                break;
-            }
-        }
+            Size = new Size(width, height),
+            PositionY = height,
+            ResourceUrl = frameBufferUrl.ToString(),
+            AlphaMaskURL = resourcePath + "mask.png"
+        };
+        Window.Instance.Add(image);
     }
 
     /// <summary>
