@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,5 +9,31 @@
 <body>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_dacgde5j.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;"  loop controls autoplay></lottie-player>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<button type="button" onclick="onTest1Click()">Test1</button>
+<button type="button" onclick="onTest2Click()">Test2</button>
+<button type="button" onclick="onTest3Click()">Test3</button>
+<p id="demo"></p>
+
+<script>
+function onTest1Click() {
+  document.getElementById("demo").innerHTML = "Test1 clicked";
+  Test1.postMessage("Test1 Clicked!");
+}
+function onTest2Click() {
+  document.getElementById("demo").innerHTML = "Test2 clicked";
+  Test2.postMessage("Test2 Clicked!");
+}
+function onTest3Click() {
+  document.getElementById("demo").innerHTML = "Test3 clicked";
+  Test3.postMessage("Test3 Clicked!");
+}
+</script>
+
 </body>
 </html>

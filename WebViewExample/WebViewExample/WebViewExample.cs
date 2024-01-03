@@ -16,10 +16,23 @@ namespace WebViewExample
 
         void Initialize()
         {
-            // string path = "file://" + Tizen.Applications.Application.Current.DirectoryInfo.Resource + "test.html";
-            string path = "https://terms.account.samsung.com/contents/legal/kor/kor/customizedservicecontent.html";
+            string path = "file://" + Tizen.Applications.Application.Current.DirectoryInfo.Resource + "test.html";
+            // string path = "https://terms.account.samsung.com/contents/legal/kor/kor/customizedservicecontent.html";
 
             mWebView = new WebView();
+
+            mWebView.AddJavaScriptMessageHandler( "Test1", (text) => {
+                Tizen.Log.Info("JYJY", $" Handler1: {text}");
+            });
+
+            mWebView.AddJavaScriptMessageHandler( "Test2", (text) => {
+                Tizen.Log.Info("JYJY", $" Handler2: {text}");
+            });
+
+            mWebView.AddJavaScriptMessageHandler( "Test3", (text) => {
+                Tizen.Log.Info("JYJY", $" Handler3: {text}");
+            });
+
             mWebView.LoadUrl(path);
             Tizen.Log.Info("JYJY", $"LoadUrl({path})");
             mWebView.Size2D = new Size2D(800, 800);

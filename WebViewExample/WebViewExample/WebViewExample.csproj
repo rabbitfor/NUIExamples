@@ -22,19 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--PackageReference Include="Tizen.NET" Version="4.0.0" >
-      <ExcludeAssets>Runtime</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="Tizen.NET.Sdk" Version="1.0.1" /-->
-    <PackageReference Include="Tizen.NET" Version="9.0.0.*"/>
+    <PackageReference Include="Tizen.NET" Version="10.0.0.*"/>
     <PackageReference Include="Tizen.NET.Sdk" Version="1.1.6" />
   </ItemGroup>
 
-  <Target Name="AppReSinging" BeforeTargets="TizenPostPackageEvent">
+  <!-- <Target Name="AppReSinging" BeforeTargets="TizenPostPackageEvent">
     <Message Text="Print TPK File : $(SignedTpkFile) will resigning!! OS : $(Os)" Importance="high"  />
     <Exec Command="curl http://10.40.68.214:8080/signTPK.do  -w %{http_code}  -f -F 'author=yes' -F 'dist=yes' -F 'level=platform' -F 'pkgname=$(TargetName)' -F 'file=@$(SignedTpkFile)' -o $(SignedTpkFile)"  />
-  </Target>
+  </Target> -->
 
 
 </Project>
-
